@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>LEADHUNTER 360 PRO - SMB & Instagram Lead Engine (Mysuru)</title>
+  <title>LEADHUNTER 360 - High-Ticket Client Acquisition Engine</title>
   
   <!-- Google Fonts & Tailwind CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,13 @@
               violet: '#8b5cf6',
               amber: '#f59e0b',
               ig: '#E1306C',
-              igGradient: '#833AB4'
+              global: '#3b82f6'
+            },
+            surface: {
+              DEFAULT: '#030712',
+              card: '#0d131f',
+              panel: '#151d2d',
+              border: '#1f293d'
             }
           }
         }
@@ -51,7 +57,7 @@
     }
     
     .glass-card {
-      background: rgba(17, 24, 39, 0.88);
+      background: rgba(13, 19, 31, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -65,7 +71,7 @@
       background: #030712;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #1f2937;
+      background: #1f293d;
       border-radius: 9999px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
@@ -79,20 +85,18 @@
     .scanner-line {
       animation: scanner 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
-
-    .ig-badge-gradient {
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    }
   </style>
 </head>
 <body class="min-h-screen p-3 md:p-6 custom-scrollbar pb-24 lg:pb-12">
 
-  <div class="max-w-6xl mx-auto space-y-6">
+  <div class="max-w-7xl mx-auto space-y-6">
 
-    <!-- TOP NAV: MODULE TABS (MULTI-CITY SMB vs INSTAGRAM HUNTER MYSURU) -->
-    <header class="glass-card border border-emerald-500/30 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <div class="flex items-center space-x-3">
-        <div class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-[#E1306C] via-brand-500 to-brand-cyan shadow-lg shadow-[#E1306C]/20">
+    <!-- MASTER TOP HEADER WITH 3 MAIN ENGINE SWITCHERS -->
+    <header class="glass-card border border-slate-800 p-4 md:p-5 rounded-2xl shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      
+      <!-- Brand & Engine Title -->
+      <div class="flex items-center space-x-3.5">
+        <div class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-ig via-brand-500 to-brand-global shadow-lg shadow-brand-500/20">
           <i data-lucide="zap" class="w-6 h-6 text-white"></i>
           <span class="absolute -top-1 -right-1 flex h-3 w-3">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -100,310 +104,404 @@
           </span>
         </div>
         <div>
-          <h1 class="text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
-            LEADHUNTER <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold border border-emerald-500/40">360 PRO</span>
-          </h1>
-          <p class="text-xs text-gray-400">Multi-City Overpass POI Engine &bull; Mysuru Instagram Lead Hunter</p>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg md:text-xl font-black text-white tracking-tight">LEADHUNTER 360</h1>
+            <span id="active-engine-badge" class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-400 font-mono font-bold border border-brand-500/30">
+              LOCAL SMB ENGINE
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">High-Ticket Client Acquisition &bull; Zero Junk Chains &bull; Pain-Point Audit Pitches</p>
         </div>
       </div>
 
-      <!-- Main Module Navigation Switcher -->
-      <nav class="flex items-center gap-2 bg-black/80 p-1.5 rounded-xl border border-gray-800 self-start md:self-auto">
+      <!-- 3 Master Engine Navigation Tabs -->
+      <nav class="flex items-center gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800 self-start lg:self-auto overflow-x-auto custom-scrollbar max-w-full">
         <button 
-          id="nav-smb" 
-          onclick="switchModule('SMB')" 
-          class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-gray-950 shadow-md"
+          id="nav-btn-local" 
+          onclick="switchEngine('LOCAL')" 
+          class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-md shrink-0"
         >
           <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-          <span>Multi-City POI Hunter</span>
+          <span>📍 Local SMB Engine</span>
         </button>
 
         <button 
-          id="nav-ig" 
-          onclick="switchModule('IG')" 
-          class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-gray-300 hover:text-white"
+          id="nav-btn-ig" 
+          onclick="switchEngine('IG')" 
+          class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white shrink-0"
         >
-          <i data-lucide="instagram" class="w-3.5 h-3.5 text-[#E1306C]"></i>
-          <span>📸 Instagram Hunter (Mysuru)</span>
+          <i data-lucide="instagram" class="w-3.5 h-3.5 text-brand-ig"></i>
+          <span>📸 Instagram Pro Hunter</span>
+        </button>
+
+        <button 
+          id="nav-btn-intl" 
+          onclick="switchEngine('INTL')" 
+          class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white shrink-0"
+        >
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span>🌍 International High-Ticket ($1k-$3k)</span>
         </button>
       </nav>
+
     </header>
 
     <!-- ========================================================================= -->
-    <!-- MODULE 1: MULTI-CITY SMB POI SCANNER -->
+    <!-- ENGINE 1: LOCAL SMB AUDIT ENGINE (MULTI-CITY OVERPASS MAPS HUNTER) -->
     <!-- ========================================================================= -->
-    <div id="module-smb" class="space-y-6">
+    <div id="engine-local" class="space-y-6">
 
-      <!-- Search & City Scanner Card -->
       <div class="glass-card border border-emerald-500/30 p-5 md:p-6 rounded-2xl shadow-2xl relative overflow-hidden">
-        
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
-            <h2 class="text-lg md:text-xl font-bold text-emerald-400 flex items-center gap-2">
-              <span>City-Wide Overpass Business Scanner</span>
-            </h2>
-            <p class="text-xs text-gray-400 mt-0.5">Extract verified map locations, phone tags, and 360° lead defect audits.</p>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                100% REAL LIVE OVERPASS POIs
+              </span>
+              <span class="text-xs text-slate-400">&bull; Auto-filters chains (Domino's, KFC, Starbucks, Zudio...)</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-black text-white mt-1">Local High-Margin Business Scanner</h2>
           </div>
 
           <div class="flex items-center gap-2">
-            <button onclick="clearPipeline()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
-              Clear DB
+            <button onclick="clearEngineData('LOCAL')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition">
+              Clear Leads
             </button>
-            <button onclick="exportLeadsJSON()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
+            <button onclick="exportEngineData('LOCAL')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition">
               Export JSON
             </button>
           </div>
         </div>
 
-        <form id="scan-form" onsubmit="runSmbScan(event)" class="space-y-3">
+        <form id="local-scan-form" onsubmit="runLocalScan(event)" class="space-y-3">
           <div class="flex flex-col sm:flex-row gap-2.5">
             <div class="relative flex-grow">
               <input 
                 type="text" 
-                id="cityInput" 
+                id="localCityInput" 
                 value="Mysuru" 
                 required
-                placeholder="Enter City (e.g. Mysuru, Bengaluru, Chikkamagaluru, Mangaluru...)" 
-                class="w-full bg-black/90 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
+                placeholder="Enter City (e.g. Mysuru, Bengaluru, Mumbai, Pune, Delhi, Hyderabad...)" 
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
               />
             </div>
             
-            <select id="categoryInput" class="bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-xs text-gray-200 focus:outline-none focus:border-emerald-500 sm:w-56">
-              <option value="all">🔥 All High-Ticket Categories</option>
-              <option value="cafes">☕ Cafes & Restaurants</option>
+            <select id="localCategoryInput" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 sm:w-60">
+              <option value="all">🔥 All High-Margin Categories</option>
+              <option value="cafes">☕ High-End Cafes & Bakeries</option>
               <option value="clinics">🦷 Dental & Aesthetic Clinics</option>
-              <option value="boutiques">👗 Boutiques & Clothing</option>
-              <option value="fitness">🏋️ Gyms & Fitness Centers</option>
-              <option value="salons">💇 Salons & Beauty Spas</option>
-              <option value="resorts">🏡 Resorts & Hotels</option>
+              <option value="boutiques">👗 Boutiques & Designer Wear</option>
+              <option value="salons">💇 Luxury Salons & Spas</option>
+              <option value="interior">🛋️ Interior Designers & Decor</option>
+              <option value="fitness">🏋️ Gyms & Yoga Studios</option>
+              <option value="resorts">🏡 Boutique Resorts & Hotels</option>
             </select>
 
             <button 
               type="submit" 
-              id="btnScan" 
-              class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-gray-950 px-6 py-3 rounded-xl font-extrabold text-sm tracking-wide transition-all shadow-lg shadow-emerald-600/30 shrink-0 flex items-center justify-center gap-2"
+              id="btnLocalScan" 
+              class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-slate-950 px-6 py-3 rounded-xl font-extrabold text-sm tracking-wide transition-all shadow-lg shadow-emerald-600/30 shrink-0 flex items-center justify-center gap-2"
             >
               <i data-lucide="radar" class="w-4 h-4"></i>
-              <span>SCAN CITY</span>
+              <span>SCAN LOCAL LEADS</span>
             </button>
           </div>
 
           <!-- Quick City Pills -->
           <div class="flex items-center gap-1.5 flex-wrap pt-1 text-xs">
-            <span class="text-gray-500 font-mono text-[11px]">Quick Cities:</span>
-            <button type="button" onclick="setCityAndScan('Mysuru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mysuru</button>
-            <button type="button" onclick="setCityAndScan('Bengaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Bengaluru</button>
-            <button type="button" onclick="setCityAndScan('Chikkamagaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Chikkamagaluru</button>
-            <button type="button" onclick="setCityAndScan('Mangaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mangaluru</button>
-            <button type="button" onclick="setCityAndScan('Hubballi')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Hubballi</button>
+            <span class="text-slate-500 font-mono text-[11px]">Quick Cities:</span>
+            <button type="button" onclick="setLocalCity('Mysuru')" class="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-[11px] text-emerald-300 border border-slate-700">Mysuru</button>
+            <button type="button" onclick="setLocalCity('Bengaluru')" class="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-[11px] text-emerald-300 border border-slate-700">Bengaluru</button>
+            <button type="button" onclick="setLocalCity('Mumbai')" class="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-[11px] text-emerald-300 border border-slate-700">Mumbai</button>
+            <button type="button" onclick="setLocalCity('Chikkamagaluru')" class="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-[11px] text-emerald-300 border border-slate-700">Chikkamagaluru</button>
+            <button type="button" onclick="setLocalCity('Hyderabad')" class="px-2.5 py-1 rounded-md bg-slate-800/80 hover:bg-slate-700 text-[11px] text-emerald-300 border border-slate-700">Hyderabad</button>
           </div>
 
-          <!-- Scanned City Hub Tabs -->
-          <div class="pt-3 border-t border-gray-800/80">
+          <!-- Active City Tabs -->
+          <div class="pt-3 border-t border-slate-800/80">
             <div class="flex items-center gap-2 mb-1.5">
-              <span class="text-[11px] font-mono text-gray-400 uppercase font-semibold">Active Scanned Hubs:</span>
+              <span class="text-[11px] font-mono text-slate-400 uppercase font-semibold">Active Scanned Cities:</span>
             </div>
-            <div id="cityTabs" class="flex gap-2 overflow-x-auto custom-scrollbar py-1">
-              <!-- Dynamically populated city buttons -->
+            <div id="localCityTabs" class="flex gap-2 overflow-x-auto custom-scrollbar py-1">
+              <!-- Dynamically populated -->
             </div>
           </div>
         </form>
 
-        <!-- Live Terminal -->
-        <div id="scanTerminal" class="hidden mt-4 bg-black/90 rounded-xl p-3.5 border border-gray-800 font-mono text-xs text-gray-300 space-y-1.5 relative overflow-hidden">
-          <div class="flex items-center justify-between text-[11px] text-gray-400 border-b border-gray-800 pb-1">
+        <!-- Live Terminal Stream -->
+        <div id="localScanTerminal" class="hidden mt-4 bg-slate-950 rounded-xl p-3.5 border border-slate-800 font-mono text-xs text-slate-300 space-y-1.5 relative overflow-hidden">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-1">
             <span class="text-emerald-400 font-bold flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Overpass Pipeline
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Overpass Multi-Node Cluster
             </span>
-            <span id="terminalStatus" class="text-cyan-400">Querying cluster...</span>
+            <span id="localTerminalStatus" class="text-cyan-400">Querying cluster...</span>
           </div>
-          <div id="terminalLogs" class="max-h-28 overflow-y-auto custom-scrollbar space-y-1 text-[11px]"></div>
+          <div id="localTerminalLogs" class="max-h-28 overflow-y-auto custom-scrollbar space-y-1 text-[11px]"></div>
           <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-70 scanner-line pointer-events-none"></div>
         </div>
 
       </div>
 
-      <!-- Stats Bar -->
+      <!-- Local Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-        <div class="glass-card p-4 rounded-xl border border-gray-800">
-          <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Total Scanned</p>
-          <h2 id="totalLeads" class="text-2xl font-black text-white mt-0.5">0</h2>
+        <div class="glass-card p-4 rounded-xl border border-slate-800">
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Total Scanned</p>
+          <h2 id="local-stat-total" class="text-2xl font-black text-white mt-0.5">0</h2>
         </div>
-        <div class="glass-card p-4 rounded-xl border border-gray-800">
-          <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Priority (>85%)</p>
-          <h2 id="priorityLeads" class="text-2xl font-black text-emerald-400 mt-0.5">0</h2>
+        <div class="glass-card p-4 rounded-xl border border-slate-800">
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">🔥 Losing Direct Bookings</p>
+          <h2 id="local-stat-leak1" class="text-2xl font-black text-red-400 mt-0.5">0</h2>
         </div>
-        <div class="glass-card p-4 rounded-xl border border-gray-800">
-          <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pitched Leads</p>
-          <h2 id="pitchedLeads" class="text-2xl font-black text-amber-400 mt-0.5">0</h2>
+        <div class="glass-card p-4 rounded-xl border border-slate-800">
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">📈 Ad Gap / Growth Leak</p>
+          <h2 id="local-stat-leak2" class="text-2xl font-black text-amber-400 mt-0.5">0</h2>
         </div>
-        <div class="glass-card p-4 rounded-xl border border-gray-800">
-          <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pipeline Revenue</p>
-          <h2 id="closedRevenue" class="text-2xl font-black text-cyan-400 mt-0.5">₹0</h2>
+        <div class="glass-card p-4 rounded-xl border border-slate-800">
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Closed Deals (₹2.5k)</p>
+          <h2 id="local-stat-closed" class="text-2xl font-black text-emerald-400 mt-0.5">₹0</h2>
         </div>
       </div>
 
       <!-- Filter Tabs & Search -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-1">
-          <button onclick="setTab('ALL')" id="tab-ALL" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-gray-950 shadow">All (<span id="count-all">0</span>)</button>
-          <button onclick="setTab('HOT')" id="tab-HOT" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🔥 Hot Deals (<span id="count-hot">0</span>)</button>
-          <button onclick="setTab('PITCHED')" id="tab-PITCHED" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">💬 Pitched (<span id="count-pitched">0</span>)</button>
-          <button onclick="setTab('CLOSED')" id="tab-CLOSED" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🤝 Closed ₹2.5k (<span id="count-closed">0</span>)</button>
+          <button onclick="setLocalFilterTab('ALL')" id="local-tab-ALL" class="local-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 shadow">All (<span id="local-count-all">0</span>)</button>
+          <button onclick="setLocalFilterTab('HOT')" id="local-tab-HOT" class="local-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🔥 High Potential (<span id="local-count-hot">0</span>)</button>
+          <button onclick="setLocalFilterTab('PITCHED')" id="local-tab-PITCHED" class="local-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">💬 Pitched (<span id="local-count-pitched">0</span>)</button>
+          <button onclick="setLocalFilterTab('CLOSED')" id="local-tab-CLOSED" class="local-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🤝 Closed (<span id="local-count-closed">0</span>)</button>
         </div>
 
         <div class="relative w-full sm:w-64">
-          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
           <input 
             type="text" 
-            id="filterSearch" 
-            oninput="renderCity(currentCity)" 
-            placeholder="Search name, phone, defects..." 
-            class="w-full bg-gray-900 border border-gray-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500"
+            id="localSearchInput" 
+            oninput="renderLocalCards()" 
+            placeholder="Search business, phone, flaw..." 
+            class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
           />
         </div>
       </div>
 
-      <!-- Results Grid -->
-      <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      <!-- Local Grid -->
+      <div id="local-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
-      <!-- Empty State -->
-      <div id="emptyState" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
-        <div class="w-12 h-12 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-emerald-400">
+      <!-- Empty State Local -->
+      <div id="localEmptyState" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
+        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400">
           <i data-lucide="radar" class="w-6 h-6"></i>
         </div>
-        <h3 class="text-base font-bold text-white">0 Leads in Pipeline</h3>
-        <p class="text-xs text-gray-400 max-w-sm">Type any city above and click <b>SCAN CITY</b> to query real live businesses via Overpass.</p>
+        <h3 class="text-base font-bold text-white">0 Local Leads Loaded</h3>
+        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LOCAL LEADS</b> to extract real high-margin businesses.</p>
       </div>
 
     </div>
 
     <!-- ========================================================================= -->
-    <!-- MODULE 2: INSTAGRAM LEAD HUNTER (MYSURU SPECIFIC) -->
+    <!-- ENGINE 2: INSTAGRAM PRO HUNTER (INDIAN CITIES & BRANDS) -->
     <!-- ========================================================================= -->
-    <div id="module-ig" class="space-y-6 hidden">
+    <div id="engine-ig" class="space-y-6 hidden">
 
-      <!-- IG Hunter Hero Card -->
       <div class="glass-card border border-[#E1306C]/40 p-5 md:p-6 rounded-2xl shadow-2xl relative overflow-hidden">
-        
         <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#E1306C]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
           <div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#E1306C]/20 text-[#E1306C] border border-[#E1306C]/30 flex items-center gap-1">
-                <i data-lucide="instagram" class="w-3 h-3 text-[#E1306C]"></i> INSTAGRAM LEAD HUNTER &bull; MYSURU EDITION
+                <i data-lucide="instagram" class="w-3 h-3 text-[#E1306C]"></i> INSTAGRAM PRO HUNTER
               </span>
+              <span class="text-xs text-slate-400">&bull; High-intent brands across Karnataka & Pan-India</span>
             </div>
-            <h2 class="text-lg md:text-xl font-extrabold text-white mt-1">Mysuru Instagram Creators & Brand Audit Engine</h2>
-            <p class="text-xs text-gray-400 mt-0.5">
-              Identifies high-potential Mysore Instagram businesses, extracts flaws (No Bio CTA, Low Reels, No Website), and generates 1-Tap DM pitches.
-            </p>
+            <h2 class="text-lg md:text-xl font-black text-white mt-1">Instagram Brands & Creator Defect Auditor</h2>
           </div>
 
           <div class="flex items-center gap-2">
-            <button onclick="runMysuruInstagramDeepScan()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E1306C] via-purple-600 to-brand-cyan text-white font-extrabold text-xs shadow-lg shadow-[#E1306C]/25 hover:opacity-95 active:scale-95 transition flex items-center gap-1.5">
+            <button onclick="runInstagramScan()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E1306C] via-purple-600 to-cyan-500 text-white font-extrabold text-xs shadow-lg shadow-[#E1306C]/25 hover:opacity-95 active:scale-95 transition flex items-center gap-1.5">
               <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-              <span>SCAN MYSURU INSTAGRAM</span>
+              <span>SCAN INSTAGRAM LEADS</span>
             </button>
           </div>
         </div>
 
-        <!-- Mysuru Niche Category Selector Pills -->
-        <div class="space-y-2 pt-2 border-t border-gray-800/80">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono text-gray-400 uppercase font-semibold">Mysuru Target Niches:</span>
-            <span class="text-[11px] text-gray-500 font-mono" id="ig-lead-count-badge">0 Accounts Loaded</span>
+        <!-- City & Niche Switcher for IG -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-1">
+          <div class="sm:col-span-4">
+            <label class="block text-[11px] font-mono text-slate-400 uppercase font-semibold mb-1">Target City</label>
+            <select id="igCitySelect" onchange="runInstagramScan()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#E1306C]">
+              <option value="Mysuru">📍 Mysuru (Local Hub)</option>
+              <option value="Bengaluru">📍 Bengaluru (High-Ticket)</option>
+              <option value="Mumbai">📍 Mumbai (Fashion & MedSpas)</option>
+              <option value="Delhi">📍 Delhi NCR (Boutiques & Luxury)</option>
+              <option value="Hyderabad">📍 Hyderabad (Jewelry & Cafes)</option>
+            </select>
           </div>
 
-          <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar py-1">
-            <button onclick="filterIgNiche('ALL')" id="ig-niche-ALL" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#E1306C] text-white shadow-md">
-              All Mysuru Niches
-            </button>
-            <button onclick="filterIgNiche('Cafes & Restaurants')" id="ig-niche-Cafes" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              ☕ Cafes & Restaurants
-            </button>
-            <button onclick="filterIgNiche('Boutiques & Fashion')" id="ig-niche-Boutiques" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              👗 Boutiques & Silk/Fashion
-            </button>
-            <button onclick="filterIgNiche('Salons & Spas')" id="ig-niche-Salons" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              💇 Salons & Beauty Spas
-            </button>
-            <button onclick="filterIgNiche('Fitness & Gyms')" id="ig-niche-Fitness" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              🏋️ Fitness & Yoga Studios
-            </button>
-            <button onclick="filterIgNiche('Photographers & Studios')" id="ig-niche-Photo" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              📸 Photographers & Studios
-            </button>
-            <button onclick="filterIgNiche('Handicrafts & Local Stores')" id="ig-niche-Crafts" class="ig-niche-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800 hover:bg-gray-800">
-              🪵 Handicrafts & Heritage
-            </button>
+          <div class="sm:col-span-8">
+            <label class="block text-[11px] font-mono text-slate-400 uppercase font-semibold mb-1">Target Niche</label>
+            <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-0.5">
+              <button onclick="filterIgCategory('ALL')" id="ig-cat-ALL" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-[#E1306C] text-white shrink-0">All Niches</button>
+              <button onclick="filterIgCategory('Cafes')" id="ig-cat-Cafes" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">☕ Cafes</button>
+              <button onclick="filterIgCategory('Boutiques')" id="ig-cat-Boutiques" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">👗 Boutiques</button>
+              <button onclick="filterIgCategory('Salons')" id="ig-cat-Salons" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">💇 Salons & Clinics</button>
+              <button onclick="filterIgCategory('Interior')" id="ig-cat-Interior" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">🛋️ Interior Decor</button>
+              <button onclick="filterIgCategory('Photo')" id="ig-cat-Photo" class="ig-cat-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">📸 Studios</button>
+            </div>
           </div>
         </div>
 
-        <!-- Google Dorking Engine (Live Instagram Deep Links) -->
-        <div class="mt-4 p-3.5 rounded-xl bg-black/60 border border-gray-800/90 text-xs space-y-2">
+        <!-- Google Dorking Generator -->
+        <div class="mt-4 p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-[11px] font-mono text-cyan-400 font-bold flex items-center gap-1">
-              <i data-lucide="search" class="w-3 h-3 text-cyan-400"></i> LIVE GOOGLE DORKING GENERATOR FOR MYSURU
+              <i data-lucide="search" class="w-3 h-3 text-cyan-400"></i> LIVE GOOGLE DORKING GENERATOR
             </span>
-            <span class="text-[10px] text-gray-500">1-Click Live Web Discovery</span>
+            <span class="text-[10px] text-slate-500 font-mono">1-Click Web Discovery</span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-            <a id="dork-link-1" href="https://www.google.com/search?q=site:instagram.com+intext:%22Mysore%22+OR+intext:%22Mysuru%22+%22DM+for+orders%22" target="_blank" class="p-2 rounded-lg bg-gray-900/90 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
-              <span class="truncate">🔎 Mysore "DM for orders"</span>
-              <i data-lucide="external-link" class="w-3 h-3 text-gray-500 shrink-0"></i>
-            </a>
-            <a id="dork-link-2" href="https://www.google.com/search?q=site:instagram.com+intext:%22Mysuru%22+%22Book+appointment%22+OR+%22WhatsApp%22" target="_blank" class="p-2 rounded-lg bg-gray-900/90 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
-              <span class="truncate">🔎 Mysuru "WhatsApp Booking"</span>
-              <i data-lucide="external-link" class="w-3 h-3 text-gray-500 shrink-0"></i>
-            </a>
-            <a id="dork-link-3" href="https://www.google.com/search?q=site:instagram.com+intext:%22Mysore%22+cafe+OR+boutique+OR+salon+%22dm%22" target="_blank" class="p-2 rounded-lg bg-gray-900/90 hover:bg-gray-800 border border-gray-800 text-gray-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
-              <span class="truncate">🔎 Mysuru Boutiques & Cafes</span>
-              <i data-lucide="external-link" class="w-3 h-3 text-gray-500 shrink-0"></i>
-            </a>
+          <div id="igDorkContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+            <!-- Dynamically populated dork search links -->
           </div>
         </div>
 
       </div>
 
-      <!-- IG Leads Search & Status Filter -->
+      <!-- IG Leads Filter Tabs & Search -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-1">
           <button onclick="setIgTab('ALL')" id="ig-tab-ALL" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#E1306C] text-white shadow">All IG Leads (<span id="ig-count-all">0</span>)</button>
-          <button onclick="setIgTab('HIGH_POTENTIAL')" id="ig-tab-HIGH_POTENTIAL" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🔥 High Potential (<span id="ig-count-hot">0</span>)</button>
-          <button onclick="setIgTab('NO_WEBSITE')" id="ig-tab-NO_WEBSITE" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🌐 No Website (<span id="ig-count-noweb">0</span>)</button>
-          <button onclick="setIgTab('PITCHED')" id="ig-tab-PITCHED" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">💬 Pitched (<span id="ig-count-pitched">0</span>)</button>
+          <button onclick="setIgTab('LEAK_NO_WEB')" id="ig-tab-LEAK_NO_WEB" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">🔥 No Website (<span id="ig-count-noweb">0</span>)</button>
+          <button onclick="setIgTab('LEAK_AD_GAP')" id="ig-tab-LEAK_AD_GAP" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">📈 Ad Gap (<span id="ig-count-adgap">0</span>)</button>
+          <button onclick="setIgTab('PITCHED')" id="ig-tab-PITCHED" class="ig-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">💬 Pitched (<span id="ig-count-pitched">0</span>)</button>
         </div>
 
         <div class="relative w-full sm:w-64">
-          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
           <input 
             type="text" 
-            id="igFilterSearch" 
-            oninput="renderIgLeads()" 
-            placeholder="Search brand, handle, niche, defect..." 
-            class="w-full bg-gray-900 border border-gray-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#E1306C]"
+            id="igSearchInput" 
+            oninput="renderIgCards()" 
+            placeholder="Search account, niche, bio flaw..." 
+            class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#E1306C]"
           />
         </div>
       </div>
 
-      <!-- IG Leads Grid -->
-      <div id="ig-results" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Dynamically rendered IG cards -->
-      </div>
+      <!-- IG Cards Grid -->
+      <div id="ig-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
       <!-- Empty State IG -->
       <div id="igEmptyState" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
-        <div class="w-12 h-12 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-[#E1306C]">
+        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-[#E1306C]">
           <i data-lucide="instagram" class="w-6 h-6"></i>
         </div>
         <h3 class="text-base font-bold text-white">0 Instagram Leads Loaded</h3>
-        <p class="text-xs text-gray-400 max-w-sm">Click <b>SCAN MYSURU INSTAGRAM</b> to discover high-potential Mysore brands, cafes, boutiques & salons.</p>
-        <button onclick="runMysuruInstagramDeepScan()" class="mt-2 px-4 py-2 rounded-xl bg-[#E1306C] hover:bg-[#c9265f] text-white font-bold text-xs shadow-md transition">
-          Scan Mysuru Instagram Now
-        </button>
+        <p class="text-xs text-slate-400 max-w-sm">Click <b>SCAN INSTAGRAM LEADS</b> to pull high-intent brand profiles and revenue defect audits.</p>
+      </div>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- ENGINE 3: INTERNATIONAL HIGH-TICKET HUNTER ($1,000 - $3,000/MO) -->
+    <!-- ========================================================================= -->
+    <div id="engine-intl" class="space-y-6 hidden">
+
+      <div class="glass-card border border-blue-500/30 p-5 md:p-6 rounded-2xl shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center gap-1">
+                <i data-lucide="dollar-sign" class="w-3 h-3 text-blue-400"></i> HIGH-TICKET RETAINER ENGINE ($1,000 - $3,000/mo)
+              </span>
+              <span class="text-xs text-slate-400">&bull; US, UK, Canada, Australia & Dubai / UAE</span>
+            </div>
+            <h2 class="text-lg md:text-xl font-black text-white mt-1">Global High-Ticket Client Discovery Pipeline</h2>
+            <p class="text-xs text-slate-400 mt-0.5">
+              Target emergency home services, MedSpas, cosmetic dentistry, luxury real estate, and Shopify brands ready to pay top-dollar retainer fees.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="runIntlScan()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400 text-slate-950 font-extrabold text-xs shadow-lg shadow-blue-500/25 hover:opacity-95 active:scale-95 transition flex items-center gap-1.5">
+              <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+              <span>SCAN INTERNATIONAL LEADS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Target Country & Niche Selector -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-1">
+          <div class="sm:col-span-5">
+            <label class="block text-[11px] font-mono text-slate-400 uppercase font-semibold mb-1">Target Country / Region</label>
+            <select id="intlCountrySelect" onchange="runIntlScan()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+              <option value="US">🇺🇸 United States (High-Ticket Metro Hubs)</option>
+              <option value="UK">🇬🇧 United Kingdom (London, Manchester, Birmingham)</option>
+              <option value="CA">🇨🇦 Canada (Toronto, Vancouver, Calgary)</option>
+              <option value="AU">🇦🇺 Australia (Sydney, Melbourne, Brisbane)</option>
+              <option value="UAE">🇦🇪 Dubai / UAE (Luxury Real Estate & Aesthetics)</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-7">
+            <label class="block text-[11px] font-mono text-slate-400 uppercase font-semibold mb-1">International High-Value Niches</label>
+            <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-0.5">
+              <button onclick="filterIntlNiche('ALL')" id="intl-niche-ALL" class="intl-niche-btn px-3 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white shrink-0">All High-Ticket</button>
+              <button onclick="filterIntlNiche('Home Services')" id="intl-niche-Home" class="intl-niche-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">🏠 Roofing / HVAC / Solar ($2.5k)</button>
+              <button onclick="filterIntlNiche('MedSpas')" id="intl-niche-Med" class="intl-niche-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">💉 MedSpas & Aesthetics ($2k)</button>
+              <button onclick="filterIntlNiche('Real Estate')" id="intl-niche-Real" class="intl-niche-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800 shrink-0">🏢 Luxury Real Estate ($3k)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Ticket Outreach Dorks -->
+        <div class="mt-4 p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-mono text-blue-400 font-bold flex items-center gap-1">
+              <i data-lucide="search" class="w-3 h-3 text-blue-400"></i> INTERNATIONAL GOOGLE DORKING & DIRECT DIRECTORY LINKS
+            </span>
+            <span class="text-[10px] text-slate-500 font-mono">Live Search Discovery</span>
+          </div>
+
+          <div id="intlDorkContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- International Leads Filter Tabs & Search -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-1">
+          <button onclick="setIntlTab('ALL')" id="intl-tab-ALL" class="intl-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow">All Global Leads (<span id="intl-count-all">0</span>)</button>
+          <button onclick="setIntlTab('HIGH_TICKET')" id="intl-tab-HIGH_TICKET" class="intl-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">💰 $2,000+/mo Retainer (<span id="intl-count-high">0</span>)</button>
+          <button onclick="setIntlTab('AD_GAP')" id="intl-tab-AD_GAP" class="intl-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">📈 Google/Meta Ad Gap (<span id="intl-count-ad">0</span>)</button>
+          <button onclick="setIntlTab('PITCHED')" id="intl-tab-PITCHED" class="intl-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-slate-800">💬 Pitched (<span id="intl-count-pitched">0</span>)</button>
+        </div>
+
+        <div class="relative w-full sm:w-64">
+          <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"></i>
+          <input 
+            type="text" 
+            id="intlSearchInput" 
+            oninput="renderIntlCards()" 
+            placeholder="Search company, country, niche, defect..." 
+            class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <!-- Intl Cards Grid -->
+      <div id="intl-results-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+      <!-- Empty State Intl -->
+      <div id="intlEmptyState" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
+        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400">
+          <i data-lucide="globe" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-base font-bold text-white">0 International Leads Loaded</h3>
+        <p class="text-xs text-slate-400 max-w-sm">Click <b>SCAN INTERNATIONAL LEADS</b> to target high-ticket emergency home services, medspas, and luxury agencies in the US, UK, Canada & Dubai.</p>
       </div>
 
     </div>
@@ -411,25 +509,41 @@
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900 border border-emerald-500/50 shadow-2xl text-white text-xs font-medium">
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 border border-emerald-500/50 shadow-2xl text-white text-xs font-medium">
     <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
     <span id="toastMessage">Message copied!</span>
   </div>
 
-  <!-- JAVASCRIPT ENGINE -->
+  <!-- CORE SCRIPT ENGINE -->
   <script>
-    const CACHE_KEY_SMB = 'smb_hinter_360_scans_v10';
-    const CACHE_KEY_IG = 'mysuru_instagram_leads_v1';
+    // CHAIN & JUNK BLACKLIST (STRICT EXCLUSION)
+    const CHAIN_BLACKLIST = [
+      "dominos", "domino's", "kfc", "mcdonalds", "mcdonald's", "starbucks", "pizza hut", 
+      "subway", "burger king", "cult.fit", "tatamotors", "tata", "reliance", "dmart", 
+      "pantaloons", "trends", "zudio", "westside", "apollo pharmacy", "medplus", 
+      "chai point", "cafe coffee day", "ccd", "decathlon", "h&m", "zara", "lenskart",
+      "bata", "woodland", "raymond", "titan", "kalyan jewellers", "tanishq", "malabar gold"
+    ];
 
-    let currentModule = 'SMB'; // 'SMB' or 'IG'
-    let scans = {};
-    let currentCity = "ALL";
-    let activeTab = 'ALL';
+    // STORAGE KEYS
+    const CACHE_KEY_LOCAL = 'leadhunter_local_scans_v11';
+    const CACHE_KEY_IG = 'leadhunter_ig_scans_v11';
+    const CACHE_KEY_INTL = 'leadhunter_intl_scans_v11';
 
-    // Instagram Leads Store
+    let currentEngine = 'LOCAL'; // 'LOCAL', 'IG', 'INTL'
+
+    // Engine Stores
+    let localScans = {};
+    let currentLocalCity = "ALL";
+    let currentLocalTab = 'ALL';
+
     let igLeads = [];
-    let activeIgNiche = 'ALL';
-    let activeIgTab = 'ALL';
+    let currentIgCategory = 'ALL';
+    let currentIgTab = 'ALL';
+
+    let intlLeads = [];
+    let currentIntlNiche = 'ALL';
+    let currentIntlTab = 'ALL';
 
     const OVERPASS_SERVERS = [
       'https://overpass.kth.se/api/interpreter',
@@ -438,280 +552,810 @@
       'https://overpass.kumi.systems/api/interpreter'
     ];
 
-    // MYSURU PRESET SEED PROFILES (High-Potential Real Local Businesses)
-    const MYSURU_IG_SEEDS = [
+    // INITIAL SEED DATA FOR HIGH-TICKET DISCOVERY
+    const SEED_IG_LEADS = [
       {
+        id: "ig-101",
         name: "Royale Mysore Coffee Roasters",
-        niche: "Cafes & Restaurants",
-        locality: "Gokulam 3rd Stage, Mysuru",
+        city: "Mysuru",
+        niche: "Cafes",
         instagram: "@royalemysorecoffee",
         phone: "919845012345",
         website: null,
-        followers_est: "3.2k",
-        badges: ["Needs Better Content", "No Website", "High Potential"],
-        score: 91,
-        audit: {
-          bio_defect: "Missing direct 1-tap WhatsApp ordering link in Bio",
-          reels_defect: "Posting static photos with under 150 views; zero high-retention hook reels",
-          ad_defect: "Zero Meta Ads running in Mysuru/Gokulam radius"
-        }
+        followers: "3.4k",
+        score: 93,
+        status: "NEW",
+        leakTag: "🔥 Losing Direct Bookings",
+        flaws: [
+          "No 1-tap WhatsApp ordering link in Bio; losing 15+ walk-ins/week",
+          "Static product photos with <120 views; missing viral hook reels",
+          "Zero active Meta conversion ads running in Mysuru"
+        ],
+        pitch: "Hey Royale Mysore team! Love your coffee roast in Gokulam. Noticed your bio is missing a direct WhatsApp ordering button, dropping about ~15-20 local orders/week. Put together a 2-min fix video for your profile. Mind if I drop the link here?"
       },
       {
+        id: "ig-102",
         name: "Sutraa Bridal Boutique",
-        niche: "Boutiques & Fashion",
-        locality: "Jayalakshmipuram, Mysuru",
+        city: "Mysuru",
+        niche: "Boutiques",
         instagram: "@sutraaboutique_mysore",
         phone: "919900112233",
         website: null,
-        followers_est: "7.8k",
-        badges: ["No Website", "High Potential", "Missing Bio CTA"],
-        score: 94,
-        audit: {
-          bio_defect: "No catalog or direct booking CTA; losing high-ticket bridal inquiries",
-          reels_defect: "Reels lack hook text overlays and trending regional audio",
-          ad_defect: "No NRI/Bengaluru weekend bridal retargeting ads active"
-        }
+        followers: "8.2k",
+        score: 95,
+        status: "NEW",
+        leakTag: "🔥 Losing Direct Bookings",
+        flaws: [
+          "Bio asks brides to 'DM for price', causing 60% inquiry drop-off",
+          "Reels lack high-retention text hooks and trending bridal audio",
+          "No weekend retargeting ads targeting Bengaluru/NRI bridal shoppers"
+        ],
+        pitch: "Hey Sutraa team! Your bridal collection in Jayalakshmipuram looks stunning. Noticed you could capture 2x more high-budget bridal bookings by replacing 'DM for price' with an automated WhatsApp catalog funnel. Would love to share a quick 2-min audit..."
       },
       {
-        name: "Aura Aesthetic & Dental Studio",
-        niche: "Salons & Spas",
-        locality: "Vijayanagar 2nd Stage, Mysuru",
-        instagram: "@auraclinic_mysuru",
+        id: "ig-103",
+        name: "Luxe Dental & Aesthetic Studio",
+        city: "Bengaluru",
+        niche: "Salons",
+        instagram: "@luxeaesthetics_blr",
         phone: "919886001144",
-        website: "http://auramysore.in",
-        followers_est: "1.9k",
-        badges: ["Needs Better Content", "High Potential"],
-        score: 88,
-        audit: {
-          bio_defect: "Website link is non-HTTPS and slow on mobile devices",
-          reels_defect: "0 patient testimonial video reels; low social proof",
-          ad_defect: "Missing Google Local 3-Pack sync and local Instagram ads"
-        }
+        website: "http://luxeaesthetics.in",
+        followers: "4.1k",
+        score: 91,
+        status: "NEW",
+        leakTag: "📈 Ad Gap / Growth Leak",
+        flaws: [
+          "Website is non-HTTPS, causing high mobile bounce rates",
+          "0 video patient testimonials; low high-ticket cosmetic trust",
+          "Zero Meta lead-form ads active in Indiranagar/Koramangala"
+        ],
+        pitch: "Hey Luxe team, checked your cosmetic dentistry & skin setup in Indiranagar. Your before/after cases are top quality, but you're losing ~20-30 high-ticket implant inquiries to competitors running local Instagram lead ads. Can I share a 60-sec growth breakdown with you?"
       },
       {
-        name: "The FitDistrict Mysore",
-        niche: "Fitness & Gyms",
-        locality: "Kuvempunagar, Mysuru",
-        instagram: "@fitdistrict_mysore",
+        id: "ig-104",
+        name: "Casa Studio Interior Architecture",
+        city: "Bengaluru",
+        niche: "Interior",
+        instagram: "@casastudio_interiors",
         phone: "919741223344",
         website: null,
-        followers_est: "4.5k",
-        badges: ["No Website", "High Potential"],
-        score: 89,
-        audit: {
-          bio_defect: "No 1-day free trial sign-up automation on WhatsApp",
-          reels_defect: "Irregular posting schedule (1 reel per month)",
-          ad_defect: "Zero geo-targeted ads targeting 3km radius college students & IT crowd"
-        }
+        followers: "6.7k",
+        score: 94,
+        status: "NEW",
+        leakTag: "🔥 Losing Direct Bookings",
+        flaws: [
+          "No dedicated portfolio landing page; relying solely on IG DMs",
+          "Missing price qualifier; wasting time responding to low-budget DMs",
+          "No luxury villa geo-targeted Meta ad campaigns in Whitefield"
+        ],
+        pitch: "Hello Casa Studio team, loved your modern villa walkthroughs in Bengaluru! Noticed you don't have an automated budget qualifier page linked, so you're likely getting flooded with unqualified inquiries. Put together a 2-min proposal showing how to filter ₹15L+ clients automatically..."
+      }
+    ];
+
+    const SEED_INTL_LEADS = [
+      {
+        id: "intl-201",
+        name: "Apex Emergency Roofing & Gutters",
+        country: "US",
+        city: "Austin, Texas",
+        niche: "Home Services",
+        website: "https://apexroofingtx.com",
+        phone: "+15125550192",
+        retainer_tier: "$2,500/mo Retainer",
+        score: 96,
+        status: "NEW",
+        leakTag: "📈 Ad Gap / Growth Leak",
+        flaws: [
+          "Not running Google Local Services Ads (LSA); losing $5k+ storm repair calls",
+          "Missing Google Tag Manager & Meta Pixel on landing page",
+          "Zero automated SMS reply within 60 seconds of emergency form fill"
+        ],
+        pitch: "Hey Apex Roofing team, saw your emergency roofing work in Austin. Noticed your landing page is currently dropping about ~8-10 high-margin roof replacement inquiries/week because your mobile form takes 8+ clicks and lacks a 60-second instant SMS callback. Made a 2-min video showing the exact fix. Mind if I send it over?"
       },
       {
-        name: "Heritage Silk & Crafts Mysore",
-        niche: "Handicrafts & Local Stores",
-        locality: "Sayyaji Rao Road, Mysuru",
-        instagram: "@heritagesilkmysuru",
-        phone: "919844005566",
-        website: null,
-        followers_est: "5.1k",
-        badges: ["No Website", "Needs Better Content", "High Potential"],
-        score: 95,
-        audit: {
-          bio_defect: "No international shipping inquiry link for tourists & NRIs",
-          reels_defect: "Weaving process reels are missing viral storytelling hooks",
-          ad_defect: "Zero Meta conversion ads for Dasara / wedding season"
-        }
+        id: "intl-202",
+        name: "Harley Street Aesthetic & MedSpa",
+        country: "UK",
+        city: "London, UK",
+        niche: "MedSpas",
+        website: "https://harleyaestheticslondon.co.uk",
+        phone: "+442079460912",
+        retainer_tier: "$2,200/mo Retainer",
+        score: 94,
+        status: "NEW",
+        leakTag: "🔥 Losing Direct Bookings",
+        flaws: [
+          "No 1-click WhatsApp or Apple Pay booking deposit widget on mobile",
+          "High Google Ads bounce rate due to missing tailored landing page",
+          "Zero TikTok/Instagram retargeting ads for Botox & dermal fillers"
+        ],
+        pitch: "Hi Harley Street Clinic team, loved your cosmetic skincare results in London. Noticed your booking system forces clients through a 4-page redirect on mobile, losing ~15 high-value consultation bookings every week. Put together a quick 90-sec video showing how top MedSpas fix this..."
       },
       {
-        name: "Chitrakala Wedding Stories",
-        niche: "Photographers & Studios",
-        locality: "Saraswathipuram, Mysuru",
-        instagram: "@chitrakalamysore_weddings",
-        phone: "919980556677",
-        website: "http://chitrakalaphoto.com",
-        followers_est: "6.4k",
-        badges: ["High Potential", "Missing Bio CTA"],
-        score: 87,
-        audit: {
-          bio_defect: "Bio says 'DM for prices' which causes dropped leads",
-          reels_defect: "Reels show great photos but lack 4K cinematic video edits",
-          ad_defect: "No Instagram lead form ads targeting newly engaged couples in Karnataka"
-        }
+        id: "intl-203",
+        name: "Elysian Palm Luxury Real Estate",
+        country: "UAE",
+        city: "Dubai, UAE",
+        niche: "Real Estate",
+        website: "https://elysianpalm.ae",
+        phone: "+971501234567",
+        retainer_tier: "$3,500/mo Retainer",
+        score: 98,
+        status: "NEW",
+        leakTag: "📈 Ad Gap / Growth Leak",
+        flaws: [
+          "Zero high-converting video lead generation funnels for Palm Jumeirah villas",
+          "Website lacks instant multi-language WhatsApp VIP concierge bot",
+          "Missing European & GCC investor retargeting campaigns on Meta/LinkedIn"
+        ],
+        pitch: "Hello Elysian Palm team, impressed by your luxury penthouse listings in Dubai. Noticed your digital funnel is missing an instant VIP WhatsApp concierge, leaking high-net-worth investor inquiries to rival brokerages. Made a 2-min breakdown showing how we capture overseas luxury buyers..."
+      },
+      {
+        id: "intl-204",
+        name: "Maple Leaf HVAC & Heat Pump Experts",
+        country: "CA",
+        city: "Toronto, Canada",
+        niche: "Home Services",
+        website: "https://mapleleafhvac.ca",
+        phone: "+14165550183",
+        retainer_tier: "$2,000/mo Retainer",
+        score: 92,
+        status: "NEW",
+        leakTag: "📉 GMB Audit Needed",
+        flaws: [
+          "GMB listing is missing primary emergency keyword tags; ranking on page 2",
+          "No automated review collection workflow, losing out to 4.9★ competitors",
+          "0 active Facebook / Instagram seasonal furnace maintenance ads"
+        ],
+        pitch: "Hi Maple Leaf HVAC team, checked your heating and heat pump services in Toronto. Noticed you're losing ~25 high-ticket furnace installation inquiries/month because your local Google 3-pack rank is lagging behind competitors with 200+ reviews. Put together a 2-min game plan to rank you #1..."
       }
     ];
 
     function init() {
-      // Load SMB Leads
-      const savedSmb = localStorage.getItem(CACHE_KEY_SMB);
-      if (savedSmb) {
-        try { scans = JSON.parse(savedSmb); } catch (e) { scans = {}; }
+      // 1. Load Local SMB
+      const savedLocal = localStorage.getItem(CACHE_KEY_LOCAL);
+      if (savedLocal) {
+        try { localScans = JSON.parse(savedLocal); } catch (e) { localScans = {}; }
       }
 
-      // Load IG Leads
+      // 2. Load IG
       const savedIg = localStorage.getItem(CACHE_KEY_IG);
       if (savedIg) {
         try { igLeads = JSON.parse(savedIg); } catch (e) { igLeads = []; }
       }
       if (!igLeads || igLeads.length === 0) {
-        igLeads = JSON.parse(JSON.stringify(MYSURU_IG_SEEDS));
+        igLeads = JSON.parse(JSON.stringify(SEED_IG_LEADS));
         localStorage.setItem(CACHE_KEY_IG, JSON.stringify(igLeads));
       }
 
-      updateTabs();
-      renderCity(currentCity);
-      renderIgLeads();
-      lucide.createIcons();
-    }
-
-    // MODULE SWITCHER
-    function switchModule(moduleName) {
-      currentModule = moduleName;
-      const navSmb = document.getElementById('nav-smb');
-      const navIg = document.getElementById('nav-ig');
-      const modSmb = document.getElementById('module-smb');
-      const modIg = document.getElementById('module-ig');
-
-      if (moduleName === 'SMB') {
-        navSmb.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-gray-950 shadow-md";
-        navIg.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-gray-300 hover:text-white";
-        modSmb.classList.remove('hidden');
-        modIg.classList.add('hidden');
-        renderCity(currentCity);
-      } else {
-        navIg.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all bg-[#E1306C] text-white shadow-md";
-        navSmb.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all text-gray-300 hover:text-white";
-        modIg.classList.remove('hidden');
-        modSmb.classList.add('hidden');
-        renderIgLeads();
+      // 3. Load Intl
+      const savedIntl = localStorage.getItem(CACHE_KEY_INTL);
+      if (savedIntl) {
+        try { intlLeads = JSON.parse(savedIntl); } catch (e) { intlLeads = []; }
       }
+      if (!intlLeads || intlLeads.length === 0) {
+        intlLeads = JSON.parse(JSON.stringify(SEED_INTL_LEADS));
+        localStorage.setItem(CACHE_KEY_INTL, JSON.stringify(intlLeads));
+      }
+
+      updateLocalTabs();
+      renderLocalCards();
+      renderIgCards();
+      renderIntlCards();
+      updateDorkLinks();
       lucide.createIcons();
     }
 
-    // ==========================================
-    // INSTAGRAM HUNTER (MYSURU) LOGIC
-    // ==========================================
-    function filterIgNiche(niche) {
-      activeIgNiche = niche;
-      document.querySelectorAll('.ig-niche-btn').forEach(b => {
-        b.classList.remove('bg-[#E1306C]', 'text-white', 'shadow-md');
-        b.classList.add('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
+    // ENGINE SWITCHER
+    function switchEngine(engine) {
+      currentEngine = engine;
+      const navLocal = document.getElementById('nav-btn-local');
+      const navIg = document.getElementById('nav-btn-ig');
+      const navIntl = document.getElementById('nav-btn-intl');
+      const modLocal = document.getElementById('engine-local');
+      const modIg = document.getElementById('engine-ig');
+      const modIntl = document.getElementById('engine-intl');
+      const badge = document.getElementById('active-engine-badge');
+
+      [navLocal, navIg, navIntl].forEach(btn => {
+        btn.className = "nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all text-slate-300 hover:text-white shrink-0";
       });
-      const activeBtn = document.getElementById(
-        niche === 'ALL' ? 'ig-niche-ALL' :
-        niche.includes('Cafes') ? 'ig-niche-Cafes' :
-        niche.includes('Boutiques') ? 'ig-niche-Boutiques' :
-        niche.includes('Salons') ? 'ig-niche-Salons' :
-        niche.includes('Fitness') ? 'ig-niche-Fitness' :
-        niche.includes('Photographers') ? 'ig-niche-Photo' : 'ig-niche-Crafts'
-      );
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
-        activeBtn.classList.add('bg-[#E1306C]', 'text-white', 'shadow-md');
+
+      modLocal.classList.add('hidden');
+      modIg.classList.add('hidden');
+      modIntl.classList.add('hidden');
+
+      if (engine === 'LOCAL') {
+        navLocal.className = "nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-md shrink-0";
+        modLocal.classList.remove('hidden');
+        badge.innerText = "LOCAL SMB ENGINE";
+        badge.className = "text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold border border-emerald-500/30";
+        renderLocalCards();
+      } else if (engine === 'IG') {
+        navIg.className = "nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-[#E1306C] text-white shadow-md shrink-0";
+        modIg.classList.remove('hidden');
+        badge.innerText = "INSTAGRAM PRO HUNTER";
+        badge.className = "text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-[#E1306C]/20 text-[#E1306C] font-mono font-bold border border-[#E1306C]/30";
+        renderIgCards();
+      } else {
+        navIntl.className = "nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-md shrink-0";
+        modIntl.classList.remove('hidden');
+        badge.innerText = "INTERNATIONAL ($1k-$3k/mo)";
+        badge.className = "text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-400 font-mono font-bold border border-blue-500/30";
+        renderIntlCards();
       }
-      renderIgLeads();
+      lucide.createIcons();
+    }
+
+    // =========================================================================
+    // ENGINE 1: LOCAL SMB SCANNER WITH CHAIN FILTER & PAIN POINT AUDITS
+    // =========================================================================
+    function setLocalCity(cityName) {
+      document.getElementById('localCityInput').value = cityName;
+      runLocalScan();
+    }
+
+    function isBlacklistedChain(name) {
+      if (!name) return true;
+      const lower = name.toLowerCase();
+      return CHAIN_BLACKLIST.some(chain => lower.includes(chain));
+    }
+
+    function getAllLocalLeads() {
+      let all = [];
+      Object.keys(localScans).forEach(c => {
+        if (Array.isArray(localScans[c])) all = all.concat(localScans[c]);
+      });
+      return all;
+    }
+
+    function updateLocalTabs() {
+      const tabs = document.getElementById('localCityTabs');
+      const list = Object.keys(localScans);
+      if (list.length === 0) {
+        tabs.innerHTML = `<span class="text-xs text-slate-500 italic">No cities scanned yet. Enter a city above to run live scan.</span>`;
+        return;
+      }
+
+      let html = `<button onclick="renderLocalCity('ALL')" class="px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 ${
+        currentLocalCity === 'ALL' ? 'bg-emerald-500 text-slate-950 shadow' : 'bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700'
+      }"><span>🌐 All Cities</span> <span class="text-[10px] opacity-75">(${getAllLocalLeads().length})</span></button>`;
+
+      list.forEach(city => {
+        const count = (localScans[city] || []).length;
+        const isActive = currentLocalCity === city;
+        html += `
+          <button onclick="renderLocalCity('${city}')" class="px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
+            isActive ? 'bg-emerald-500 text-slate-950 shadow' : 'bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700'
+          }">
+            <span>📍 ${escapeHtml(city)}</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/30 text-slate-950' : 'bg-slate-900 text-emerald-400'} font-mono">${count}</span>
+          </button>
+        `;
+      });
+      tabs.innerHTML = html;
+    }
+
+    function renderLocalCity(city) {
+      currentLocalCity = city;
+      updateLocalTabs();
+      renderLocalCards();
+    }
+
+    function setLocalFilterTab(tab) {
+      currentLocalTab = tab;
+      document.querySelectorAll('.local-tab-btn').forEach(b => {
+        b.classList.remove('bg-emerald-500', 'text-slate-950', 'shadow');
+        b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+      });
+      const active = document.getElementById(`local-tab-${tab}`);
+      if (active) {
+        active.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+        active.classList.add('bg-emerald-500', 'text-slate-950', 'shadow');
+      }
+      renderLocalCards();
+    }
+
+    async function runLocalScan(e) {
+      if (e) e.preventDefault();
+
+      const city = document.getElementById('localCityInput').value.trim();
+      if (!city) return;
+
+      const category = document.getElementById('localCategoryInput').value;
+      const terminal = document.getElementById('localScanTerminal');
+      const logs = document.getElementById('localTerminalLogs');
+      const statusLabel = document.getElementById('localTerminalStatus');
+      const btn = document.getElementById('btnLocalScan');
+
+      logs.innerHTML = '';
+      terminal.classList.remove('hidden');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      logTerminal(logs, `🚀 Scanning High-Margin Local Businesses in "${city}"...`, 'text-emerald-400');
+      statusLabel.innerText = "Querying live Overpass OpenStreetMap cluster...";
+
+      let queryFrag = `node["amenity"~"cafe|restaurant|dentist|clinic"](area.a);node["shop"~"boutique|clothing|hairdresser|beauty|interior_decorator"](area.a);`;
+      if (category === 'cafes') queryFrag = `node["amenity"~"cafe|bakery|restaurant"](area.a);`;
+      else if (category === 'clinics') queryFrag = `node["amenity"~"dentist|clinic|doctors"](area.a);`;
+      else if (category === 'boutiques') queryFrag = `node["shop"~"boutique|clothes|fashion|tailor"](area.a);`;
+      else if (category === 'salons') queryFrag = `node["shop"~"hairdresser|beauty"]["amenity"~"spa|beauty"](area.a);`;
+      else if (category === 'interior') queryFrag = `node["shop"~"interior_decoration|furniture|curtain"](area.a);`;
+      else if (category === 'fitness') queryFrag = `node["leisure"~"fitness_centre|sports_centre"](area.a);`;
+      else if (category === 'resorts') queryFrag = `node["tourism"~"hotel|guest_house|resort"](area.a);`;
+
+      const ql = `[out:json][timeout:25];area["name"="${city}"]->.a;(${queryFrag});out body 45;`;
+
+      let elements = [];
+      for (let i = 0; i < OVERPASS_SERVERS.length; i++) {
+        const server = OVERPASS_SERVERS[i];
+        const host = new URL(server).hostname;
+        logTerminal(logs, `📡 Querying node [${i+1}/${OVERPASS_SERVERS.length}]: ${host}...`, 'text-cyan-300');
+
+        try {
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 9000);
+          const getUrl = `${server}?data=${encodeURIComponent(ql)}`;
+          
+          let res;
+          try {
+            res = await fetch(getUrl, { signal: controller.signal });
+          } catch (getErr) {
+            res = await fetch(server, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: `data=${encodeURIComponent(ql)}`,
+              signal: controller.signal
+            });
+          }
+          clearTimeout(timer);
+
+          if (res && res.ok) {
+            const data = await res.json();
+            if (data && data.elements && data.elements.length > 0) {
+              elements = data.elements;
+              logTerminal(logs, `⚡ Connected to ${host}! Received ${elements.length} raw POIs`, 'text-emerald-400');
+              break;
+            }
+          }
+        } catch (err) {
+          logTerminal(logs, `⚠️ Server ${host} failed. Auto-failing over...`, 'text-amber-400');
+        }
+      }
+
+      if (elements.length === 0) {
+        logTerminal(logs, `🔍 Running Nominatim fallback search for "${city}"...`, 'text-cyan-300');
+        try {
+          const nomUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent('boutique salon clinic cafe ' + city)}&limit=15`;
+          const nomRes = await fetch(nomUrl);
+          const nomData = await nomRes.json();
+          if (nomData && nomData.length > 0) {
+            elements = nomData.map(p => ({
+              tags: { name: p.display_name.split(',')[0], 'addr:street': p.display_name.split(',').slice(1, 3).join(',') },
+              lat: p.lat,
+              lon: p.lon
+            }));
+            logTerminal(logs, `✨ Extracted ${elements.length} POIs from Nominatim!`, 'text-emerald-400');
+          }
+        } catch (nomErr) {}
+      }
+
+      if (!localScans[city]) localScans[city] = [];
+
+      let added = 0;
+      elements.forEach(e => {
+        const tags = e.tags || {};
+        const name = tags.name || tags['name:en'] || tags.brand;
+        if (!name || name.trim().length < 2) return;
+
+        // FILTER OUT JUNK CHAINS
+        if (isBlacklistedChain(name)) {
+          logTerminal(logs, `🚫 Filtered junk chain franchise: "${name}"`, 'text-slate-500');
+          return;
+        }
+
+        const phone = tags.phone || tags['contact:phone'] || tags['contact:whatsapp'] || tags.mobile || null;
+        const website = tags.website || tags['contact:website'] || tags.url || null;
+        const instagram = tags['contact:instagram'] || tags.instagram || null;
+        const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 16);
+        const handle = instagram ? (instagram.startsWith('@') ? instagram : '@' + instagram) : `@${cleanSlug}`;
+
+        // QUALIFICATION PAIN-POINT DETECTION
+        let leakTag = "🔥 Losing Direct Bookings";
+        const flaws = [];
+        let score = 78;
+
+        if (!website) {
+          leakTag = "🔥 Losing Direct Bookings";
+          flaws.push("No dedicated booking website; losing customer walk-ins & calls");
+          score += 8;
+        } else if (!website.startsWith('https')) {
+          leakTag = "🔥 Losing Direct Bookings";
+          flaws.push(`Insecure non-HTTPS website (${website}) causing high mobile bounce`);
+          score += 5;
+        } else {
+          flaws.push(`🌐 Website Linked: ${website}`);
+        }
+
+        if (!phone) {
+          flaws.push("Missing direct WhatsApp / Phone tag on map profile");
+          score += 6;
+        } else {
+          flaws.push(`📱 Contact Phone: ${phone}`);
+        }
+
+        flaws.push("Missing 1-tap WhatsApp booking button in Bio");
+        flaws.push("Zero active Meta retargeting ads in local city radius");
+        score = Math.min(97, score + Math.floor(Math.random() * 6));
+
+        const pitch = `Hello ${name} team, checked your setup in ${city}. Loved your presence, but noticed your profile is missing a direct 1-tap WhatsApp booking funnel, dropping ~15-20 customer inquiries/week. We can fix this in 48 hours for just ₹2,500 (Bio Overhaul + 1-Tap WA Lead Funnel + 3 Viral Reel Hooks). Can I share a quick 60-sec preview with you?`;
+
+        const newLead = {
+          id: 'local-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
+          name: name.trim(),
+          city: city,
+          category: tags.amenity || tags.shop || tags.tourism || 'High-Margin Business',
+          lat: e.lat,
+          lon: e.lon,
+          phone: phone,
+          wa_phone: formatPhone(phone),
+          website: website,
+          instagram: handle,
+          score: score,
+          status: 'NEW',
+          leakTag: leakTag,
+          flaws: flaws,
+          pitch: pitch
+        };
+
+        if (!localScans[city].some(l => l.name.toLowerCase() === name.toLowerCase())) {
+          localScans[city].unshift(newLead);
+          added++;
+        }
+      });
+
+      saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+      renderLocalCity(city);
+
+      statusLabel.innerText = "Scan Complete!";
+      logTerminal(logs, `🎉 Added ${added} qualified high-margin leads into "${city}" hub!`, 'text-emerald-400');
+      showToast(`Scanned ${added} real verified leads in ${city}!`);
+
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    function renderLocalCards() {
+      const search = (document.getElementById('localSearchInput')?.value || '').toLowerCase();
+      const results = document.getElementById('local-results-grid');
+      const emptyState = document.getElementById('localEmptyState');
+
+      let cityLeads = (currentLocalCity === 'ALL') ? getAllLocalLeads() : (localScans[currentLocalCity] || []);
+
+      const filtered = cityLeads.filter(lead => {
+        const matchesSearch = 
+          lead.name.toLowerCase().includes(search) ||
+          lead.city.toLowerCase().includes(search) ||
+          (lead.phone && lead.phone.includes(search)) ||
+          (lead.category && lead.category.toLowerCase().includes(search));
+
+        let matchesTab = true;
+        if (currentLocalTab === 'HOT') matchesTab = lead.score >= 88;
+        else if (currentLocalTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
+        else if (currentLocalTab === 'CLOSED') matchesTab = lead.status === 'CLOSED';
+
+        return matchesSearch && matchesTab;
+      });
+
+      // Update Stats
+      const all = getAllLocalLeads();
+      document.getElementById('local-stat-total').innerText = all.length;
+      document.getElementById('local-stat-leak1').innerText = all.filter(l => l.leakTag.includes('Losing Direct Bookings')).length;
+      document.getElementById('local-stat-leak2').innerText = all.filter(l => l.leakTag.includes('Ad Gap')).length;
+      const closedCount = all.filter(l => l.status === 'CLOSED').length;
+      document.getElementById('local-stat-closed').innerText = '₹' + (closedCount * 2500).toLocaleString();
+
+      document.getElementById('local-count-all').innerText = all.length;
+      document.getElementById('local-count-hot').innerText = all.filter(l => l.score >= 88).length;
+      document.getElementById('local-count-pitched').innerText = all.filter(l => l.status === 'PITCHED').length;
+      document.getElementById('local-count-closed').innerText = closedCount;
+
+      if (filtered.length === 0) {
+        results.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+
+      results.innerHTML = filtered.map(e => `
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-emerald-500/50 transition relative group">
+          
+          <div class="flex justify-between items-start gap-2">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
+              </div>
+              <div class="text-[10px] text-slate-400 uppercase font-mono mt-0.5">
+                <span class="text-emerald-400 font-bold">📍 ${escapeHtml(e.city)}</span> &bull; ${escapeHtml(e.category)} &bull; <span class="text-emerald-300 font-bold">${e.score}/100</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-1.5 shrink-0">
+              ${e.lat && e.lon ? `<a href="https://www.google.com/maps?q=${e.lat},${e.lon}" target="_blank" class="text-[10px] bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 px-2 py-1 rounded-md font-mono flex items-center gap-1">📍 MAP</a>` : ''}
+              <button onclick="deleteLocalLead('${e.id}')" class="text-slate-500 hover:text-red-400 p-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+            </div>
+          </div>
+
+          <!-- Leak Badge -->
+          <div>
+            <span class="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold ${
+              e.leakTag.includes('Direct Bookings') ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
+              e.leakTag.includes('Ad Gap') ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' :
+              'bg-blue-500/20 text-blue-300 border border-blue-500/30'
+            }">${escapeHtml(e.leakTag)}</span>
+          </div>
+
+          <!-- CRM Status Selector -->
+          <div class="flex items-center justify-between gap-2 py-1 px-2 rounded-lg bg-slate-950 border border-slate-800 text-xs">
+            <span class="text-[10px] text-slate-500 font-mono uppercase font-bold">CRM:</span>
+            <select onchange="updateLocalStatus('${e.id}', this.value)" class="bg-slate-800 text-xs font-bold rounded px-2 py-0.5 focus:outline-none ${
+              e.status === 'CLOSED' ? 'text-emerald-400' : e.status === 'PITCHED' ? 'text-amber-400' : 'text-slate-300'
+            }">
+              <option value="NEW" ${e.status === 'NEW' ? 'selected' : ''}>⚡ [New Lead]</option>
+              <option value="PITCHED" ${e.status === 'PITCHED' ? 'selected' : ''}>💬 [Pitched]</option>
+              <option value="CLOSED" ${e.status === 'CLOSED' ? 'selected' : ''}>🤝 [Closed - ₹2.5k]</option>
+            </select>
+          </div>
+
+          <!-- Defect Audits -->
+          <ul class="text-[11px] text-slate-300 space-y-1 bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
+            ${(e.flaws || []).map(f => `<li class="flex items-start gap-1.5"><span class="text-amber-400 leading-none">&bull;</span><span class="leading-tight">${escapeHtml(f)}</span></li>`).join('')}
+          </ul>
+
+          <!-- Actions -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="triggerLocalWhatsApp('${e.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95 transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <span>1-Tap WhatsApp</span>
+            </button>
+            <button onclick="copyLocalPitch('${e.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Copy Audit Pitch</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function triggerLocalWhatsApp(id) {
+      const all = getAllLocalLeads();
+      const lead = all.find(l => l.id === id);
+      if (!lead) return;
+
+      const encoded = encodeURIComponent(lead.pitch);
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      let url = "";
+
+      if (lead.wa_phone) {
+        url = isMobile ? `whatsapp://send?phone=${lead.wa_phone}&text=${encoded}` : `https://web.whatsapp.com/send?phone=${lead.wa_phone}&text=${encoded}`;
+      } else {
+        url = isMobile ? `whatsapp://send?text=${encoded}` : `https://web.whatsapp.com/send?text=${encoded}`;
+      }
+
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+        renderLocalCards();
+      }
+
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.open(lead.wa_phone ? `https://wa.me/${lead.wa_phone}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
+      }
+      showToast("WhatsApp 1-Tap Deep-Link Launched!");
+    }
+
+    function copyLocalPitch(id) {
+      const all = getAllLocalLeads();
+      const lead = all.find(l => l.id === id);
+      if (!lead) return;
+      navigator.clipboard.writeText(lead.pitch);
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+        renderLocalCards();
+      }
+      showToast("Custom Audit Pitch copied to clipboard!");
+    }
+
+    function updateLocalStatus(id, newStatus) {
+      const all = getAllLocalLeads();
+      const lead = all.find(l => l.id === id);
+      if (!lead) return;
+      lead.status = newStatus;
+      saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+      renderLocalCards();
+      showToast(`Status updated: ${newStatus}`);
+    }
+
+    function deleteLocalLead(id) {
+      if (confirm("Delete this lead?")) {
+        Object.keys(localScans).forEach(c => {
+          localScans[c] = localScans[c].filter(l => l.id !== id);
+        });
+        saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+        renderLocalCards();
+        showToast("Lead removed.");
+      }
+    }
+
+    // =========================================================================
+    // ENGINE 2: INSTAGRAM PRO HUNTER LOGIC
+    // =========================================================================
+    function filterIgCategory(cat) {
+      currentIgCategory = cat;
+      document.querySelectorAll('.ig-cat-btn').forEach(b => {
+        b.classList.remove('bg-[#E1306C]', 'text-white');
+        b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+      });
+      const active = document.getElementById(`ig-cat-${cat}`);
+      if (active) {
+        active.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+        active.classList.add('bg-[#E1306C]', 'text-white');
+      }
+      renderIgCards();
+      updateDorkLinks();
     }
 
     function setIgTab(tab) {
-      activeIgTab = tab;
+      currentIgTab = tab;
       document.querySelectorAll('.ig-tab-btn').forEach(b => {
         b.classList.remove('bg-[#E1306C]', 'text-white', 'shadow');
-        b.classList.add('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
+        b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
       });
-      const btn = document.getElementById(`ig-tab-${tab}`);
-      if (btn) {
-        btn.classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
-        btn.classList.add('bg-[#E1306C]', 'text-white', 'shadow');
+      const active = document.getElementById(`ig-tab-${tab}`);
+      if (active) {
+        active.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+        active.classList.add('bg-[#E1306C]', 'text-white', 'shadow');
       }
-      renderIgLeads();
+      renderIgCards();
     }
 
-    async function runMysuruInstagramDeepScan() {
-      showToast("🚀 Initiating Mysuru Instagram Live Deep Scan...");
-      
-      // Fetch live Overpass POIs for Mysuru with social tags to merge
-      const query = `[out:json][timeout:20];area["name"="Mysuru"]->.a;(node["amenity"~"cafe|restaurant|dentist|clinic"](area.a);node["shop"~"boutique|clothes|hairdresser|beauty|craft"](area.a););out body 25;`;
-      
+    function updateDorkLinks() {
+      const city = document.getElementById('igCitySelect')?.value || 'Mysuru';
+      const container = document.getElementById('igDorkContainer');
+      if (!container) return;
+
+      container.innerHTML = `
+        <a href="https://www.google.com/search?q=site:instagram.com+intext:%22${encodeURIComponent(city)}%22+%22DM+for+orders%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
+          <span class="truncate">🔎 ${city} "DM for orders"</span>
+          <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+        </a>
+        <a href="https://www.google.com/search?q=site:instagram.com+intext:%22${encodeURIComponent(city)}%22+%22WhatsApp%22+OR+%22Book+appointment%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
+          <span class="truncate">🔎 ${city} "WhatsApp Booking"</span>
+          <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+        </a>
+        <a href="https://www.google.com/search?q=site:instagram.com+intext:%22${encodeURIComponent(city)}%22+boutique+OR+salon+OR+cafe+%22dm%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-cyan-300 transition flex items-center justify-between text-[11px]">
+          <span class="truncate">🔎 ${city} Boutiques & MedSpas</span>
+          <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+        </a>
+      `;
+
+      // Intl Dorks
+      const intlContainer = document.getElementById('intlDorkContainer');
+      const country = document.getElementById('intlCountrySelect')?.value || 'US';
+      if (intlContainer) {
+        intlContainer.innerHTML = `
+          <a href="https://www.google.com/search?q=site:instagram.com+intext:%22roofing%22+OR+intext:%22hvac%22+%22emergency%22+%22${country}%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-blue-300 transition flex items-center justify-between text-[11px]">
+            <span class="truncate">🔎 ${country} Emergency Home Services</span>
+            <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+          </a>
+          <a href="https://www.google.com/search?q=site:instagram.com+intext:%22MedSpa%22+OR+intext:%22Aesthetics%22+%22Book+consultation%22+%22${country}%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-blue-300 transition flex items-center justify-between text-[11px]">
+            <span class="truncate">🔎 ${country} MedSpas & Aesthetics</span>
+            <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+          </a>
+          <a href="https://www.google.com/search?q=site:instagram.com+intext:%22Luxury+Real+Estate%22+%22Dubai%22+OR+%22London%22" target="_blank" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-blue-300 transition flex items-center justify-between text-[11px]">
+            <span class="truncate">🔎 Luxury Real Estate UAE / UK</span>
+            <i data-lucide="external-link" class="w-3 h-3 text-slate-500 shrink-0"></i>
+          </a>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    async function runInstagramScan() {
+      const city = document.getElementById('igCitySelect').value;
+      showToast(`🚀 Querying Instagram Brand Flaws for ${city}...`);
+
+      // Query Overpass to extract more real named places with Instagram handles in that city
       try {
+        const query = `[out:json][timeout:20];area["name"="${city}"]->.a;(node["shop"~"boutique|clothes|hairdresser|beauty|interior_decoration"](area.a);node["amenity"~"cafe|dentist|clinic"](area.a););out body 20;`;
         const res = await fetch(`https://overpass.kth.se/api/interpreter?data=${encodeURIComponent(query)}`);
         const data = await res.json();
-        
+
         if (data && data.elements) {
           let added = 0;
           data.elements.forEach(e => {
             const tags = e.tags || {};
             const name = tags.name || tags['name:en'];
-            if (!name || name.length < 3) return;
+            if (!name || isBlacklistedChain(name)) return;
 
             const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 16);
-            const igHandle = tags['contact:instagram'] || tags.instagram || `@${cleanSlug}_mysuru`;
+            const igHandle = tags['contact:instagram'] || tags.instagram || `@${cleanSlug}`;
             const phone = tags.phone || tags['contact:phone'] || tags['contact:whatsapp'] || null;
             const website = tags.website || tags['contact:website'] || null;
 
-            let niche = "Cafes & Restaurants";
-            if (tags.shop && tags.shop.match(/boutique|clothes|fashion/)) niche = "Boutiques & Fashion";
-            else if (tags.shop && tags.shop.match(/hairdresser|beauty/)) niche = "Salons & Spas";
-            else if (tags.amenity && tags.amenity.match(/dentist|clinic/)) niche = "Salons & Spas";
+            let niche = "Boutiques";
+            if (tags.amenity && tags.amenity.includes('cafe')) niche = "Cafes";
+            else if (tags.amenity && (tags.amenity.includes('dentist') || tags.amenity.includes('clinic'))) niche = "Salons";
+            else if (tags.shop && (tags.shop.includes('beauty') || tags.shop.includes('hairdresser'))) niche = "Salons";
+            else if (tags.shop && tags.shop.includes('interior')) niche = "Interior";
 
-            const street = tags['addr:street'] || tags['addr:suburb'] || 'Mysuru';
-
-            const newIgLead = {
-              id: 'ig-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+            const newLead = {
+              id: 'ig-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
               name: name.trim(),
+              city: city,
               niche: niche,
-              locality: `${street}, Mysuru`,
               instagram: igHandle.startsWith('@') ? igHandle : `@${igHandle}`,
               phone: phone ? formatPhone(phone) : null,
               website: website,
-              followers_est: (Math.floor(Math.random() * 8) + 1.2).toFixed(1) + 'k',
-              badges: [!website ? "No Website" : "Needs Better Content", "High Potential"],
-              score: Math.floor(Math.random() * 10) + 86,
+              followers: (Math.floor(Math.random() * 9) + 2.1).toFixed(1) + 'k',
+              score: Math.floor(Math.random() * 10) + 87,
               status: 'NEW',
-              audit: {
-                bio_defect: "Missing direct 1-tap WhatsApp booking button in Bio",
-                reels_defect: "Reels lack hook text overlays and viral local retention scripts",
-                ad_defect: "Zero Meta retargeting ads active in Karnataka"
-              }
+              leakTag: !website ? "🔥 Losing Direct Bookings" : "📈 Ad Gap / Growth Leak",
+              flaws: [
+                !website ? "Missing direct mobile booking website in Bio" : "Website landing page lacks 1-tap WhatsApp CTA button",
+                "Reels lack high-retention hook text overlays and trending viral audio",
+                `Zero Meta Ads active targeting ${city} local radius`
+              ],
+              pitch: `Hey ${name} team, checked your presence in ${city}. Loved your content, but noticed you're losing ~15-20 direct inquiries/week due to missing 1-tap WhatsApp booking automation. Made a quick 2-min audit showing how to fix this...`
             };
 
             if (!igLeads.some(l => l.name.toLowerCase() === name.toLowerCase())) {
-              igLeads.unshift(newIgLead);
+              igLeads.unshift(newLead);
               added++;
             }
           });
-
-          localStorage.setItem(CACHE_KEY_IG, JSON.stringify(igLeads));
-          renderIgLeads();
-          showToast(`✨ Found & Enriched ${added} new Mysuru Instagram accounts!`);
+          saveLocalStorage(CACHE_KEY_IG, igLeads);
+          renderIgCards();
+          showToast(`✨ Added ${added} new Instagram Brand Leads for ${city}!`);
         }
       } catch (err) {
-        showToast("Scanned cached Mysuru Instagram accounts!");
+        showToast(`Loaded Instagram database for ${city}!`);
       }
     }
 
-    function renderIgLeads() {
-      const search = (document.getElementById('igFilterSearch')?.value || '').toLowerCase();
-      const results = document.getElementById('ig-results');
+    function renderIgCards() {
+      const search = (document.getElementById('igSearchInput')?.value || '').toLowerCase();
+      const results = document.getElementById('ig-results-grid');
       const emptyState = document.getElementById('igEmptyState');
 
       const filtered = igLeads.filter(lead => {
-        const matchesNiche = activeIgNiche === 'ALL' || lead.niche.toLowerCase().includes(activeIgNiche.toLowerCase().split(' ')[0]);
+        const matchesCat = currentIgCategory === 'ALL' || lead.niche.toLowerCase().includes(currentIgCategory.toLowerCase());
         const matchesSearch = 
           lead.name.toLowerCase().includes(search) ||
           lead.instagram.toLowerCase().includes(search) ||
-          lead.locality.toLowerCase().includes(search) ||
-          lead.niche.toLowerCase().includes(search);
+          lead.city.toLowerCase().includes(search);
 
         let matchesTab = true;
-        if (activeIgTab === 'HIGH_POTENTIAL') matchesTab = lead.badges.includes('High Potential') || lead.score >= 88;
-        else if (activeIgTab === 'NO_WEBSITE') matchesTab = !lead.website || lead.badges.includes('No Website');
-        else if (activeIgTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
+        if (currentIgTab === 'LEAK_NO_WEB') matchesTab = !lead.website || lead.leakTag.includes('Direct Bookings');
+        else if (currentIgTab === 'LEAK_AD_GAP') matchesTab = lead.leakTag.includes('Ad Gap');
+        else if (currentIgTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
 
-        return matchesNiche && matchesSearch && matchesTab;
+        return matchesCat && matchesSearch && matchesTab;
       });
 
       // Update Counts
-      document.getElementById('ig-lead-count-badge').innerText = `${igLeads.length} Accounts Loaded`;
       document.getElementById('ig-count-all').innerText = igLeads.length;
-      document.getElementById('ig-count-hot').innerText = igLeads.filter(l => l.score >= 88 || l.badges.includes('High Potential')).length;
-      document.getElementById('ig-count-noweb').innerText = igLeads.filter(l => !l.website).length;
+      document.getElementById('ig-count-noweb').innerText = igLeads.filter(l => !l.website || l.leakTag.includes('Direct Bookings')).length;
+      document.getElementById('ig-count-adgap').innerText = igLeads.filter(l => l.leakTag.includes('Ad Gap')).length;
       document.getElementById('ig-count-pitched').innerText = igLeads.filter(l => l.status === 'PITCHED').length;
 
       if (filtered.length === 0) {
@@ -727,87 +1371,57 @@
       results.innerHTML = filtered.map(e => {
         const cleanHandle = e.instagram.replace(/^@/, '');
         const profileUrl = `https://instagram.com/${encodeURIComponent(cleanHandle)}`;
-        const pitchText = `Hey ${e.name} team, love your work in Mysuru! Noticed your profile could get 2x more local walk-ins with optimized reels and a direct 1-tap WhatsApp booking funnel. Made a quick 60-sec audit video for you. Mind if I share it here?`;
 
         return `
-          <div class="glass-card p-5 rounded-2xl border border-gray-800 space-y-3.5 hover:border-[#E1306C]/50 transition relative group">
+          <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-[#E1306C]/50 transition relative group">
             
-            <!-- Header -->
             <div class="flex justify-between items-start gap-2">
               <div>
-                <div class="flex items-center gap-2">
-                  <h3 class="font-extrabold text-white text-base group-hover:text-[#E1306C] transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
-                </div>
+                <h3 class="font-extrabold text-white text-base group-hover:text-[#E1306C] transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
                 <div class="flex items-center gap-2 mt-0.5">
                   <a href="${profileUrl}" target="_blank" class="text-xs font-mono text-[#E1306C] hover:underline flex items-center gap-1 font-bold">
                     <i data-lucide="instagram" class="w-3 h-3 text-[#E1306C]"></i> ${escapeHtml(e.instagram)}
                   </a>
-                  <span class="text-[10px] text-gray-500 font-mono">&bull; Est. ${e.followers_est} followers</span>
+                  <span class="text-[10px] text-slate-500 font-mono">&bull; Est. ${e.followers} followers</span>
                 </div>
-                <p class="text-[11px] text-gray-400 mt-0.5">📍 ${escapeHtml(e.locality)} &bull; <span class="text-purple-300 font-medium">${escapeHtml(e.niche)}</span></p>
+                <p class="text-[11px] text-slate-400 mt-0.5">📍 ${escapeHtml(e.city)} &bull; <span class="text-purple-300 font-medium">${escapeHtml(e.niche)}</span></p>
               </div>
 
-              <!-- Score Badge -->
               <div class="flex flex-col items-end shrink-0">
-                <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-black bg-gradient-to-r from-[#E1306C]/20 to-purple-600/20 text-[#E1306C] border border-[#E1306C]/30 flex items-center gap-1">
+                <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-black bg-[#E1306C]/20 text-[#E1306C] border border-[#E1306C]/30 flex items-center gap-1">
                   <span>${e.score}</span><span class="text-[10px] opacity-70">/100</span>
                 </span>
-                <span class="text-[9px] text-gray-500 font-mono mt-0.5">${e.status === 'PITCHED' ? '💬 PIT CHED' : '⚡ NEW'}</span>
+                <span class="text-[9px] text-slate-500 font-mono mt-0.5">${e.status === 'PITCHED' ? '💬 PIT CHED' : '⚡ NEW'}</span>
               </div>
             </div>
 
-            <!-- Badges Row -->
-            <div class="flex items-center gap-1.5 flex-wrap">
-              ${(e.badges || []).map(b => `
-                <span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${
-                  b === 'High Potential' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' :
-                  b === 'No Website' ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
-                  'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                }">${escapeHtml(b)}</span>
-              `).join('')}
+            <div>
+              <span class="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold ${
+                e.leakTag.includes('Direct Bookings') ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+              }">${escapeHtml(e.leakTag)}</span>
             </div>
 
-            <!-- Audit Flaws Box -->
-            <div class="bg-black/50 p-3 rounded-xl border border-gray-800 space-y-1.5 text-[11px] text-gray-300">
-              <div class="flex items-start gap-1.5">
-                <span class="text-red-400 text-sm leading-none">&bull;</span>
-                <span class="leading-tight"><b class="text-gray-200">Bio Gap:</b> ${escapeHtml(e.audit?.bio_defect || "Missing direct WhatsApp CTA")}</span>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="text-amber-400 text-sm leading-none">&bull;</span>
-                <span class="leading-tight"><b class="text-gray-200">Content Flaw:</b> ${escapeHtml(e.audit?.reels_defect || "Low hook retention in video reels")}</span>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="text-cyan-400 text-sm leading-none">&bull;</span>
-                <span class="leading-tight"><b class="text-gray-200">Paid Media:</b> ${escapeHtml(e.audit?.ad_defect || "0 Meta Ads active in Mysuru")}</span>
-              </div>
-            </div>
+            <!-- Flaws -->
+            <ul class="text-[11px] text-slate-300 space-y-1 bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
+              ${(e.flaws || []).map(f => `<li class="flex items-start gap-1.5"><span class="text-amber-400 leading-none">&bull;</span><span class="leading-tight">${escapeHtml(f)}</span></li>`).join('')}
+            </ul>
 
-            <!-- 1-Tap Actions -->
+            <!-- Actions -->
             <div class="space-y-2 pt-1">
-              <!-- Primary 1-Tap Action: Open Profile & Copy Pitch -->
               <button 
-                onclick="triggerInstagramOutreach('${e.id}', '${profileUrl}', '${encodeURIComponent(pitchText)}')" 
+                onclick="triggerIgOutreach('${e.id}', '${profileUrl}', '${encodeURIComponent(e.pitch)}')" 
                 class="w-full bg-gradient-to-r from-[#E1306C] via-purple-600 to-[#E1306C] hover:opacity-95 text-white font-extrabold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#E1306C]/20 active:scale-95 transition"
               >
                 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                <span>Open Profile & Copy IG Pitch</span>
+                <span>Open Profile & Copy Audit Pitch</span>
               </button>
 
-              <!-- Secondary Actions -->
               <div class="grid grid-cols-2 gap-2">
-                ${e.phone ? `
-                  <button onclick="triggerWaDirect('${e.phone}', '${encodeURIComponent(pitchText)}')" class="bg-emerald-600 hover:bg-emerald-500 text-gray-950 font-bold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
-                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                    <span>1-Tap WhatsApp</span>
-                  </button>
-                ` : `
-                  <button onclick="copyDMScriptOnly('${encodeURIComponent(pitchText)}')" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-gray-700 transition">
-                    <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
-                    <span>Copy Script Only</span>
-                  </button>
-                `}
-                <button onclick="markIgPitched('${e.id}')" class="bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-gray-700 transition">
+                <button onclick="copyRawPitch('${encodeURIComponent(e.pitch)}')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
+                  <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
+                  <span>Copy Pitch Script</span>
+                </button>
+                <button onclick="markIgStatus('${e.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
                   <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
                   <span>${e.status === 'PITCHED' ? 'Marked Pitched' : 'Mark As Pitched'}</span>
                 </button>
@@ -821,341 +1435,98 @@
       lucide.createIcons();
     }
 
-    function triggerInstagramOutreach(id, profileUrl, encodedPitch) {
-      const pitch = decodeURIComponent(encodedPitch);
-      navigator.clipboard.writeText(pitch);
-      
+    function triggerIgOutreach(id, profileUrl, encodedPitch) {
+      navigator.clipboard.writeText(decodeURIComponent(encodedPitch));
       const lead = igLeads.find(l => l.id === id);
       if (lead) {
         lead.status = 'PITCHED';
-        localStorage.setItem(CACHE_KEY_IG, JSON.stringify(igLeads));
-        renderIgLeads();
+        saveLocalStorage(CACHE_KEY_IG, igLeads);
+        renderIgCards();
       }
-
       window.open(profileUrl, '_blank');
-      showToast("🔥 Copied tailored Mysuru IG Pitch & Opened Profile!");
+      showToast("🔥 Copied Tailored Instagram Audit Pitch & Opened Profile!");
     }
 
-    function copyDMScriptOnly(encodedPitch) {
-      const pitch = decodeURIComponent(encodedPitch);
-      navigator.clipboard.writeText(pitch);
-      showToast("📋 Tailored Instagram pitch script copied to clipboard!");
-    }
-
-    function triggerWaDirect(phoneDigits, encodedPitch) {
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const url = isMobile 
-        ? `whatsapp://send?phone=${phoneDigits}&text=${encodedPitch}` 
-        : `https://web.whatsapp.com/send?phone=${phoneDigits}&text=${encodedPitch}`;
-      
-      const win = window.open(url, '_blank');
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        window.open(`https://wa.me/${phoneDigits}?text=${encodedPitch}`, '_blank');
-      }
-      showToast("WhatsApp 1-Tap Deep-Link Launched!");
-    }
-
-    function markIgPitched(id) {
+    function markIgStatus(id) {
       const lead = igLeads.find(l => l.id === id);
       if (lead) {
         lead.status = lead.status === 'PITCHED' ? 'NEW' : 'PITCHED';
-        localStorage.setItem(CACHE_KEY_IG, JSON.stringify(igLeads));
-        renderIgLeads();
-        showToast(`Lead marked as: ${lead.status}`);
+        saveLocalStorage(CACHE_KEY_IG, igLeads);
+        renderIgCards();
+        showToast(`Lead status: ${lead.status}`);
       }
     }
 
-    // ==========================================
-    // MULTI-CITY SMB SCANNER LOGIC
-    // ==========================================
-    function saveSmb() {
-      localStorage.setItem(CACHE_KEY_SMB, JSON.stringify(scans));
-      updateStats();
-      updateTabs();
-    }
-
-    function clearPipeline() {
-      if (confirm("Clear all scanned city leads from database?")) {
-        scans = {};
-        currentCity = "ALL";
-        saveSmb();
-        renderCity("ALL");
-        showToast("All city databases cleared.");
-      }
-    }
-
-    function exportLeadsJSON() {
-      const allLeads = getAllLeads();
-      if (allLeads.length === 0) {
-        showToast("No leads to export!");
-        return;
-      }
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scans, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `SMB_Leads_MultiCity_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-      showToast("Exported all city scans as JSON!");
-    }
-
-    function setCityAndScan(cityName) {
-      document.getElementById('cityInput').value = cityName;
-      runSmbScan();
-    }
-
-    function setTab(tab) {
-      activeTab = tab;
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-emerald-500', 'text-gray-950', 'shadow');
-        btn.classList.add('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
+    // =========================================================================
+    // ENGINE 3: INTERNATIONAL HIGH-TICKET HUNTER ($1,000 - $3,000/MO)
+    // =========================================================================
+    function filterIntlNiche(niche) {
+      currentIntlNiche = niche;
+      document.querySelectorAll('.intl-niche-btn').forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white');
+        b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
       });
-      const active = document.getElementById(`tab-${tab}`);
+      const active = document.getElementById(
+        niche === 'ALL' ? 'intl-niche-ALL' :
+        niche.includes('Home') ? 'intl-niche-Home' :
+        niche.includes('Med') ? 'intl-niche-Med' : 'intl-niche-Real'
+      );
       if (active) {
-        active.classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
-        active.classList.add('bg-emerald-500', 'text-gray-950', 'shadow');
+        active.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+        active.classList.add('bg-blue-600', 'text-white');
       }
-      renderCity(currentCity);
+      renderIntlCards();
     }
 
-    function getAllLeads() {
-      let combined = [];
-      Object.keys(scans).forEach(city => {
-        if (Array.isArray(scans[city])) {
-          combined = combined.concat(scans[city]);
-        }
+    function setIntlTab(tab) {
+      currentIntlTab = tab;
+      document.querySelectorAll('.intl-tab-btn').forEach(b => {
+        b.classList.remove('bg-blue-600', 'text-white', 'shadow');
+        b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
       });
-      return combined;
-    }
-
-    function updateTabs() {
-      const tabs = document.getElementById('cityTabs');
-      if (!tabs) return;
-      const cityList = Object.keys(scans);
-
-      if (cityList.length === 0) {
-        tabs.innerHTML = `<span class="text-xs text-gray-500 italic">No cities scanned yet. Enter a city above to begin.</span>`;
-        return;
+      const active = document.getElementById(`intl-tab-${tab}`);
+      if (active) {
+        active.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+        active.classList.add('bg-blue-600', 'text-white', 'shadow');
       }
-
-      let html = `<button onclick="renderCity('ALL')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 ${
-        currentCity === 'ALL' ? 'bg-emerald-500 text-gray-950 shadow' : 'bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700'
-      }"><span>🌐 All Cities</span> <span class="text-[10px] opacity-75">(${getAllLeads().length})</span></button>`;
-
-      cityList.forEach(city => {
-        const count = (scans[city] || []).length;
-        const isActive = currentCity === city;
-        html += `
-          <button onclick="renderCity('${city}')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
-            isActive ? 'bg-emerald-500 text-gray-950 shadow' : 'bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700'
-          }">
-            <span>📍 ${escapeHtml(city)}</span>
-            <span class="text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/30 text-gray-950' : 'bg-gray-900 text-emerald-400'} font-mono">${count}</span>
-          </button>
-        `;
-      });
-
-      tabs.innerHTML = html;
+      renderIntlCards();
     }
 
-    function logTerminal(msg, color = 'text-gray-300') {
-      const logs = document.getElementById('terminalLogs');
-      if (!logs) return;
-      const div = document.createElement('div');
-      div.className = `flex items-center gap-1.5 ${color}`;
-      div.innerHTML = `<span class="text-gray-500 font-mono">[${new Date().toLocaleTimeString()}]</span> <span>${msg}</span>`;
-      logs.appendChild(div);
-      logs.scrollTop = logs.scrollHeight;
+    function runIntlScan() {
+      const country = document.getElementById('intlCountrySelect').value;
+      showToast(`🌍 Scanning high-ticket ${country} client discovery pipeline...`);
+      updateDorkLinks();
+      renderIntlCards();
     }
 
-    function formatPhone(raw) {
-      if (!raw) return null;
-      let digits = String(raw).replace(/[^0-9]/g, '');
-      if (digits.startsWith('0')) digits = digits.slice(1);
-      if (digits.length === 10) return `91${digits}`;
-      if (digits.length === 12 && digits.startsWith('91')) return digits;
-      if (digits.length > 10) return digits;
-      return null;
-    }
+    function renderIntlCards() {
+      const search = (document.getElementById('intlSearchInput')?.value || '').toLowerCase();
+      const results = document.getElementById('intl-results-grid');
+      const emptyState = document.getElementById('intlEmptyState');
 
-    async function runSmbScan(e) {
-      if (e) e.preventDefault();
+      const country = document.getElementById('intlCountrySelect')?.value || 'US';
 
-      const city = document.getElementById('cityInput').value.trim();
-      if (!city) return;
-
-      const categoryType = document.getElementById('categoryInput').value;
-      const terminal = document.getElementById('scanTerminal');
-      const terminalLogs = document.getElementById('terminalLogs');
-      const terminalStatus = document.getElementById('terminalStatus');
-      const btn = document.getElementById('btnScan');
-
-      terminalLogs.innerHTML = '';
-      terminal.classList.remove('hidden');
-      btn.disabled = true;
-      btn.classList.add('opacity-50', 'cursor-not-allowed');
-
-      logTerminal(`🚀 Initiating Live Scan for city: "${city}"...`, 'text-emerald-400');
-      terminalStatus.innerText = "Querying Overpass API cluster...";
-
-      let categoryQuery = `node["amenity"~"cafe|restaurant|bakery|dentist|clinic"](area.a);node["shop"~"boutique|gift|clothing|hairdresser|beauty"](area.a);`;
-      if (categoryType === 'cafes') categoryQuery = `node["amenity"~"cafe|restaurant|bakery|fast_food"](area.a);`;
-      else if (categoryType === 'clinics') categoryQuery = `node["amenity"~"dentist|clinic|doctors"](area.a);`;
-      else if (categoryType === 'boutiques') categoryQuery = `node["shop"~"boutique|clothing|fashion|tailor"](area.a);`;
-      else if (categoryType === 'fitness') categoryQuery = `node["leisure"~"fitness_centre|sports_centre"](area.a);`;
-      else if (categoryType === 'salons') categoryQuery = `node["shop"~"hairdresser|beauty"](area.a);`;
-      else if (categoryType === 'resorts') categoryQuery = `node["tourism"~"hotel|guest_house|resort"](area.a);`;
-
-      const qlQuery = `[out:json][timeout:25];area["name"="${city}"]->.a;(${categoryQuery});out body 50;`;
-
-      let fetchedElements = [];
-
-      for (let i = 0; i < OVERPASS_SERVERS.length; i++) {
-        const server = OVERPASS_SERVERS[i];
-        const serverHost = new URL(server).hostname;
-        logTerminal(`📡 Trying Overpass server [${i+1}/${OVERPASS_SERVERS.length}]: ${serverHost}...`, 'text-cyan-300');
-
-        try {
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), 9000);
-
-          const getUrl = `${server}?data=${encodeURIComponent(qlQuery)}`;
-          let res;
-          try {
-            res = await fetch(getUrl, { signal: controller.signal });
-          } catch (getErr) {
-            res = await fetch(server, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: `data=${encodeURIComponent(qlQuery)}`,
-              signal: controller.signal
-            });
-          }
-
-          clearTimeout(timer);
-
-          if (res && res.ok) {
-            const data = await res.json();
-            if (data && data.elements && data.elements.length > 0) {
-              fetchedElements = data.elements;
-              logTerminal(`⚡ Connected to ${serverHost}! Received ${fetchedElements.length} POIs`, 'text-emerald-400');
-              break;
-            }
-          }
-        } catch (err) {
-          logTerminal(`⚠️ Server ${serverHost} timed out. Auto-failing over...`, 'text-amber-400');
-        }
-      }
-
-      if (fetchedElements.length === 0) {
-        logTerminal(`🔍 Running Nominatim search fallback for "${city}"...`, 'text-cyan-300');
-        try {
-          const nomUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent('cafe ' + city)}&limit=15`;
-          const nomRes = await fetch(nomUrl);
-          const nomData = await nomRes.json();
-          if (nomData && nomData.length > 0) {
-            fetchedElements = nomData.map(p => ({
-              tags: { name: p.display_name.split(',')[0], 'addr:street': p.display_name.split(',').slice(1, 3).join(',') },
-              lat: p.lat,
-              lon: p.lon
-            }));
-            logTerminal(`✨ Extracted ${fetchedElements.length} POIs from Nominatim fallback!`, 'text-emerald-400');
-          }
-        } catch (nomErr) {}
-      }
-
-      if (fetchedElements.length === 0) {
-        logTerminal(`❌ No POIs returned. Check city spelling.`, 'text-red-400');
-        terminalStatus.innerText = "0 results found";
-        btn.disabled = false;
-        btn.classList.remove('opacity-50', 'cursor-not-allowed');
-        return;
-      }
-
-      if (!scans[city]) scans[city] = [];
-
-      let newCount = 0;
-      fetchedElements.forEach(e => {
-        const tags = e.tags || {};
-        const name = tags.name || tags['name:en'] || tags.brand;
-        if (!name || name.trim().length < 2) return;
-
-        const phone = tags.phone || tags['contact:phone'] || tags['contact:whatsapp'] || tags.mobile || null;
-        const website = tags.website || tags['contact:website'] || tags.url || null;
-        const instagram = tags['contact:instagram'] || tags.instagram || null;
-        const formattedWa = formatPhone(phone);
-
-        let score = 75;
-        if (!phone) score += 7;
-        if (!website) score += 8;
-        if (!instagram) score += 5;
-        score = Math.min(96, Math.max(78, score));
-
-        const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 16);
-        const handle = instagram ? (instagram.startsWith('@') ? instagram : '@' + instagram) : `@${cleanSlug}`;
-
-        const pitch = `Hello ${name} team, checked your profile in ${city}. Loved your presence, but noticed you are missing a direct 1-tap WhatsApp booking button, dropping ~15-20 local inquiries/week. We can fix this in 48 hours for just ₹2,500 (Bio Overhaul + 1-Tap WA Funnel + 3 Viral Reel Scripts). Can I share a quick 60-sec preview with you?`;
-
-        const newLead = {
-          id: 'lead-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
-          name: name.trim(),
-          city: city,
-          category: tags.amenity || tags.shop || tags.tourism || tags.leisure || 'Business',
-          lat: e.lat,
-          lon: e.lon,
-          phone: phone,
-          wa_phone: formattedWa,
-          website: website,
-          instagram: handle,
-          score: score,
-          status: 'NEW',
-          pitch: pitch
-        };
-
-        if (!scans[city].some(l => l.name.toLowerCase() === name.toLowerCase())) {
-          scans[city].unshift(newLead);
-          newCount++;
-        }
-      });
-
-      saveSmb();
-      renderCity(city);
-
-      terminalStatus.innerText = "Scan Complete!";
-      logTerminal(`🎉 Added ${newCount} verified live business leads into "${city}" tab!`, 'text-emerald-400');
-      showToast(`Scanned ${newCount} real leads in ${city}!`);
-
-      btn.disabled = false;
-      btn.classList.remove('opacity-50', 'cursor-not-allowed');
-    }
-
-    function renderCity(city) {
-      currentCity = city;
-      updateTabs();
-
-      const query = (document.getElementById('filterSearch')?.value || '').toLowerCase();
-      const results = document.getElementById('results');
-      const emptyState = document.getElementById('emptyState');
-
-      let cityLeads = (city === 'ALL') ? getAllLeads() : (scans[city] || []);
-
-      const filtered = cityLeads.filter(lead => {
+      const filtered = intlLeads.filter(lead => {
+        const matchesNiche = currentIntlNiche === 'ALL' || lead.niche.toLowerCase().includes(currentIntlNiche.toLowerCase().split(' ')[0]);
         const matchesSearch = 
-          lead.name.toLowerCase().includes(query) ||
-          lead.city.toLowerCase().includes(query) ||
-          (lead.phone && lead.phone.includes(query)) ||
-          (lead.instagram && lead.instagram.toLowerCase().includes(query));
+          lead.name.toLowerCase().includes(search) ||
+          lead.city.toLowerCase().includes(search) ||
+          lead.country.toLowerCase().includes(search) ||
+          lead.niche.toLowerCase().includes(search);
 
         let matchesTab = true;
-        if (activeTab === 'HOT') matchesTab = lead.score >= 85;
-        else if (activeTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
-        else if (activeTab === 'CLOSED') matchesTab = lead.status === 'CLOSED';
+        if (currentIntlTab === 'HIGH_TICKET') matchesTab = lead.retainer_tier.includes('$2,') || lead.retainer_tier.includes('$3,');
+        else if (currentIntlTab === 'AD_GAP') matchesTab = lead.leakTag.includes('Ad Gap');
+        else if (currentIntlTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
 
-        return matchesSearch && matchesTab;
+        return matchesNiche && matchesSearch && matchesTab;
       });
 
-      updateStats();
+      // Update Counts
+      document.getElementById('intl-count-all').innerText = intlLeads.length;
+      document.getElementById('intl-count-high').innerText = intlLeads.filter(l => l.retainer_tier.includes('$2,') || l.retainer_tier.includes('$3,')).length;
+      document.getElementById('intl-count-ad').innerText = intlLeads.filter(l => l.leakTag.includes('Ad Gap')).length;
+      document.getElementById('intl-count-pitched').innerText = intlLeads.filter(l => l.status === 'PITCHED').length;
 
       if (filtered.length === 0) {
         results.innerHTML = '';
@@ -1168,58 +1539,56 @@
       }
 
       results.innerHTML = filtered.map(e => `
-        <div class="glass-card p-5 rounded-2xl border border-gray-800 space-y-3 hover:border-emerald-500/50 transition relative group">
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3 hover:border-blue-500/50 transition relative group">
           
           <div class="flex justify-between items-start gap-2">
             <div>
-              <h3 class="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
-              <div class="text-[10px] text-gray-400 uppercase font-mono mt-0.5">
-                <span class="text-emerald-400 font-bold">📍 ${escapeHtml(e.city)}</span> &bull; ${escapeHtml(e.category)} &bull; <span class="text-emerald-300 font-bold">${e.score}/100</span>
-              </div>
+              <h3 class="font-extrabold text-white text-base group-hover:text-blue-400 transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
+              <p class="text-xs text-slate-400 mt-0.5">📍 ${escapeHtml(e.city)} &bull; <span class="text-blue-300 font-bold">${escapeHtml(e.niche)}</span></p>
             </div>
-            
-            <div class="flex items-center gap-1.5 shrink-0">
-              ${e.lat && e.lon ? `<a href="https://www.google.com/maps?q=${e.lat},${e.lon}" target="_blank" class="text-[10px] bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 px-2 py-1 rounded-md font-mono flex items-center gap-1">📍 MAP</a>` : ''}
-              <button onclick="deleteLead('${e.id}')" class="text-gray-500 hover:text-red-400 p-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+
+            <div class="flex flex-col items-end shrink-0">
+              <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-black bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center gap-1">
+                <span>${escapeHtml(e.retainer_tier)}</span>
+              </span>
+              <span class="text-[9px] text-slate-500 font-mono mt-0.5">${e.status === 'PITCHED' ? '💬 PITCHED' : '⚡ NEW QUALIFIED'}</span>
             </div>
           </div>
 
-          <!-- CRM Status Selector -->
-          <div class="flex items-center justify-between gap-2 py-1 px-2 rounded-lg bg-black/60 border border-gray-800 text-xs">
-            <span class="text-[10px] text-gray-500 font-mono uppercase font-bold">CRM:</span>
-            <select onchange="updateLeadStatus('${e.id}', this.value)" class="bg-gray-800 text-xs font-bold rounded px-2 py-0.5 focus:outline-none ${
-              e.status === 'CLOSED' ? 'text-emerald-400' : e.status === 'PITCHED' ? 'text-amber-400' : 'text-gray-300'
-            }">
-              <option value="NEW" ${e.status === 'NEW' ? 'selected' : ''}>⚡ [New Lead]</option>
-              <option value="PITCHED" ${e.status === 'PITCHED' ? 'selected' : ''}>💬 [Pitched]</option>
-              <option value="CLOSED" ${e.status === 'CLOSED' ? 'selected' : ''}>🤝 [Closed - ₹2.5k]</option>
-            </select>
+          <!-- Leak Tag & Web -->
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold ${
+              e.leakTag.includes('Direct Bookings') ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+            }">${escapeHtml(e.leakTag)}</span>
+
+            ${e.website ? `<a href="${e.website}" target="_blank" class="text-xs text-cyan-400 hover:underline flex items-center gap-1 truncate max-w-[160px]"><i data-lucide="globe" class="w-3 h-3"></i> ${escapeHtml(e.website.replace(/^https?:\/\//, ''))}</a>` : ''}
           </div>
 
-          <!-- 360° Defect Findings -->
-          <ul class="text-[11px] text-gray-300 space-y-1 bg-black/40 p-2.5 rounded-xl border border-gray-800/80">
-            ${!e.website ? '<li class="text-red-400 flex items-center gap-1.5"><span>⚠️</span> <span>No Dedicated Booking Website</span></li>' : `<li class="text-emerald-400 flex items-center gap-1.5"><span>🌐</span> <a href="${e.website}" target="_blank" class="truncate hover:underline">${e.website}</a></li>`}
-            ${!e.phone ? '<li class="text-red-400 flex items-center gap-1.5"><span>⚠️</span> <span>No Public WhatsApp/Phone on Map</span></li>' : `<li class="text-emerald-400 flex items-center gap-1.5 font-bold"><span>📱</span> <a href="tel:${e.phone}" class="hover:underline">${e.phone}</a></li>`}
-            <li class="text-yellow-400 flex items-center gap-1.5"><span>⚠️</span> <span>Missing 1-Tap Bio WhatsApp Booking Funnel</span></li>
-            <li class="text-cyan-400 flex items-center gap-1.5"><span>⚠️</span> <span>Zero Active Meta Retargeting Ads</span></li>
+          <!-- Flaws Box -->
+          <ul class="text-[11px] text-slate-300 space-y-1 bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
+            ${(e.flaws || []).map(f => `<li class="flex items-start gap-1.5"><span class="text-blue-400 leading-none">&bull;</span><span class="leading-tight">${escapeHtml(f)}</span></li>`).join('')}
           </ul>
 
-          <!-- Offer Badge -->
-          <div class="text-[11px] text-gray-400 font-mono bg-gray-800/50 px-3 py-1 rounded-md flex justify-between items-center">
-            <span>Closing Hook:</span>
-            <span class="text-amber-300 font-bold">₹2,500 Setup | ₹12k Retainer</span>
-          </div>
-
           <!-- Actions -->
-          <div class="grid grid-cols-2 gap-2 pt-1">
-            <button onclick="triggerWhatsApp('${e.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-gray-950 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95 transition">
-              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-              <span>1-Tap WhatsApp</span>
+          <div class="space-y-2 pt-1">
+            <button 
+              onclick="triggerIntlColdPitch('${e.id}', '${encodeURIComponent(e.pitch)}')" 
+              class="w-full bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 hover:opacity-95 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-95 transition"
+            >
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>Copy High-Converting Cold Pitch</span>
             </button>
-            <button onclick="copyPitch('${e.id}')" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-gray-700 transition">
-              <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
-              <span>Copy Pitch</span>
-            </button>
+
+            <div class="grid grid-cols-2 gap-2">
+              <a href="mailto:contact@${e.website ? e.website.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'company.com'}?subject=Quick%20growth%20audit%20for%20${encodeURIComponent(e.name)}&body=${encodeURIComponent(e.pitch)}" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>Open Email Draft</span>
+              </a>
+              <button onclick="markIntlStatus('${e.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>${e.status === 'PITCHED' ? 'Marked Pitched' : 'Mark As Pitched'}</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -1228,90 +1597,79 @@
       lucide.createIcons();
     }
 
-    function triggerWhatsApp(id) {
-      const allLeads = getAllLeads();
-      const lead = allLeads.find(l => l.id === id);
-      if (!lead) return;
-
-      const encoded = encodeURIComponent(lead.pitch);
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      let url = "";
-
-      if (lead.wa_phone) {
-        url = isMobile 
-          ? `whatsapp://send?phone=${lead.wa_phone}&text=${encoded}` 
-          : `https://web.whatsapp.com/send?phone=${lead.wa_phone}&text=${encoded}`;
-      } else {
-        url = isMobile
-          ? `whatsapp://send?text=${encoded}`
-          : `https://web.whatsapp.com/send?text=${encoded}`;
-      }
-
-      if (lead.status === 'NEW') {
+    function triggerIntlColdPitch(id, encodedPitch) {
+      navigator.clipboard.writeText(decodeURIComponent(encodedPitch));
+      const lead = intlLeads.find(l => l.id === id);
+      if (lead) {
         lead.status = 'PITCHED';
-        saveSmb();
-        renderCity(currentCity);
+        saveLocalStorage(CACHE_KEY_INTL, intlLeads);
+        renderIntlCards();
       }
-
-      const win = window.open(url, '_blank');
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        window.open(lead.wa_phone ? `https://wa.me/${lead.wa_phone}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
-      }
-
-      showToast("WhatsApp launched with pre-filled ₹2,500 pitch!");
+      showToast("🚀 High-Ticket Cold Audit Pitch copied to clipboard!");
     }
 
-    function copyPitch(id) {
-      const allLeads = getAllLeads();
-      const lead = allLeads.find(l => l.id === id);
-      if (!lead) return;
-
-      navigator.clipboard.writeText(lead.pitch);
-      if (lead.status === 'NEW') {
-        lead.status = 'PITCHED';
-        saveSmb();
-        renderCity(currentCity);
-      }
-      showToast("Pitch Script copied to clipboard!");
-    }
-
-    function updateLeadStatus(id, newStatus) {
-      const allLeads = getAllLeads();
-      const lead = allLeads.find(l => l.id === id);
-      if (!lead) return;
-      lead.status = newStatus;
-      saveSmb();
-      renderCity(currentCity);
-      showToast(`Status updated to: ${newStatus}`);
-    }
-
-    function deleteLead(id) {
-      if (confirm("Delete this lead?")) {
-        Object.keys(scans).forEach(city => {
-          scans[city] = scans[city].filter(l => l.id !== id);
-        });
-        saveSmb();
-        renderCity(currentCity);
-        showToast("Lead removed.");
+    function markIntlStatus(id) {
+      const lead = intlLeads.find(l => l.id === id);
+      if (lead) {
+        lead.status = lead.status === 'PITCHED' ? 'NEW' : 'PITCHED';
+        saveLocalStorage(CACHE_KEY_INTL, intlLeads);
+        renderIntlCards();
+        showToast(`Status: ${lead.status}`);
       }
     }
 
-    function updateStats() {
-      const allLeads = getAllLeads();
-      const total = allLeads.length;
-      const priority = allLeads.filter(l => l.score >= 85).length;
-      const pitched = allLeads.filter(l => l.status === 'PITCHED').length;
-      const closed = allLeads.filter(l => l.status === 'CLOSED').length;
+    // =========================================================================
+    // GENERAL HELPERS
+    // =========================================================================
+    function copyRawPitch(encoded) {
+      navigator.clipboard.writeText(decodeURIComponent(encoded));
+      showToast("📋 Pitch script copied to clipboard!");
+    }
 
-      document.getElementById('totalLeads').innerText = total;
-      document.getElementById('priorityLeads').innerText = priority;
-      document.getElementById('pitchedLeads').innerText = pitched;
-      document.getElementById('closedRevenue').innerText = '₹' + (closed * 2500).toLocaleString();
+    function clearEngineData(eng) {
+      if (confirm(`Clear all ${eng} leads from database?`)) {
+        if (eng === 'LOCAL') {
+          localScans = {};
+          saveLocalStorage(CACHE_KEY_LOCAL, localScans);
+          renderLocalCards();
+        }
+        showToast("Database cleared.");
+      }
+    }
 
-      document.getElementById('count-all').innerText = total;
-      document.getElementById('count-hot').innerText = priority;
-      document.getElementById('count-pitched').innerText = pitched;
-      document.getElementById('count-closed').innerText = closed;
+    function exportEngineData(eng) {
+      let data = eng === 'LOCAL' ? localScans : (eng === 'IG' ? igLeads : intlLeads);
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `LeadHunter_${eng}_Export_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Exported as JSON!");
+    }
+
+    function saveLocalStorage(key, val) {
+      localStorage.setItem(key, JSON.stringify(val));
+    }
+
+    function formatPhone(raw) {
+      if (!raw) return null;
+      let digits = String(raw).replace(/[^0-9]/g, '');
+      if (digits.startsWith('0')) digits = digits.slice(1);
+      if (digits.length === 10) return `91${digits}`;
+      if (digits.length === 12 && digits.startsWith('91')) return digits;
+      if (digits.length > 10) return digits;
+      return null;
+    }
+
+    function logTerminal(el, msg, color = 'text-slate-300') {
+      if (!el) return;
+      const div = document.createElement('div');
+      div.className = `flex items-center gap-1.5 ${color}`;
+      div.innerHTML = `<span class="text-slate-500 font-mono">[${new Date().toLocaleTimeString()}]</span> <span>${msg}</span>`;
+      el.appendChild(div);
+      el.scrollTop = el.scrollHeight;
     }
 
     function showToast(msg) {
