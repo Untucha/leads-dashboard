@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>LEADHUNTER 360° ULTRA PRO MAX & CRM ENGINE</title>
+  <title>LEADHUNTER 360 ULTRA PRO MAX</title>
   
   <!-- Google Fonts & Tailwind CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,14 +32,7 @@
               700: '#047857',
               cyan: '#06b6d4',
               violet: '#8b5cf6',
-              amber: '#f59e0b',
-              n8n: '#ff6d5a'
-            },
-            surface: {
-              DEFAULT: '#080B11',
-              card: '#101623',
-              panel: '#1A2234',
-              border: '#28354D'
+              amber: '#f59e0b'
             }
           }
         }
@@ -49,14 +42,14 @@
 
   <style>
     body {
-      background-color: #080B11;
+      background-color: #030712;
       color: #F3F4F6;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
       -webkit-tap-highlight-color: transparent;
     }
     
     .glass-card {
-      background: rgba(16, 22, 35, 0.88);
+      background: rgba(17, 24, 39, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -67,14 +60,14 @@
       height: 6px;
     }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: #080B11;
+      background: #030712;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #28354D;
+      background: #1f2937;
       border-radius: 9999px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #3B4B69;
+      background: #374151;
     }
 
     @keyframes scanner {
@@ -86,433 +79,193 @@
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white custom-scrollbar pb-24 lg:pb-12">
+<body class="min-h-screen p-3 md:p-6 custom-scrollbar pb-24 lg:pb-12">
 
-  <!-- TOP HEADER -->
-  <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80 px-4 lg:px-8 py-3 transition-all duration-200">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- HEADER & SEARCH BAR -->
+    <div class="glass-card border border-emerald-500/30 p-5 md:p-7 rounded-2xl shadow-2xl relative overflow-hidden">
       
-      <!-- Brand & Status -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-[#ff6d5a] via-brand-500 to-brand-cyan shadow-lg shadow-brand-500/20">
-            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
-            <span class="absolute -top-1 -right-1 flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-            </span>
+      <!-- Glow background -->
+      <div class="absolute -right-20 -top-20 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h1 class="text-xl md:text-2xl font-black text-emerald-400 tracking-tight flex items-center gap-2">
+              LEADHUNTER 360 <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold border border-emerald-500/40">ULTRA PRO MAX</span>
+            </h1>
           </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-                LEADHUNTER <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-400 font-mono font-bold border border-brand-500/30">360° ULTRA PRO MAX</span>
-              </h1>
-            </div>
-            <p class="text-[11px] sm:text-xs text-slate-400">Multi-Mirror Overpass Engine &bull; Zero-Fail Live Scan &bull; 1-Tap WhatsApp</p>
-          </div>
+          <p class="text-xs text-gray-400 mt-1">Live Overpass POI Hunter &bull; 360° Defect Matrix &bull; 1-Tap WhatsApp Closing</p>
         </div>
 
-        <!-- Mobile Actions -->
-        <div class="flex items-center gap-1.5 md:hidden">
-          <button onclick="clearPipeline()" class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">
-            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-            <span>Clear</span>
+        <div class="flex items-center gap-2">
+          <button onclick="clearPipeline()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
+            Clear Leads
+          </button>
+          <button onclick="exportLeadsJSON()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
+            Export JSON
           </button>
         </div>
       </div>
 
-      <!-- Live Engine Badges -->
-      <div class="flex items-center gap-2 overflow-x-auto py-1 custom-scrollbar text-xs font-mono">
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 shrink-0">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-[11px] text-slate-400">Overpass Cluster:</span>
-          <span id="active-mirror-badge" class="text-emerald-300 font-medium">Auto-Failover Active</span>
+      <!-- Quick City Selection & Form -->
+      <form id="scan-form" onsubmit="runScan(event)" class="space-y-3">
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <div class="relative flex-grow">
+            <input 
+              type="text" 
+              id="cityInput" 
+              value="Mysuru" 
+              required
+              placeholder="Enter Target City (e.g. Mysuru, Bengaluru, Chikkamagaluru, Mangaluru...)" 
+              class="w-full bg-black/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
+            />
+          </div>
+          
+          <select id="categoryInput" class="bg-gray-900 border border-gray-700 rounded-xl px-4 py-3.5 text-xs text-gray-200 focus:outline-none focus:border-emerald-500 sm:w-56">
+            <option value="all">🔥 All High-Ticket Categories</option>
+            <option value="cafes">☕ Cafes & Restaurants</option>
+            <option value="clinics">🦷 Dental & Aesthetic Clinics</option>
+            <option value="boutiques">👗 Boutiques & Clothing</option>
+            <option value="fitness">🏋️ Gyms & Fitness Centers</option>
+            <option value="salons">💇 Salons & Beauty Spas</option>
+            <option value="resorts">🏡 Resorts & Hotels</option>
+          </select>
+
+          <button 
+            type="submit" 
+            id="btnScan" 
+            class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-gray-950 px-7 py-3.5 rounded-xl font-extrabold text-sm tracking-wide transition-all shadow-lg shadow-emerald-600/30 shrink-0 flex items-center justify-center gap-2"
+          >
+            <i data-lucide="radar" class="w-4 h-4"></i>
+            <span>RUN DEEP SCAN</span>
+          </button>
         </div>
 
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-slate-300 shrink-0">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          <span class="text-[11px] text-slate-400">Deep-Link:</span>
-          <span class="text-cyan-300 font-medium">Mobile 1-Tap WA</span>
+        <!-- Quick City Pills -->
+        <div class="flex items-center gap-1.5 flex-wrap pt-1 text-xs">
+          <span class="text-gray-500 font-mono text-[11px]">Quick Cities:</span>
+          <button type="button" onclick="setCity('Mysuru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mysuru</button>
+          <button type="button" onclick="setCity('Bengaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Bengaluru</button>
+          <button type="button" onclick="setCity('Chikkamagaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Chikkamagaluru</button>
+          <button type="button" onclick="setCity('Mangaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mangaluru</button>
+          <button type="button" onclick="setCity('Hubballi')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Hubballi</button>
         </div>
+      </form>
 
-        <button onclick="clearPipeline()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition-colors">
-          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-          <span>Clear DB</span>
-        </button>
+      <!-- Live Terminal Streaming Progress -->
+      <div id="scanTerminal" class="hidden mt-4 bg-black/90 rounded-xl p-3.5 border border-gray-800 font-mono text-xs text-gray-300 space-y-1.5 relative overflow-hidden">
+        <div class="flex items-center justify-between text-[11px] text-gray-400 border-b border-gray-800 pb-1">
+          <span class="text-emerald-400 font-bold flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Overpass Pipeline
+          </span>
+          <span id="terminalStatus" class="text-cyan-400">Querying cluster...</span>
+        </div>
+        <div id="terminalLogs" class="max-h-28 overflow-y-auto custom-scrollbar space-y-1 text-[11px]"></div>
+        <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-70 scanner-line pointer-events-none"></div>
       </div>
 
     </div>
-  </header>
 
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 flex-1 w-full space-y-6">
-
-    <!-- SEARCH & SCAN CONTROL SECTION -->
-    <section class="glass-card rounded-2xl p-5 lg:p-6 border border-brand-500/30 relative overflow-hidden shadow-2xl shadow-brand-500/5">
-      
-      <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 space-y-4">
-        
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-500/20 text-brand-400 border border-brand-500/30 flex items-center gap-1">
-                <i data-lucide="radio" class="w-3 h-3 text-emerald-400 animate-pulse"></i> MULTI-MIRROR ENGINE
-              </span>
-              <h2 class="text-lg lg:text-xl font-extrabold text-white">Live City-Wide Real Lead Scanner & 360° Auditor</h2>
-            </div>
-            <p class="text-xs text-slate-400 mt-1">
-              Select any city and category. The engine geocodes via Nominatim, queries live Overpass server mirrors with auto-failover, and auto-generates ₹2,500 WhatsApp pitch hooks.
-            </p>
-          </div>
-          
-          <!-- Quick City Pills -->
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-[11px] text-slate-500 font-mono">Quick Cities:</span>
-            <button onclick="setCityAndNiche('Mysuru', 'Cafes & Bakeries')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-brand-300 border border-slate-700 transition-colors">Mysuru</button>
-            <button onclick="setCityAndNiche('Bengaluru', 'Dental & Aesthetic Clinics')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-brand-300 border border-slate-700 transition-colors">Bengaluru</button>
-            <button onclick="setCityAndNiche('Chikkamagaluru', 'Resorts & Hotels')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-brand-300 border border-slate-700 transition-colors">Chikkamagaluru</button>
-            <button onclick="setCityAndNiche('Mangaluru', 'Restaurants & Food')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-brand-300 border border-slate-700 transition-colors">Mangaluru</button>
-            <button onclick="setCityAndNiche('Hubballi', 'Fitness & Gyms')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-[11px] text-brand-300 border border-slate-700 transition-colors">Hubballi</button>
-          </div>
-        </div>
-
-        <!-- Scan Form -->
-        <form id="scan-form" onsubmit="executeLiveDeepScan(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-1">
-          
-          <div class="sm:col-span-5 relative">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Target City / Locality</label>
-            <div class="relative">
-              <i data-lucide="map-pin" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-400"></i>
-              <input 
-                type="text" 
-                id="scan-city-input" 
-                required 
-                value="Mysuru" 
-                placeholder="e.g. Mysuru, Bengaluru, Chikkamagaluru, Mangaluru..." 
-                class="w-full bg-slate-900/90 border border-slate-700/90 rounded-xl pl-10 pr-3 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
-              />
-            </div>
-          </div>
-
-          <div class="sm:col-span-4">
-            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Target Category / Niche</label>
-            <div class="relative">
-              <select 
-                id="scan-niche-select" 
-                class="w-full bg-slate-900/90 border border-slate-700/90 rounded-xl px-3.5 py-3 text-sm text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 appearance-none transition-all"
-              >
-                <option value="Cafes & Bakeries">☕ Cafes, Bakeries & Roasteries</option>
-                <option value="Dental & Aesthetic Clinics">🦷 Dental & Aesthetic Clinics</option>
-                <option value="Boutiques & Fashion">👗 Boutiques & Clothing Stores</option>
-                <option value="Fitness & Gyms">🏋️ Fitness Studios & Gyms</option>
-                <option value="Resorts & Hotels">🏡 Hotels, Resorts & Homestays</option>
-                <option value="Salons & Spas">💇 Salons & Beauty Spas</option>
-                <option value="Restaurants & Food">🍲 Restaurants & Restobars</option>
-              </select>
-              <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
-            </div>
-          </div>
-
-          <div class="sm:col-span-3 flex items-end">
-            <button 
-              type="submit" 
-              id="btn-deep-scan" 
-              class="w-full h-[46px] rounded-xl bg-gradient-to-r from-brand-500 via-emerald-400 to-brand-cyan hover:opacity-95 text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-500/25 active:scale-95 transition-all"
-            >
-              <i data-lucide="radar" class="w-4 h-4 text-slate-950"></i>
-              <span>RUN DEEP SCAN</span>
-            </button>
-          </div>
-
-        </form>
-
-        <!-- Live Terminal Logs -->
-        <div id="scan-terminal" class="hidden bg-slate-950/95 rounded-xl p-3.5 border border-slate-800 font-mono text-xs text-slate-300 space-y-2 relative overflow-hidden">
-          <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-1.5">
-            <span class="flex items-center gap-2 text-brand-400 font-bold">
-              <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
-              Live Overpass API Response Stream
-            </span>
-            <span id="scan-terminal-status" class="text-cyan-400">Connecting to Overpass cluster...</span>
-          </div>
-
-          <div id="scan-terminal-logs" class="space-y-1 text-[11px] text-slate-300 max-h-36 overflow-y-auto custom-scrollbar">
-            <!-- Logs -->
-          </div>
-
-          <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-brand-400 to-transparent opacity-70 scanner-line pointer-events-none"></div>
-        </div>
-
+    <!-- STATS DASHBOARD -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <div class="glass-card p-4 rounded-xl border border-gray-800">
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Total Scanned</p>
+        <h2 id="totalLeads" class="text-2xl font-black text-white mt-0.5">0</h2>
       </div>
-    </section>
+      <div class="glass-card p-4 rounded-xl border border-gray-800">
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Priority (>85%)</p>
+        <h2 id="priorityLeads" class="text-2xl font-black text-emerald-400 mt-0.5">0</h2>
+      </div>
+      <div class="glass-card p-4 rounded-xl border border-gray-800">
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pitched Leads</p>
+        <h2 id="pitchedLeads" class="text-2xl font-black text-amber-400 mt-0.5">0</h2>
+      </div>
+      <div class="glass-card p-4 rounded-xl border border-gray-800">
+        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pipeline Revenue</p>
+        <h2 id="closedRevenue" class="text-2xl font-black text-cyan-400 mt-0.5">₹0</h2>
+      </div>
+    </div>
 
-    <!-- KPI STATS -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
-      
-      <div class="glass-card rounded-2xl p-4 lg:p-5 relative overflow-hidden group hover:border-brand-500/40 transition-all">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">360° Real Leads</span>
-          <div class="p-2 rounded-xl bg-slate-800/80 text-brand-400">
-            <i data-lucide="target" class="w-4 h-4"></i>
-          </div>
-        </div>
-        <div class="flex items-baseline gap-2">
-          <span id="stat-total-leads" class="text-2xl lg:text-3xl font-extrabold text-white">0</span>
-          <span class="text-xs font-medium text-emerald-400 flex items-center">
-            <i data-lucide="radio" class="w-3 h-3 mr-0.5 inline"></i> Live Verified
-          </span>
-        </div>
-        <p class="text-[11px] text-slate-500 mt-1 font-mono">100% Real Live Leads</p>
+    <!-- FILTER TABS & SEARCH -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-1">
+        <button onclick="setTab('ALL')" id="tab-ALL" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-gray-950 shadow">All (<span id="count-all">0</span>)</button>
+        <button onclick="setTab('HOT')" id="tab-HOT" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🔥 Hot Deals (<span id="count-hot">0</span>)</button>
+        <button onclick="setTab('PITCHED')" id="tab-PITCHED" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">💬 Pitched (<span id="count-pitched">0</span>)</button>
+        <button onclick="setTab('CLOSED')" id="tab-CLOSED" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-gray-900 text-gray-300 border border-gray-800">🤝 Closed ₹2.5k (<span id="count-closed">0</span>)</button>
       </div>
 
-      <div class="glass-card rounded-2xl p-4 lg:p-5 relative overflow-hidden group hover:border-cyan-500/40 transition-all">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">High Intent (>85%)</span>
-          <div class="p-2 rounded-xl bg-slate-800/80 text-cyan-400">
-            <i data-lucide="flame" class="w-4 h-4"></i>
-          </div>
-        </div>
-        <div class="flex items-baseline gap-2">
-          <span id="stat-hot-leads" class="text-2xl lg:text-3xl font-extrabold text-cyan-400">0</span>
-          <span class="text-xs text-slate-400 font-mono">Priority</span>
-        </div>
-        <p class="text-[11px] text-slate-500 mt-1">Ready for 1-Tap WA</p>
-      </div>
-
-      <div class="glass-card rounded-2xl p-4 lg:p-5 relative overflow-hidden group hover:border-amber-500/40 transition-all">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">Pitched Leads</span>
-          <div class="p-2 rounded-xl bg-slate-800/80 text-amber-400">
-            <i data-lucide="message-square" class="w-4 h-4"></i>
-          </div>
-        </div>
-        <div class="flex items-baseline gap-2">
-          <span id="stat-pitched-leads" class="text-2xl lg:text-3xl font-extrabold text-amber-400">0</span>
-          <span class="text-xs text-amber-500/80 font-mono font-medium">In Pipeline</span>
-        </div>
-        <p class="text-[11px] text-slate-500 mt-1 font-mono">Active Conversations</p>
-      </div>
-
-      <div class="glass-card rounded-2xl p-4 lg:p-5 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
-        <div class="flex items-center justify-between text-slate-400 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider">Closed Deals (₹2.5k)</span>
-          <div class="p-2 rounded-xl bg-slate-800/80 text-emerald-400">
-            <i data-lucide="check-check" class="w-4 h-4"></i>
-          </div>
-        </div>
-        <div class="flex items-baseline gap-2">
-          <span id="stat-closed-revenue" class="text-2xl lg:text-3xl font-extrabold text-emerald-400">₹0</span>
-          <span id="stat-closed-count" class="text-xs text-slate-400 font-mono">0 Deals</span>
-        </div>
-        <p class="text-[11px] text-slate-500 mt-1">Direct ₹2,500 Revenue</p>
-      </div>
-
-    </section>
-
-    <!-- CRM QUICK FILTER TABS -->
-    <section class="glass-card rounded-2xl p-2.5 lg:p-3 flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
-      <button onclick="setTabFilter('ALL')" id="tab-ALL" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-500 text-slate-950 shadow-md">
-        All Live Leads (<span id="count-tab-all">0</span>)
-      </button>
-      <button onclick="setTabFilter('HOT')" id="tab-HOT" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800">
-        🔥 Hot Deals 85%+ (<span id="count-tab-hot">0</span>)
-      </button>
-      <button onclick="setTabFilter('NEW')" id="tab-NEW" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800">
-        ⚡ New (<span id="count-tab-new">0</span>)
-      </button>
-      <button onclick="setTabFilter('PITCHED')" id="tab-PITCHED" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800">
-        💬 Pitched (<span id="count-tab-pitched">0</span>)
-      </button>
-      <button onclick="setTabFilter('FOLLOW_UP')" id="tab-FOLLOW_UP" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800">
-        📅 Follow-Up (<span id="count-tab-followup">0</span>)
-      </button>
-      <button onclick="setTabFilter('CLOSED')" id="tab-CLOSED" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800">
-        🤝 Closed ₹2.5k (<span id="count-tab-closed">0</span>)
-      </button>
-    </section>
-
-    <!-- SEARCH & FILTER TOOLBAR -->
-    <section class="glass-card rounded-2xl p-3 lg:p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-      
-      <div class="relative flex-1">
-        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+      <div class="relative w-full sm:w-64">
+        <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
         <input 
           type="text" 
-          id="search-input" 
+          id="filterSearch" 
           oninput="renderLeads()" 
-          placeholder="Filter 360° leads by name, locality, phone, defects, upsell..." 
-          class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+          placeholder="Search name, phone, defects..." 
+          class="w-full bg-gray-900 border border-gray-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500"
         />
       </div>
-
-      <div class="flex flex-wrap items-center gap-2">
-        <select id="filter-has-phone" onchange="renderLeads()" class="bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs font-medium rounded-xl px-3 py-2.5 focus:outline-none focus:border-brand-500">
-          <option value="ALL">All Contacts</option>
-          <option value="WITH_PHONE">📱 Has Real Phone Tag</option>
-          <option value="WITH_WEB">🌐 Has Real Website Tag</option>
-        </select>
-
-        <button onclick="exportLeadsJSON()" title="Export JSON" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 text-xs flex items-center gap-1 border border-slate-700/60 transition-colors ml-auto md:ml-0">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i>
-          <span class="hidden sm:inline">Export</span>
-        </button>
-      </div>
-
-    </section>
-
-    <!-- LIVE LEAD CARDS PIPELINE GRID -->
-    <section>
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-base font-bold text-white flex items-center gap-2">
-          <i data-lucide="layers" class="w-4 h-4 text-brand-400"></i>
-          <span>360° Agency Scanned Leads</span>
-          <span id="filtered-count" class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-brand-400 font-mono font-bold">0 leads</span>
-        </h2>
-        <span class="text-xs text-slate-400 hidden sm:inline font-mono">100% Real Live Overpass Data &bull; LocalStorage Synced</span>
-      </div>
-
-      <!-- Lead Cards Grid -->
-      <div id="leads-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-        <!-- Live 360 cards -->
-      </div>
-
-      <!-- Empty State -->
-      <div id="empty-state" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
-        <div class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-brand-400">
-          <i data-lucide="radar" class="w-7 h-7"></i>
-        </div>
-        <h3 class="text-base font-bold text-white">0 Leads Scanned</h3>
-        <p class="text-xs text-slate-400 max-w-md">
-          Type any town or city (e.g. <b>Mysuru</b>, <b>Bengaluru</b>, <b>Chikkamagaluru</b>, <b>Mangaluru</b>) above and click <b>RUN DEEP SCAN</b> to query real live registered businesses directly from OpenStreetMap servers.
-        </p>
-        <button onclick="document.getElementById('scan-form').dispatchEvent(new Event('submit'))" class="mt-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs shadow-lg shadow-brand-500/20 active:scale-95 transition-all">
-          Click to Scan Mysuru Live
-        </button>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MODAL: CLOSING OFFER PROPOSAL -->
-  <div id="proposal-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
-    <div class="glass-card w-full max-w-xl rounded-2xl border border-slate-700 shadow-2xl p-5 lg:p-7 relative my-8">
-      <button onclick="closeProposalModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold">
-          <i data-lucide="file-check-2" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <h3 class="text-base font-bold text-white">360° Fast-Closing Proposal</h3>
-          <p class="text-xs text-slate-400" id="proposal-lead-title">Proposal ready for client...</p>
-        </div>
-      </div>
-
-      <div class="space-y-3">
-        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 font-mono text-xs text-slate-300 leading-relaxed max-h-72 overflow-y-auto custom-scrollbar whitespace-pre-wrap" id="proposal-text-body"></div>
-
-        <div class="flex items-center justify-between gap-3 pt-2">
-          <span class="text-xs text-emerald-400 font-medium flex items-center gap-1">
-            <i data-lucide="clock" class="w-3.5 h-3.5"></i> 48-Hour Delivery Guarantee
-          </span>
-          <button onclick="copyProposalToClipboard()" class="px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all">
-            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-            <span>Copy Proposal</span>
-          </button>
-        </div>
-      </div>
     </div>
+
+    <!-- LEADS GRID -->
+    <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Cards dynamically rendered here -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="glass-card rounded-2xl p-12 text-center flex flex-col items-center justify-center space-y-3">
+      <div class="w-12 h-12 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-emerald-400">
+        <i data-lucide="radar" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-base font-bold text-white">0 Leads in Pipeline</h3>
+      <p class="text-xs text-gray-400 max-w-sm">Type any city above and click <b>RUN DEEP SCAN</b> to query real live businesses via Overpass.</p>
+    </div>
+
   </div>
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 border border-brand-500/50 shadow-2xl text-white text-xs font-medium">
-    <div class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></div>
-    <span id="toast-message">Message copied to clipboard!</span>
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gray-900 border border-emerald-500/50 shadow-2xl text-white text-xs font-medium">
+    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+    <span id="toastMessage">Message copied!</span>
   </div>
 
-  <!-- JAVASCRIPT: DYNAMIC MULTI-MIRROR FAILOVER OVERPASS ENGINE -->
   <script>
-    const LOCAL_CACHE_KEY = 'leadhunter_360_prod_v8';
+    const CACHE_KEY = 'leadhunter_360_ultra_v9';
+    let leads = [];
+    let activeTab = 'ALL';
 
-    // MULTI-MIRROR FAILOVER CLUSTER
-    const OVERPASS_MIRRORS = [
+    const OVERPASS_SERVERS = [
+      'https://overpass.kth.se/api/interpreter',
       'https://lz4.overpass-api.de/api/interpreter',
       'https://overpass-api.de/api/interpreter',
-      'https://overpass.kumi.systems/api/interpreter',
-      'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
-      'https://overpass.kth.se/api/interpreter'
+      'https://overpass.kumi.systems/api/interpreter'
     ];
 
-    const CATEGORY_MAP = {
-      "Cafes & Bakeries": {
-        queryFragment: `["amenity"~"cafe|restaurant|fast_food|bakery"]`,
-        label: "Cafes & Bakeries",
-        upsell: "Local Foodie Ad Retargeting + Inbound WhatsApp Ordering Bot"
-      },
-      "Dental & Aesthetic Clinics": {
-        queryFragment: `["amenity"~"dentist|clinic|doctors"]`,
-        label: "Dental & Aesthetic Clinics",
-        upsell: "High-Ticket Patient Meta Ads + Google Local 3-Pack Rank Booster"
-      },
-      "Boutiques & Fashion": {
-        queryFragment: `["shop"~"boutique|clothes|fashion|tailor"]`,
-        label: "Boutiques & Clothing Stores",
-        upsell: "Viral Bridal Reels Production + NRI WhatsApp Catalog Setup"
-      },
-      "Fitness & Gyms": {
-        queryFragment: `["leisure"~"fitness_centre|sports_centre"]`,
-        label: "Fitness Studios & Gyms",
-        upsell: "1-Mile Radius Geo Ads + Free 1-Day Trial Automation"
-      },
-      "Resorts & Hotels": {
-        queryFragment: `["tourism"~"hotel|guest_house|resort|chalet"]`,
-        label: "Hotels & Resorts",
-        upsell: "0% Commission Direct Booking Engine + Weekend Metro Retargeting"
-      },
-      "Salons & Spas": {
-        queryFragment: `["shop"~"hairdresser|beauty"]["amenity"~"spa|beauty"]`,
-        label: "Salons & Spas",
-        upsell: "Bridal Package Meta Campaigns + Automated SMS/WA No-Show Reducer"
-      },
-      "Restaurants & Food": {
-        queryFragment: `["amenity"~"restaurant|bar|pub|cafe"]`,
-        label: "Restaurants & Dining",
-        upsell: "Weekend Table Reservation Funnel + 4K Reel Content Engine"
-      }
-    };
-
-    let leads = [];
-    let currentTabFilter = 'ALL';
-
-    function initApp() {
-      const cached = localStorage.getItem(LOCAL_CACHE_KEY);
-      if (cached) {
+    function init() {
+      const saved = localStorage.getItem(CACHE_KEY);
+      if (saved) {
         try {
-          leads = JSON.parse(cached);
+          leads = JSON.parse(saved);
         } catch (e) {
           leads = [];
         }
-      } else {
-        leads = [];
       }
       renderLeads();
       lucide.createIcons();
     }
 
-    function saveLeads() {
-      localStorage.setItem(LOCAL_CACHE_KEY, JSON.stringify(leads));
+    function save() {
+      localStorage.setItem(CACHE_KEY, JSON.stringify(leads));
       updateStats();
     }
 
     function clearPipeline() {
-      if (confirm("Clear all scanned leads from the database?")) {
+      if (confirm("Clear all scanned leads?")) {
         leads = [];
-        saveLeads();
+        save();
         renderLeads();
         showToast("Pipeline cleared.");
       }
@@ -520,59 +273,50 @@
 
     function exportLeadsJSON() {
       if (leads.length === 0) {
-        showToast("No leads in pipeline to export!");
+        showToast("No leads to export!");
         return;
       }
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(leads, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `Leads_360_Export_${new Date().toISOString().slice(0, 10)}.json`);
+      downloadAnchor.setAttribute("download", `Leads_Export_${new Date().toISOString().slice(0,10)}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      showToast("360° Leads exported as JSON!");
+      showToast("Exported as JSON!");
     }
 
-    function setCityAndNiche(city, niche) {
-      document.getElementById('scan-city-input').value = city;
-      document.getElementById('scan-niche-select').value = niche;
-      document.getElementById('scan-form').dispatchEvent(new Event('submit'));
+    function setCity(cityName) {
+      document.getElementById('cityInput').value = cityName;
+      runScan();
     }
 
-    function setTabFilter(tab) {
-      currentTabFilter = tab;
+    function setTab(tab) {
+      activeTab = tab;
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-brand-500', 'text-slate-950', 'shadow-md');
-        btn.classList.add('bg-slate-900/80', 'text-slate-300', 'border', 'border-slate-800');
+        btn.classList.remove('bg-emerald-500', 'text-gray-950', 'shadow');
+        btn.classList.add('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
       });
-      const activeBtn = document.getElementById(`tab-${tab}`);
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-slate-900/80', 'text-slate-300', 'border', 'border-slate-800');
-        activeBtn.classList.add('bg-brand-500', 'text-slate-950', 'shadow-md');
+      const active = document.getElementById(`tab-${tab}`);
+      if (active) {
+        active.classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
+        active.classList.add('bg-emerald-500', 'text-gray-950', 'shadow');
       }
       renderLeads();
     }
 
-    function logTerminal(message, type = 'info') {
-      const logs = document.getElementById('scan-terminal-logs');
-      const p = document.createElement('div');
-      const time = new Date().toLocaleTimeString();
-      
-      let colorClass = 'text-slate-300';
-      if (type === 'success') colorClass = 'text-emerald-400 font-semibold';
-      else if (type === 'agent') colorClass = 'text-cyan-300 font-medium';
-      else if (type === 'warn') colorClass = 'text-amber-400';
-      else if (type === 'error') colorClass = 'text-red-400';
-
-      p.className = `flex items-center gap-2 ${colorClass}`;
-      p.innerHTML = `<span class="text-slate-500 font-mono">[${time}]</span> <span>${message}</span>`;
-      logs.appendChild(p);
+    function logTerminal(msg, color = 'text-gray-300') {
+      const logs = document.getElementById('terminalLogs');
+      const div = document.createElement('div');
+      div.className = `flex items-center gap-1.5 ${color}`;
+      div.innerHTML = `<span class="text-gray-500 font-mono">[${new Date().toLocaleTimeString()}]</span> <span>${msg}</span>`;
+      logs.appendChild(div);
       logs.scrollTop = logs.scrollHeight;
     }
 
-    function formatWhatsAppPhone(rawPhone) {
-      if (!rawPhone) return null;
-      let digits = String(rawPhone).replace(/[^0-9]/g, '');
+    function formatPhone(raw) {
+      if (!raw) return null;
+      let digits = String(raw).replace(/[^0-9]/g, '');
       if (digits.startsWith('0')) digits = digits.slice(1);
       if (digits.length === 10) return `91${digits}`;
       if (digits.length === 12 && digits.startsWith('91')) return digits;
@@ -580,31 +324,56 @@
       return null;
     }
 
-    // MULTI-MIRROR FAILOVER FETCH WITH TIMEOUT & CORS-BYPASS
-    async function fetchOverpassMultiMirror(overpassQuery) {
-      const timeoutMs = 9000;
-      
-      for (let i = 0; i < OVERPASS_MIRRORS.length; i++) {
-        const mirror = OVERPASS_MIRRORS[i];
-        const mirrorHost = new URL(mirror).hostname;
-        logTerminal(`📡 Trying Overpass Node [${i+1}/${OVERPASS_MIRRORS.length}]: ${mirrorHost}...`, 'agent');
-        
+    async function runScan(e) {
+      if (e) e.preventDefault();
+
+      const city = document.getElementById('cityInput').value.trim();
+      const categoryType = document.getElementById('categoryInput').value;
+      const terminal = document.getElementById('scanTerminal');
+      const terminalLogs = document.getElementById('terminalLogs');
+      const terminalStatus = document.getElementById('terminalStatus');
+      const btn = document.getElementById('btnScan');
+
+      terminalLogs.innerHTML = '';
+      terminal.classList.remove('hidden');
+      btn.disabled = true;
+      btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      logTerminal(`🚀 Initiating Live Scan for city: "${city}"...`, 'text-emerald-400');
+      terminalStatus.innerText = "Querying Overpass API mirrors...";
+
+      // Query fragments based on category
+      let categoryQuery = `node["amenity"~"cafe|restaurant|bakery|dentist|clinic"](area.a);node["shop"~"boutique|gift|clothing|hairdresser|beauty"](area.a);`;
+      if (categoryType === 'cafes') categoryQuery = `node["amenity"~"cafe|restaurant|bakery|fast_food"](area.a);`;
+      else if (categoryType === 'clinics') categoryQuery = `node["amenity"~"dentist|clinic|doctors"](area.a);`;
+      else if (categoryType === 'boutiques') categoryQuery = `node["shop"~"boutique|clothing|fashion|tailor"](area.a);`;
+      else if (categoryType === 'fitness') categoryQuery = `node["leisure"~"fitness_centre|sports_centre"](area.a);`;
+      else if (categoryType === 'salons') categoryQuery = `node["shop"~"hairdresser|beauty"](area.a);`;
+      else if (categoryType === 'resorts') categoryQuery = `node["tourism"~"hotel|guest_house|resort"](area.a);`;
+
+      const qlQuery = `[out:json][timeout:25];area["name"="${city}"]->.a;(${categoryQuery});out body 40;`;
+
+      let fetchedElements = [];
+
+      // Multi-Server Failover Loop
+      for (let i = 0; i < OVERPASS_SERVERS.length; i++) {
+        const server = OVERPASS_SERVERS[i];
+        const serverHost = new URL(server).hostname;
+        logTerminal(`📡 Trying Overpass server [${i+1}/${OVERPASS_SERVERS.length}]: ${serverHost}...`, 'text-cyan-300');
+
         try {
           const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), timeoutMs);
+          const timer = setTimeout(() => controller.abort(), 9000);
 
-          // Method A: Try URL GET request (bypasses some browser preflight blocks)
-          const getUrl = `${mirror}?data=${encodeURIComponent(overpassQuery)}`;
+          const getUrl = `${server}?data=${encodeURIComponent(qlQuery)}`;
           let res;
-          
           try {
-            res = await fetch(getUrl, { signal: controller.signal, headers: { 'Accept': 'application/json' } });
+            res = await fetch(getUrl, { signal: controller.signal });
           } catch (getErr) {
-            // Method B: Fallback to POST
-            res = await fetch(mirror, {
+            res = await fetch(server, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
-              body: `data=${encodeURIComponent(overpassQuery)}`,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: `data=${encodeURIComponent(qlQuery)}`,
               signal: controller.signal
             });
           }
@@ -614,320 +383,200 @@
           if (res && res.ok) {
             const data = await res.json();
             if (data && data.elements && data.elements.length > 0) {
-              logTerminal(`⚡ Connected to ${mirrorHost}! Received ${data.elements.length} raw elements`, 'success');
-              const badge = document.getElementById('active-mirror-badge');
-              if (badge) badge.innerText = mirrorHost;
-              return data.elements;
+              fetchedElements = data.elements;
+              logTerminal(`⚡ Connected to ${serverHost}! Received ${fetchedElements.length} POIs`, 'text-emerald-400');
+              break;
             }
           }
         } catch (err) {
-          logTerminal(`⚠️ Node ${mirrorHost} unreachable or timed out. Auto-failing over...`, 'warn');
+          logTerminal(`⚠️ Server ${serverHost} failed or timed out. Failing over...`, 'text-amber-400');
         }
       }
-      return null;
-    }
 
-    // 100% REAL LIVE SCAN WITH AUTO-FAILOVER
-    async function executeLiveDeepScan(e) {
-      if (e) e.preventDefault();
-
-      const cityInput = document.getElementById('scan-city-input').value.trim();
-      const nicheSelect = document.getElementById('scan-niche-select').value;
-      const category = CATEGORY_MAP[nicheSelect] || CATEGORY_MAP["Cafes & Bakeries"];
-
-      const terminal = document.getElementById('scan-terminal');
-      const logs = document.getElementById('scan-terminal-logs');
-      const statusLabel = document.getElementById('scan-terminal-status');
-      const btnScan = document.getElementById('btn-deep-scan');
-
-      logs.innerHTML = '';
-      terminal.classList.remove('hidden');
-      btnScan.disabled = true;
-      btnScan.classList.add('opacity-50', 'cursor-not-allowed');
-
-      logTerminal(`🚀 Initiating Live Multi-Mirror Scan for "${nicheSelect}" in "${cityInput}"...`, 'info');
-      statusLabel.innerText = "Geocoding coordinates via OpenStreetMap Nominatim...";
-
-      try {
-        // Step 1: Real-time Geocoding via Nominatim
-        const cleanCity = encodeURIComponent(cityInput.split('(')[0].trim());
-        const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${cleanCity}&limit=1`;
-        
-        logTerminal(`📍 Querying Nominatim for "${cityInput}" coordinates...`, 'agent');
-        let lat = 12.2958, lon = 76.6394;
-        let displayName = cityInput;
-
+      // Nominatim Fallback if area tag is empty
+      if (fetchedElements.length === 0) {
+        logTerminal(`🔍 Running Nominatim search fallback for "${city}"...`, 'text-cyan-300');
         try {
-          const geoRes = await fetch(geoUrl, { headers: { 'Accept': 'application/json' } });
-          const geoData = await geoRes.json();
-          if (geoData && geoData.length > 0) {
-            lat = parseFloat(geoData[0].lat);
-            lon = parseFloat(geoData[0].lon);
-            displayName = geoData[0].display_name || cityInput;
-            logTerminal(`📍 Geocoded: Lat ${lat.toFixed(4)}, Lon ${lon.toFixed(4)} (${displayName.slice(0, 35)}...)`, 'success');
+          const nomUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent('cafe ' + city)}&limit=15`;
+          const nomRes = await fetch(nomUrl);
+          const nomData = await nomRes.json();
+          if (nomData && nomData.length > 0) {
+            fetchedElements = nomData.map(p => ({
+              tags: { name: p.display_name.split(',')[0], 'addr:street': p.display_name.split(',').slice(1, 3).join(',') },
+              lat: p.lat,
+              lon: p.lon
+            }));
+            logTerminal(`✨ Extracted ${fetchedElements.length} POIs from Nominatim fallback!`, 'text-emerald-400');
           }
-        } catch (geoErr) {
-          logTerminal(`⚠️ Nominatim mirror note: Using regional grid for ${cityInput}`, 'warn');
-        }
-
-        // Step 2: Query Live Overpass API via Multi-Mirror Cluster
-        statusLabel.innerText = "Querying live Overpass multi-node cluster...";
-        const delta = 0.08;
-        const bbox = `${lat - delta},${lon - delta},${lat + delta},${lon + delta}`;
-
-        const overpassQuery = `
-          [out:json][timeout:20];
-          (
-            node${category.queryFragment}(${bbox});
-            way${category.queryFragment}(${bbox});
-            node["amenity"="cafe"](${bbox});
-            node["amenity"="restaurant"](${bbox});
-            node["amenity"="dentist"](${bbox});
-            node["amenity"="clinic"](${bbox});
-          );
-          out center 35;
-        `;
-
-        let elements = await fetchOverpassMultiMirror(overpassQuery);
-
-        // Fallback: If public Overpass cluster is completely blocked by ISP/network CORS, synthesize verified local entities
-        if (!elements || elements.length === 0) {
-          logTerminal(`⚡ Overpass mirrors throttled by network: Activating Nominatim direct POI extractor...`, 'warn');
-          try {
-            const nomPoiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(nicheSelect.split(' ')[0] + ' ' + cityInput)}&limit=15`;
-            const nomPoiRes = await fetch(nomPoiUrl, { headers: { 'Accept': 'application/json' } });
-            const nomPoiData = await nomPoiRes.json();
-            if (nomPoiData && nomPoiData.length > 0) {
-              elements = nomPoiData.map(p => ({
-                tags: {
-                  name: p.display_name.split(',')[0],
-                  'addr:street': p.display_name.split(',').slice(1, 3).join(','),
-                  website: null,
-                  phone: null
-                },
-                lat: p.lat,
-                lon: p.lon
-              }));
-              logTerminal(`✨ Extracted ${elements.length} live verified POIs from Nominatim!`, 'success');
-            }
-          } catch (nomErr) {}
-        }
-
-        // Step 3: Extract & Filter Verified Real Data
-        statusLabel.innerText = "Building 360° AI Audit cards & pitch scripts...";
-        let newlyAdded = 0;
-
-        const validRealPlaces = [];
-        (elements || []).forEach(el => {
-          const tags = el.tags || el;
-          const realName = tags.name || tags['name:en'] || tags['brand'] || tags['operator'];
-          if (!realName || String(realName).trim().length < 2) return;
-
-          const rawPhone = tags.phone || tags['contact:phone'] || tags['contact:mobile'] || tags['contact:whatsapp'] || tags['mobile'] || null;
-          const realWebsite = tags.website || tags['contact:website'] || tags['url'] || null;
-          const realInstagram = tags['contact:instagram'] || tags['instagram'] || tags['contact:social'] || null;
-          const realEmail = tags.email || tags['contact:email'] || null;
-
-          const street = tags['addr:street'] || tags['addr:street_name'] || '';
-          const suburb = tags['addr:suburb'] || tags['addr:district'] || tags['addr:neighbourhood'] || '';
-          const houseNumber = tags['addr:housenumber'] || '';
-          
-          let addressParts = [houseNumber, street, suburb, cityInput].filter(p => p && p.trim().length > 0);
-          let realAddress = addressParts.length > 1 ? addressParts.join(', ') : `${cityInput}, Karnataka`;
-
-          validRealPlaces.push({
-            name: String(realName).trim(),
-            phone: rawPhone,
-            website: realWebsite,
-            instagram: realInstagram,
-            email: realEmail,
-            address: realAddress,
-            rawTags: tags
-          });
-        });
-
-        const uniquePlaces = [];
-        const seenNames = new Set();
-        validRealPlaces.forEach(p => {
-          const lower = p.name.toLowerCase();
-          if (!seenNames.has(lower)) {
-            seenNames.add(lower);
-            uniquePlaces.push(p);
-          }
-        });
-
-        logTerminal(`🔍 Verified ${uniquePlaces.length} real unique business POIs!`, 'success');
-
-        if (uniquePlaces.length === 0) {
-          throw new Error(`0 businesses found for ${cityInput}. Please verify the town name or category.`);
-        }
-
-        for (let i = 0; i < uniquePlaces.length; i++) {
-          const place = uniquePlaces[i];
-          
-          let derivedHandle = place.instagram;
-          if (!derivedHandle) {
-            const cleanSlug = place.name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 18);
-            derivedHandle = `@${cleanSlug}`;
-          } else if (!derivedHandle.startsWith('@')) {
-            derivedHandle = '@' + derivedHandle.replace(/https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/$/, '');
-          }
-
-          const defects = [];
-          let score = 75;
-
-          if (!place.phone) {
-            defects.push("⚠️ Missing direct WhatsApp / Phone tag on map profile");
-            score += 7;
-          } else {
-            defects.push(`✅ Live Phone Contact Tag: ${place.phone}`);
-          }
-
-          if (!place.website) {
-            defects.push("⚠️ No dedicated booking website linked to listing");
-            score += 8;
-          } else if (!place.website.startsWith('https')) {
-            defects.push(`⚠️ Insecure non-HTTPS website: ${place.website}`);
-            score += 5;
-          } else {
-            defects.push(`🌐 Website Linked: ${place.website}`);
-          }
-
-          defects.push("⚠️ Missing 1-tap WhatsApp direct booking CTA in Bio");
-          defects.push("⚠️ Zero active Meta Ads running in Ad Library");
-
-          score = Math.min(96, Math.max(76, score + Math.floor(Math.random() * 5)));
-          const isHot = score >= 85;
-
-          const formattedWaPhone = formatWhatsAppPhone(place.phone);
-          const fullPitch = `Hello ${place.name} team, checked your ${nicheSelect} presence in ${cityInput}. Loved your profile, but noticed your setup is missing a direct 1-tap WhatsApp booking link, dropping ~15-20 local inquiries/week. We can fix this in 48 hours for just ₹2,500 (Bio Overhaul + 1-Tap WA Funnel + 3 Viral Reel Hooks). Can I share a quick 60-sec preview with you?`;
-
-          const auditedLead = {
-            id: `lead-360-${Date.now()}-${i}`,
-            business_name: place.name,
-            niche: nicheSelect,
-            location: place.address,
-            instagram: derivedHandle,
-            phone: place.phone || null,
-            wa_phone: formattedWaPhone,
-            website: place.website || null,
-            email: place.email || null,
-            lead_score: score,
-            status: 'NEW',
-            is_hot: isHot,
-            service_tier: `Starter: ₹2,500 Setup | Retainer: ₹12,000 - ₹18,000/mo`,
-            recommended_upsell: category.upsell,
-            audit_findings: {
-              instagram_issue: "Missing direct WhatsApp CTA booking button in Bio",
-              seo_web_issue: place.website ? `Website detected (${place.website.slice(0, 25)}...) but mobile CTA needs speed optimization` : "Missing dedicated mobile-responsive booking website",
-              ad_opportunity: "Zero Meta retargeting ads active in Karnataka",
-              defects: defects
-            },
-            pitches: {
-              instagram_dm: `Hey ${place.name.split(' ')[0]} team! Loved your presence in ${cityInput}. Noticed your profile is missing a direct 1-tap WhatsApp booking button, causing dropped customer inquiries. Made a quick 60-sec loom fix for you. Mind if I drop the link here?`,
-              whatsapp_message: fullPitch,
-              closing_offer: `⚡ Starter: ₹2,500 Setup | Upsell Retainer: ₹12,000/mo Meta Ad Engine`
-            }
-          };
-
-          if (!leads.some(l => l.business_name.toLowerCase() === place.name.toLowerCase())) {
-            leads.unshift(auditedLead);
-            newlyAdded++;
-          }
-
-          logTerminal(`✅ 360° Audited [${place.name}] ➔ Score: ${score}/100 ➔ Phone: ${place.phone || 'GMB Gap'}`, 'agent');
-          await new Promise(r => setTimeout(r, 60));
-        }
-
-        saveLeads();
-        renderLeads();
-
-        statusLabel.innerText = "Scan Complete!";
-        logTerminal(`🎉 360° Scan Finished! Added ${newlyAdded} real verified business leads!`, 'success');
-        showToast(`⚡ Discovered & Audited ${newlyAdded} real businesses in ${cityInput}!`);
-
-      } catch (err) {
-        logTerminal(`❌ Live Scan Error: ${err.message}`, 'error');
-        statusLabel.innerText = "Error during scan";
-        showToast(`Scan Error: ${err.message}`);
-      } finally {
-        btnScan.disabled = false;
-        btnScan.classList.remove('opacity-50', 'cursor-not-allowed');
+        } catch (nomErr) {}
       }
+
+      if (fetchedElements.length === 0) {
+        logTerminal(`❌ No POIs returned. Check city spelling.`, 'text-red-400');
+        terminalStatus.innerText = "0 results found";
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        return;
+      }
+
+      let newCount = 0;
+      fetchedElements.forEach(e => {
+        const tags = e.tags || {};
+        const name = tags.name || tags['name:en'] || tags.brand;
+        if (!name || name.trim().length < 2) return;
+
+        const phone = tags.phone || tags['contact:phone'] || tags['contact:whatsapp'] || tags.mobile || null;
+        const website = tags.website || tags['contact:website'] || tags.url || null;
+        const instagram = tags['contact:instagram'] || tags.instagram || null;
+        const formattedWa = formatPhone(phone);
+
+        let score = 75;
+        if (!phone) score += 7;
+        if (!website) score += 8;
+        if (!instagram) score += 5;
+        score = Math.min(96, Math.max(78, score));
+
+        const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 16);
+        const handle = instagram ? (instagram.startsWith('@') ? instagram : '@' + instagram) : `@${cleanSlug}`;
+
+        const pitch = `Hello ${name} team, checked your profile in ${city}. Loved your presence, but noticed you are missing a direct 1-tap WhatsApp booking button, dropping ~15-20 local inquiries/week. We can fix this in 48 hours for just ₹2,500 (Bio Overhaul + 1-Tap WA Funnel + 3 Viral Reel Scripts). Can I share a quick 60-sec preview with you?`;
+
+        const newLead = {
+          id: 'lead-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+          name: name.trim(),
+          city: city,
+          lat: e.lat,
+          lon: e.lon,
+          phone: phone,
+          wa_phone: formattedWa,
+          website: website,
+          instagram: handle,
+          score: score,
+          status: 'NEW', // NEW, PITCHED, CLOSED
+          pitch: pitch
+        };
+
+        if (!leads.some(l => l.name.toLowerCase() === name.toLowerCase())) {
+          leads.unshift(newLead);
+          newCount++;
+        }
+      });
+
+      save();
+      renderLeads();
+
+      terminalStatus.innerText = "Scan Complete!";
+      logTerminal(`🎉 Added ${newCount} verified live business leads!`, 'text-emerald-400');
+      showToast(`Scanned ${newCount} real leads in ${city}!`);
+
+      btn.disabled = false;
+      btn.classList.remove('opacity-50', 'cursor-not-allowed');
     }
 
-    // CRM STATUS TOGGLE
+    function triggerWhatsApp(id) {
+      const lead = leads.find(l => l.id === id);
+      if (!lead) return;
+
+      const encoded = encodeURIComponent(lead.pitch);
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      let url = "";
+
+      if (lead.wa_phone) {
+        url = isMobile 
+          ? `whatsapp://send?phone=${lead.wa_phone}&text=${encoded}` 
+          : `https://web.whatsapp.com/send?phone=${lead.wa_phone}&text=${encoded}`;
+      } else {
+        url = isMobile
+          ? `whatsapp://send?text=${encoded}`
+          : `https://web.whatsapp.com/send?text=${encoded}`;
+      }
+
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        save();
+        renderLeads();
+      }
+
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.open(lead.wa_phone ? `https://wa.me/${lead.wa_phone}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
+      }
+
+      showToast("WhatsApp launched with pre-filled ₹2,500 pitch!");
+    }
+
+    function copyPitch(id) {
+      const lead = leads.find(l => l.id === id);
+      if (!lead) return;
+
+      navigator.clipboard.writeText(lead.pitch);
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        save();
+        renderLeads();
+      }
+      showToast("Pitch Script copied to clipboard!");
+    }
+
     function updateLeadStatus(id, newStatus) {
       const lead = leads.find(l => l.id === id);
       if (!lead) return;
       lead.status = newStatus;
-      saveLeads();
+      save();
       renderLeads();
-      showToast(`Lead updated to: ${newStatus}`);
+      showToast(`Status updated to: ${newStatus}`);
     }
 
-    // STATS UPDATE
+    function deleteLead(id) {
+      if (confirm("Delete this lead?")) {
+        leads = leads.filter(l => l.id !== id);
+        save();
+        renderLeads();
+        showToast("Lead removed.");
+      }
+    }
+
     function updateStats() {
       const total = leads.length;
-      const hotCount = leads.filter(l => (l.lead_score >= 85 || l.is_hot)).length;
-      const newCount = leads.filter(l => l.status === 'NEW').length;
-      const pitchedCount = leads.filter(l => l.status === 'PITCHED').length;
-      const followUpCount = leads.filter(l => l.status === 'FOLLOW_UP').length;
-      const closedLeads = leads.filter(l => l.status === 'CLOSED');
-      const closedRevenue = closedLeads.length * 2500;
+      const priority = leads.filter(l => l.score >= 85).length;
+      const pitched = leads.filter(l => l.status === 'PITCHED').length;
+      const closed = leads.filter(l => l.status === 'CLOSED').length;
 
-      document.getElementById('stat-total-leads').innerText = total;
-      document.getElementById('stat-hot-leads').innerText = hotCount;
-      document.getElementById('stat-pitched-leads').innerText = pitchedCount + followUpCount;
-      document.getElementById('stat-closed-revenue').innerText = '₹' + closedRevenue.toLocaleString();
-      document.getElementById('stat-closed-count').innerText = `${closedLeads.length} Deals`;
+      document.getElementById('totalLeads').innerText = total;
+      document.getElementById('priorityLeads').innerText = priority;
+      document.getElementById('pitchedLeads').innerText = pitched;
+      document.getElementById('closedRevenue').innerText = '₹' + (closed * 2500).toLocaleString();
 
-      // Tab Counts
-      document.getElementById('count-tab-all').innerText = total;
-      document.getElementById('count-tab-hot').innerText = hotCount;
-      document.getElementById('count-tab-new').innerText = newCount;
-      document.getElementById('count-tab-pitched').innerText = pitchedCount;
-      document.getElementById('count-tab-followup').innerText = followUpCount;
-      document.getElementById('count-tab-closed').innerText = closedLeads.length;
+      document.getElementById('count-all').innerText = total;
+      document.getElementById('count-hot').innerText = priority;
+      document.getElementById('count-pitched').innerText = pitched;
+      document.getElementById('count-closed').innerText = closed;
     }
 
-    // RENDER 360° AGENCY LEAD CARDS
     function renderLeads() {
-      const query = (document.getElementById('search-input').value || '').toLowerCase();
-      const filterPhone = document.getElementById('filter-has-phone').value;
+      const query = (document.getElementById('filterSearch')?.value || '').toLowerCase();
+      const results = document.getElementById('results');
+      const emptyState = document.getElementById('emptyState');
 
       const filtered = leads.filter(lead => {
         const matchesSearch = 
-          lead.business_name.toLowerCase().includes(query) ||
-          lead.niche.toLowerCase().includes(query) ||
-          lead.location.toLowerCase().includes(query) ||
-          (lead.instagram && lead.instagram.toLowerCase().includes(query)) ||
+          lead.name.toLowerCase().includes(query) ||
+          lead.city.toLowerCase().includes(query) ||
           (lead.phone && lead.phone.includes(query)) ||
-          (lead.recommended_upsell && lead.recommended_upsell.toLowerCase().includes(query));
+          (lead.instagram && lead.instagram.toLowerCase().includes(query));
 
         let matchesTab = true;
-        if (currentTabFilter === 'HOT') matchesTab = lead.lead_score >= 85 || lead.is_hot;
-        else if (currentTabFilter === 'NEW') matchesTab = lead.status === 'NEW';
-        else if (currentTabFilter === 'PITCHED') matchesTab = lead.status === 'PITCHED';
-        else if (currentTabFilter === 'FOLLOW_UP') matchesTab = lead.status === 'FOLLOW_UP';
-        else if (currentTabFilter === 'CLOSED') matchesTab = lead.status === 'CLOSED';
+        if (activeTab === 'HOT') matchesTab = lead.score >= 85;
+        else if (activeTab === 'PITCHED') matchesTab = lead.status === 'PITCHED';
+        else if (activeTab === 'CLOSED') matchesTab = lead.status === 'CLOSED';
 
-        let matchesPhone = true;
-        if (filterPhone === 'WITH_PHONE') matchesPhone = !!lead.phone;
-        else if (filterPhone === 'WITH_WEB') matchesPhone = !!lead.website;
-
-        return matchesSearch && matchesTab && matchesPhone;
+        return matchesSearch && matchesTab;
       });
 
-      const grid = document.getElementById('leads-grid');
-      const emptyState = document.getElementById('empty-state');
-      const countLabel = document.getElementById('filtered-count');
-
-      countLabel.innerText = `${filtered.length} leads`;
       updateStats();
 
       if (filtered.length === 0) {
-        grid.innerHTML = '';
+        results.innerHTML = '';
         emptyState.classList.remove('hidden');
         emptyState.classList.add('flex');
         return;
@@ -936,284 +585,71 @@
         emptyState.classList.remove('flex');
       }
 
-      grid.innerHTML = filtered.map(lead => {
-        const isHot = lead.lead_score >= 85 || lead.is_hot;
-        const scoreBadgeColor = isHot 
-          ? 'bg-red-500/20 text-red-400 border-red-500/30' 
-          : 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-
-        const phoneDisplay = lead.phone 
-          ? `<a href="tel:${escapeHtml(lead.phone)}" class="text-emerald-400 hover:underline flex items-center gap-1 font-bold"><i data-lucide="phone" class="w-3 h-3"></i> ${escapeHtml(lead.phone)}</a>`
-          : `<span class="text-slate-500 italic flex items-center gap-1"><i data-lucide="phone-off" class="w-3 h-3"></i> Phone Missing</span>`;
-
-        const webDisplay = lead.website
-          ? `<a href="${escapeHtml(lead.website)}" target="_blank" class="text-cyan-400 hover:underline truncate max-w-[130px] flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> ${escapeHtml(lead.website.replace(/^https?:\/\//, ''))}</a>`
-          : `<span class="text-slate-500 italic flex items-center gap-1"><i data-lucide="globe" class="w-3 h-3"></i> No Web</span>`;
-
-        const cleanHandle = (lead.instagram || '').replace(/^@/, '');
-        const igUrl = `https://instagram.com/${encodeURIComponent(cleanHandle)}`;
-
-        return `
-          <div class="glass-card rounded-2xl p-5 flex flex-col justify-between border border-slate-800 hover:border-slate-700 transition-all group relative">
-            
-            <!-- Card Header -->
+      results.innerHTML = filtered.map(e => `
+        <div class="glass-card p-5 rounded-2xl border border-gray-800 space-y-3 hover:border-emerald-500/50 transition relative group">
+          
+          <div class="flex justify-between items-start gap-2">
             <div>
-              <div class="flex items-start justify-between gap-2 mb-2">
-                <div>
-                  <h3 class="text-base font-bold text-white group-hover:text-brand-400 transition-colors line-clamp-1">
-                    ${escapeHtml(lead.business_name)}
-                  </h3>
-                  <div class="flex items-center gap-1.5 text-xs text-slate-400 mt-0.5">
-                    <i data-lucide="map-pin" class="w-3 h-3 text-slate-500 shrink-0"></i>
-                    <span class="line-clamp-1">${escapeHtml(lead.location)}</span>
-                  </div>
-                  <div class="text-[11px] text-brand-400 font-medium mt-0.5">
-                    ${escapeHtml(lead.niche)}
-                  </div>
-                </div>
-
-                <!-- Score Badge -->
-                <div class="flex flex-col items-end shrink-0">
-                  <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold border ${scoreBadgeColor} flex items-center gap-1">
-                    <span>${lead.lead_score}</span>
-                    <span class="text-[10px] opacity-70 font-normal">/100</span>
-                  </span>
-                </div>
-              </div>
-
-              <!-- CRM Status Dropdown Bar -->
-              <div class="flex items-center justify-between gap-2 py-1.5 px-2 rounded-xl bg-slate-900/90 border border-slate-800/90 my-2">
-                <span class="text-[11px] font-mono text-slate-400 uppercase font-semibold">CRM Stage:</span>
-                <select onchange="updateLeadStatus('${lead.id}', this.value)" class="bg-slate-800 border border-slate-700 text-xs font-bold rounded-lg px-2 py-1 focus:outline-none focus:border-brand-500 cursor-pointer ${
-                  lead.status === 'CLOSED' ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' :
-                  lead.status === 'PITCHED' ? 'text-amber-400 bg-amber-500/10 border-amber-500/30' :
-                  lead.status === 'FOLLOW_UP' ? 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30' :
-                  'text-slate-300'
-                }">
-                  <option value="NEW" ${lead.status === 'NEW' ? 'selected' : ''}>⚡ [New Lead]</option>
-                  <option value="PITCHED" ${lead.status === 'PITCHED' ? 'selected' : ''}>💬 [Pitched]</option>
-                  <option value="FOLLOW_UP" ${lead.status === 'FOLLOW_UP' ? 'selected' : ''}>📅 [Follow-Up Scheduled]</option>
-                  <option value="CLOSED" ${lead.status === 'CLOSED' ? 'selected' : ''}>🤝 [Closed - ₹2.5k Deal]</option>
-                </select>
-              </div>
-
-              <!-- Real Contact Info Row -->
-              <div class="grid grid-cols-2 gap-2 py-1.5 border-b border-slate-800/80 mb-2.5 text-xs font-mono">
-                <div>${phoneDisplay}</div>
-                <div class="flex justify-end">${webDisplay}</div>
-              </div>
-
-              <!-- Social & Intent Tags -->
-              <div class="flex items-center justify-between gap-2 py-1 mb-2 text-xs">
-                <a href="${igUrl}" target="_blank" class="flex items-center gap-1.5 font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-                  <i data-lucide="instagram" class="w-3.5 h-3.5 text-cyan-400"></i>
-                  <span>${escapeHtml(lead.instagram || '@handle')}</span>
-                </a>
-                <span class="text-[10px] px-2 py-0.5 rounded-md font-mono font-bold ${
-                  isHot ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-slate-800 text-slate-400'
-                }">
-                  ${isHot ? '🔥 HOT INTENT' : 'QUALIFIED'}
-                </span>
-              </div>
-
-              <!-- 360° Defect Findings List -->
-              <div class="space-y-1.5 mb-3">
-                <p class="text-[11px] uppercase font-bold text-slate-400 tracking-wider flex items-center gap-1">
-                  <i data-lucide="alert-triangle" class="w-3 h-3 text-amber-400"></i>
-                  <span>Core Audit Defect Gaps:</span>
-                </p>
-                <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 space-y-1 text-xs text-slate-300">
-                  <div class="flex items-start gap-1.5">
-                    <span class="text-red-400 text-sm leading-none">&bull;</span>
-                    <span class="text-[11px] leading-tight">${escapeHtml(lead.audit_findings?.instagram_issue || "Missing bio WhatsApp link")}</span>
-                  </div>
-                  <div class="flex items-start gap-1.5">
-                    <span class="text-amber-400 text-sm leading-none">&bull;</span>
-                    <span class="text-[11px] leading-tight">${escapeHtml(lead.audit_findings?.seo_web_issue || "Local SEO gap")}</span>
-                  </div>
-                  <div class="flex items-start gap-1.5">
-                    <span class="text-cyan-400 text-sm leading-none">&bull;</span>
-                    <span class="text-[11px] leading-tight">${escapeHtml(lead.audit_findings?.ad_opportunity || "Zero Meta retargeting ads")}</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Recommended Upsell Box -->
-              <div class="mb-3 p-2.5 rounded-xl bg-violet-500/10 border border-violet-500/20 text-xs">
-                <span class="text-[10px] uppercase font-bold font-mono text-violet-400 flex items-center gap-1 mb-0.5">
-                  <i data-lucide="sparkles" class="w-3 h-3"></i> Recommended Retainer Upsell:
-                </span>
-                <p class="text-[11px] text-violet-200 font-medium leading-tight">${escapeHtml(lead.recommended_upsell || "Meta Ads Engine + 4K Reel Production")}</p>
-              </div>
-
-              <!-- Dynamic Pricing Badge -->
-              <div class="mb-4 text-[11px] text-slate-400 font-mono bg-slate-800/50 px-3 py-1.5 rounded-lg border border-slate-700/50 flex items-center justify-between">
-                <span class="text-slate-400">Offer:</span>
-                <span class="text-amber-300 font-bold">${escapeHtml(lead.service_tier || "Starter: ₹2,500 | Retainer: ₹12,000/mo")}</span>
-              </div>
+              <h3 class="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
+              <p class="text-xs text-gray-400 mt-0.5">${escapeHtml(e.city)} &bull; <span class="text-emerald-400 font-mono font-bold">${e.score}/100</span></p>
             </div>
-
-            <!-- Action Buttons Footer -->
-            <div class="space-y-2 pt-2 border-t border-slate-800/80">
-              
-              <!-- 1-Tap Mobile/Desktop Smart WhatsApp Trigger -->
-              <button onclick="triggerSmartWhatsApp('${lead.id}')" class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-lg shadow-emerald-500/20 active:scale-95 transition-all">
-                <i data-lucide="message-circle" class="w-4 h-4 text-slate-950"></i>
-                <span>Direct 1-Tap WhatsApp Pitch</span>
-              </button>
-
-              <!-- Secondary Actions: Instagram & Copy Pitch Script -->
-              <div class="grid grid-cols-2 gap-2 pt-1">
-                <a href="${igUrl}" target="_blank" onclick="copyDMPitch('${lead.id}', false)" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors">
-                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-cyan-400"></i>
-                  <span>Open IG Profile</span>
-                </a>
-                <button onclick="copyDMPitch('${lead.id}', true)" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors">
-                  <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
-                  <span>Copy Script</span>
-                </button>
-              </div>
-
-              <!-- Closing Proposal & Delete Actions -->
-              <div class="flex items-center justify-between gap-2 pt-1 text-xs">
-                <button onclick="openProposalModal('${lead.id}')" class="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-semibold transition-colors py-1">
-                  <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                  <span>360° Proposal</span>
-                </button>
-
-                <div class="flex items-center gap-1.5">
-                  <button onclick="deleteLead('${lead.id}')" title="Delete Lead" class="p-1.5 rounded-lg bg-slate-800 hover:bg-red-500/20 hover:text-red-400 text-slate-400 transition-colors">
-                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                  </button>
-                </div>
-              </div>
-
+            
+            <div class="flex items-center gap-1.5 shrink-0">
+              ${e.lat && e.lon ? `<a href="https://www.google.com/maps?q=${e.lat},${e.lon}" target="_blank" class="text-[10px] bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 px-2 py-1 rounded-md font-mono flex items-center gap-1">📍 MAP</a>` : ''}
+              <button onclick="deleteLead('${e.id}')" class="text-gray-500 hover:text-red-400 p-1"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
             </div>
-
           </div>
-        `;
-      }).join('');
+
+          <!-- CRM Status Selector -->
+          <div class="flex items-center justify-between gap-2 py-1 px-2 rounded-lg bg-black/60 border border-gray-800 text-xs">
+            <span class="text-[10px] text-gray-500 font-mono uppercase font-bold">CRM:</span>
+            <select onchange="updateLeadStatus('${e.id}', this.value)" class="bg-gray-800 text-xs font-bold rounded px-2 py-0.5 focus:outline-none ${
+              e.status === 'CLOSED' ? 'text-emerald-400' : e.status === 'PITCHED' ? 'text-amber-400' : 'text-gray-300'
+            }">
+              <option value="NEW" ${e.status === 'NEW' ? 'selected' : ''}>⚡ [New Lead]</option>
+              <option value="PITCHED" ${e.status === 'PITCHED' ? 'selected' : ''}>💬 [Pitched]</option>
+              <option value="CLOSED" ${e.status === 'CLOSED' ? 'selected' : ''}>🤝 [Closed - ₹2.5k]</option>
+            </select>
+          </div>
+
+          <!-- 360° Defect Findings -->
+          <ul class="text-[11px] text-gray-300 space-y-1 bg-black/40 p-2.5 rounded-xl border border-gray-800/80">
+            ${!e.website ? '<li class="text-red-400 flex items-center gap-1.5"><span>⚠️</span> <span>No Dedicated Booking Website</span></li>' : `<li class="text-emerald-400 flex items-center gap-1.5"><span>🌐</span> <a href="${e.website}" target="_blank" class="truncate hover:underline">${e.website}</a></li>`}
+            ${!e.phone ? '<li class="text-red-400 flex items-center gap-1.5"><span>⚠️</span> <span>No Public WhatsApp/Phone on Map</span></li>' : `<li class="text-emerald-400 flex items-center gap-1.5 font-bold"><span>📱</span> <a href="tel:${e.phone}" class="hover:underline">${e.phone}</a></li>`}
+            <li class="text-yellow-400 flex items-center gap-1.5"><span>⚠️</span> <span>Missing 1-Tap Bio WhatsApp Booking Funnel</span></li>
+            <li class="text-cyan-400 flex items-center gap-1.5"><span>⚠️</span> <span>Zero Active Meta Retargeting Ads</span></li>
+          </ul>
+
+          <!-- Offer Badge -->
+          <div class="text-[11px] text-gray-400 font-mono bg-gray-800/50 px-3 py-1 rounded-md flex justify-between items-center">
+            <span>Closing Hook:</span>
+            <span class="text-amber-300 font-bold">₹2,500 Setup | ₹12k Retainer</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <button onclick="triggerWhatsApp('${e.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-gray-950 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95 transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <span>1-Tap WhatsApp</span>
+            </button>
+            <button onclick="copyPitch('${e.id}')" class="bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-gray-700 transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span>Copy Pitch</span>
+            </button>
+          </div>
+
+        </div>
+      `).join('');
 
       lucide.createIcons();
     }
 
-    // SMART MOBILE / DESKTOP WHATSAPP TRIGGER
-    function triggerSmartWhatsApp(id) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
-
-      const pitchText = lead.pitches?.whatsapp_message || `Hello ${lead.business_name} team, checked your profile in ${lead.location}. Loved your presence, but noticed your setup is missing a direct 1-tap WhatsApp booking link. We can fix this in 48 hours for just ₹2,500. Can I share a quick 60-sec preview?`;
-      const encoded = encodeURIComponent(pitchText);
-      const phoneDigits = lead.wa_phone || formatWhatsAppPhone(lead.phone);
-
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-      let waUrl = "";
-      if (phoneDigits) {
-        waUrl = isMobile 
-          ? `whatsapp://send?phone=${phoneDigits}&text=${encoded}` 
-          : `https://web.whatsapp.com/send?phone=${phoneDigits}&text=${encoded}`;
-      } else {
-        waUrl = isMobile
-          ? `whatsapp://send?text=${encoded}`
-          : `https://web.whatsapp.com/send?text=${encoded}`;
-      }
-
-      if (lead.status === 'NEW') {
-        lead.status = 'PITCHED';
-        saveLeads();
-        renderLeads();
-      }
-
-      const win = window.open(waUrl, '_blank');
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        window.open(phoneDigits ? `https://wa.me/${phoneDigits}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
-      }
-
-      showToast("WhatsApp 1-Tap Deep-Link Launched & Pitch Pre-Filled!");
-    }
-
-    function copyDMPitch(id, showNotification = true) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
-
-      const pitch = lead.pitches?.instagram_dm || `Hey ${lead.business_name}, loved your recent post. Noticed your bio is missing a direct WhatsApp booking link. Made a quick 60-sec fix. Mind if I drop it here?`;
-      navigator.clipboard.writeText(pitch);
-
-      if (lead.status === 'NEW') {
-        lead.status = 'PITCHED';
-        saveLeads();
-        renderLeads();
-      }
-
-      if (showNotification) {
-        showToast("Pitch Script copied to clipboard!");
-      }
-    }
-
-    function deleteLead(id) {
-      if (confirm("Delete this lead from the pipeline?")) {
-        leads = leads.filter(l => l.id !== id);
-        saveLeads();
-        renderLeads();
-        showToast("Lead removed from CRM.");
-      }
-    }
-
-    // CLOSING PROPOSAL
-    let currentProposalText = "";
-    function openProposalModal(id) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
-
-      document.getElementById('proposal-lead-title').innerText = `${lead.business_name} (${lead.niche})`;
-
-      const proposal = `🔥 360° AGENCY GROWTH PROPOSAL for ${lead.business_name}
-
-Hey ${lead.business_name} Team,
-Following our quick 360° audit of your ${lead.niche} presence in ${lead.location}, here is your 48-Hour Growth Sprint to fix lead leakages and capture high-intent inquiries:
-
-📦 STAGE 1: THE ENTRY HOOK (₹2,500 | 48-Hr Delivery)
-• Complete Instagram Bio Overhaul + High-Conversion CTA Copy
-• Direct 1-Tap WhatsApp Lead Capture Button & Automated Welcome Greeting
-• 3 Custom Viral Short-Video Hook Scripts tailored for ${lead.niche}
-• Google Business Profile 3-Point Keyword Refresh
-
-🚀 STAGE 2: COMPLETE GROWTH RETAINER (${lead.service_tier})
-• Everything in Stage 1 + 8 Professionally Edited Video Reels/month
-• Targeted Meta (Instagram + Facebook) Hyper-Local Ad Campaign
-• ${lead.recommended_upsell}
-• Weekly Performance Report & Inbound WhatsApp Chatbot Optimization
-
-⏱ 48-HOUR GUARANTEE: If your Stage 1 setup is not live within 48 hours, 100% money-back.
-💳 Ready to launch? Drop a 'YES' or secure via UPI: [Your UPI ID / Payment Link Here]`;
-
-      currentProposalText = proposal;
-      document.getElementById('proposal-text-body').innerText = proposal;
-      document.getElementById('proposal-modal').classList.remove('hidden');
-      document.getElementById('proposal-modal').classList.add('flex');
-    }
-
-    function closeProposalModal() {
-      document.getElementById('proposal-modal').classList.add('hidden');
-      document.getElementById('proposal-modal').classList.remove('flex');
-    }
-
-    function copyProposalToClipboard() {
-      navigator.clipboard.writeText(currentProposalText);
-      showToast("360° Proposal copied to clipboard!");
-    }
-
-    function showToast(message) {
+    function showToast(msg) {
       const toast = document.getElementById('toast');
-      const msg = document.getElementById('toast-message');
-      msg.innerText = message;
-      
-      clearTimeout(window.toastTimeout);
+      document.getElementById('toastMessage').innerText = msg;
       toast.classList.remove('translate-y-20', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
-
-      window.toastTimeout = setTimeout(() => {
+      setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-20', 'opacity-0');
       }, 3000);
@@ -1221,15 +657,10 @@ Following our quick 360° audit of your ${lead.niche} presence in ${lead.locatio
 
     function escapeHtml(str) {
       if (!str) return '';
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    window.addEventListener('DOMContentLoaded', initApp);
+    window.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
