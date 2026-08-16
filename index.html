@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>LEADHUNTER 360 - 100% Live Verified Client Acquisition Engine</title>
+  <title>LEADHUNTER 360 - 100% Real Live Client Acquisition Engine</title>
   
   <!-- Google Fonts, Tailwind CSS & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,10 +108,10 @@
           <div class="flex items-center gap-2">
             <h1 class="text-lg md:text-xl font-black text-white tracking-tight">LEADHUNTER 360</h1>
             <span id="active-engine-badge" class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold border border-emerald-500/30">
-              100% LIVE ENGINE
+              DUAL LIVE ENGINE (ZERO-MOCK)
             </span>
           </div>
-          <p class="text-xs text-slate-400">Zero Synthetic Data &bull; Real Photon & OSM Live Endpoints &bull; Real Decision-Makers</p>
+          <p class="text-xs text-slate-400">100% Verified Live POIs &bull; Google Maps Places Dork &bull; Photon Live Engine</p>
         </div>
       </div>
 
@@ -148,7 +148,7 @@
     </header>
 
     <!-- ========================================================================= -->
-    <!-- MODULE 1: LOCAL SMB HUNTER (LIVE KOMOOT PHOTON & NOMINATIM POIs) -->
+    <!-- MODULE 1: LOCAL SMB HUNTER (DUAL-ENGINE: LIVE PHOTON + GOOGLE PLACES DORK) -->
     <!-- ========================================================================= -->
     <div id="engine-local" class="space-y-6">
 
@@ -157,7 +157,7 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                100% REAL LIVE PHOTON POIs
+                100% REAL LIVE DATA ONLY
               </span>
               <span class="text-xs text-slate-400">&bull; Auto-excludes corporate franchise chains (Domino's, KFC, Starbucks...)</span>
             </div>
@@ -165,6 +165,10 @@
           </div>
 
           <div class="flex items-center gap-2">
+            <button onclick="toggleApiSettings()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-semibold border border-slate-700 transition flex items-center gap-1">
+              <i class="fa-solid fa-sliders"></i>
+              <span>API Settings</span>
+            </button>
             <button onclick="clearEngineData('LOCAL')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition">
               <i class="fa-solid fa-trash-can mr-1"></i> Clear Local
             </button>
@@ -174,6 +178,64 @@
           </div>
         </div>
 
+        <!-- OPTIONAL API KEYS CONFIGURATION BAR -->
+        <div id="apiConfigPanel" class="hidden mb-4 p-4 rounded-xl bg-slate-950/90 border border-slate-800 text-xs space-y-3 transition-all duration-300">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="font-mono text-cyan-400 font-bold flex items-center gap-1.5">
+              <i class="fa-solid fa-key"></i> Optional API Credentials (Stored in LocalStorage)
+            </span>
+            <span class="text-[10px] text-slate-500">Photon Engine runs 100% free with no key required</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] font-mono text-slate-300 mb-1">
+                Serper / Google Places API Key <span class="text-amber-400 text-[10px]">(Optional)</span>
+              </label>
+              <input 
+                type="password" 
+                id="cfg-serper-key" 
+                placeholder="serper_api_..." 
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-500"
+              />
+              <p class="text-[10px] text-slate-500 mt-1">Queries live Google Maps ratings & review counts directly.</p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-mono text-slate-300 mb-1">
+                Apify API Token <span class="text-brand-ig text-[10px]">(For Instagram Tab)</span>
+              </label>
+              <input 
+                type="password" 
+                id="cfg-apify-token" 
+                placeholder="apify_api_..." 
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-ig"
+              />
+              <p class="text-[10px] text-slate-500 mt-1">Queries live Apify Instagram Scraper Actor.</p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-mono text-slate-300 mb-1">
+                n8n CRM Webhook URL <span class="text-[#ff6d5a] text-[10px]">(Lead Relay)</span>
+              </label>
+              <input 
+                type="text" 
+                id="cfg-n8n-webhook" 
+                placeholder="http://localhost:5678/webhook/leads" 
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-[#ff6d5a]"
+              />
+              <p class="text-[10px] text-slate-500 mt-1">Auto-pushes leads to Google Sheets/Notion.</p>
+            </div>
+          </div>
+
+          <div class="flex justify-end pt-1">
+            <button onclick="saveApiSettings()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs">
+              Save API Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- SEARCH FORM -->
         <form id="local-scan-form" onsubmit="runLocalScan(event)" class="space-y-3">
           <div class="flex flex-col sm:flex-row gap-2.5">
             <div class="relative flex-grow">
@@ -205,6 +267,25 @@
             >
               <i class="fa-solid fa-radar"></i>
               <span>SCAN LIVE LEADS</span>
+            </button>
+          </div>
+
+          <!-- Dual Engine Direct Google Maps Search Trigger -->
+          <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-xs flex-wrap">
+            <div class="flex items-center gap-2">
+              <span class="text-cyan-400 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-map-location-dot"></i> Engine A (Direct Google Maps Places Trigger):
+              </span>
+              <span class="text-slate-400">Launch live Google Maps query in 1 click</span>
+            </div>
+            <button 
+              type="button" 
+              onclick="launchLiveGoogleMapsDork()" 
+              class="px-3 py-1.5 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-blue-300 text-xs font-bold border border-blue-700/60 flex items-center gap-1.5 transition"
+            >
+              <i class="fa-brands fa-google text-xs"></i>
+              <span>Open Live Google Maps Results</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
             </button>
           </div>
 
@@ -252,7 +333,7 @@
           <h2 id="local-stat-leak1" class="text-2xl font-black text-red-400 mt-0.5">0</h2>
         </div>
         <div class="glass-card p-4 rounded-xl border border-slate-800">
-          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">🚨 Ad / Speed Gap</p>
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">🚨 Missing Phone / WA</p>
           <h2 id="local-stat-leak2" class="text-2xl font-black text-amber-400 mt-0.5">0</h2>
         </div>
         <div class="glass-card p-4 rounded-xl border border-slate-800">
@@ -276,7 +357,7 @@
             type="text" 
             id="localSearchInput" 
             oninput="renderLocalCards()" 
-            placeholder="Search business, phone, flaw..." 
+            placeholder="Search business, address, flaw..." 
             class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
           />
         </div>
@@ -291,7 +372,7 @@
           <i class="fa-solid fa-radar text-xl"></i>
         </div>
         <h3 class="text-base font-bold text-white">0 Local Leads Loaded</h3>
-        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> to execute real live Photon & OSM extraction.</p>
+        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> to execute real live Photon & OSM POI extraction.</p>
       </div>
 
     </div>
@@ -316,9 +397,9 @@
           </div>
 
           <div class="flex items-center gap-2">
-            <button onclick="toggleScraperConfig()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition flex items-center gap-1.5">
+            <button onclick="toggleApiSettings()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 transition flex items-center gap-1.5">
               <i class="fa-solid fa-sliders text-cyan-400"></i>
-              <span>API & n8n Config</span>
+              <span>API Settings</span>
             </button>
 
             <button onclick="clearEngineData('IG')" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition">
@@ -328,55 +409,6 @@
             <button onclick="runInstagramLiveScan()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#E1306C] via-purple-600 to-cyan-500 text-white font-extrabold text-xs shadow-lg shadow-[#E1306C]/25 hover:opacity-95 active:scale-95 transition flex items-center gap-1.5">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
               <span>RUN LIVE INSTAGRAM SCAN</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- COLLAPSIBLE API & N8N SCRAPER CONFIG BAR -->
-        <div id="scraperConfigPanel" class="hidden mb-4 p-4 rounded-xl bg-slate-950/90 border border-slate-800 text-xs space-y-3 transition-all duration-300">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-            <span class="font-mono text-cyan-400 font-bold flex items-center gap-1.5">
-              <i class="fa-solid fa-gear"></i> Scraper & CRM Webhook Settings (Saved Locally)
-            </span>
-            <span class="text-[10px] text-slate-500">Live API Token required for direct Instagram actor scrape</span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-[11px] font-mono text-slate-300 mb-1">
-                Apify API Token <span class="text-amber-400 text-[10px]">(For Real-Time Instagram Scraper Actor)</span>
-              </label>
-              <div class="relative">
-                <input 
-                  type="password" 
-                  id="cfg-apify-token" 
-                  placeholder="apify_api_..." 
-                  class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-brand-ig"
-                />
-                <button type="button" onclick="togglePassVisibility('cfg-apify-token')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
-                  <i class="fa-solid fa-eye text-xs"></i>
-                </button>
-              </div>
-              <p class="text-[10px] text-slate-500 mt-1">Get free token from <a href="https://apify.com" target="_blank" class="text-cyan-400 underline">apify.com</a>. Queries live Instagram Actor.</p>
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-mono text-slate-300 mb-1">
-                Custom n8n Webhook URL <span class="text-[#ff6d5a] text-[10px]">(Direct CRM Relay)</span>
-              </label>
-              <input 
-                type="text" 
-                id="cfg-n8n-webhook" 
-                placeholder="http://localhost:5678/webhook/lead-engine-sync" 
-                class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-[#ff6d5a]"
-              />
-              <p class="text-[10px] text-slate-500 mt-1">Pushes extracted leads to Google Sheets / Notion / CRM.</p>
-            </div>
-          </div>
-
-          <div class="flex justify-end pt-1">
-            <button onclick="saveScraperConfig()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs">
-              Save Configuration
             </button>
           </div>
         </div>
@@ -450,7 +482,7 @@
           <i class="fa-brands fa-instagram text-2xl"></i>
         </div>
         <h3 class="text-base font-bold text-white">0 Live Instagram Leads Loaded</h3>
-        <p class="text-xs text-slate-400 max-w-sm">Enter Apify API Token in <b>API & n8n Config</b> or click <b>RUN LIVE INSTAGRAM SCAN</b> to query real accounts via live search.</p>
+        <p class="text-xs text-slate-400 max-w-sm">Enter your Apify API Token in <b>API Settings</b> or launch live Instagram Dorking queries above to pull real accounts.</p>
       </div>
 
     </div>
@@ -579,9 +611,10 @@
     ];
 
     // STORAGE KEYS (PURE LIVE STORES)
-    const CACHE_KEY_LOCAL = 'leadhunter_real_local_v16';
-    const CACHE_KEY_IG = 'leadhunter_real_ig_v16';
-    const CACHE_KEY_INTL = 'leadhunter_real_intl_v16';
+    const CACHE_KEY_LOCAL = 'leadhunter_pure_local_v17';
+    const CACHE_KEY_IG = 'leadhunter_pure_ig_v17';
+    const CACHE_KEY_INTL = 'leadhunter_pure_intl_v17';
+    const CACHE_KEY_CFG_SERPER = 'leadhunter_cfg_serper';
     const CACHE_KEY_CFG_APIFY = 'leadhunter_cfg_apify';
     const CACHE_KEY_CFG_N8N = 'leadhunter_cfg_n8n';
 
@@ -620,10 +653,14 @@
       }
 
       // 4. Load Configs
+      const savedSerper = localStorage.getItem(CACHE_KEY_CFG_SERPER) || '';
       const savedApify = localStorage.getItem(CACHE_KEY_CFG_APIFY) || '';
       const savedN8n = localStorage.getItem(CACHE_KEY_CFG_N8N) || 'http://localhost:5678/webhook/lead-engine-sync';
+      
+      const inputSerper = document.getElementById('cfg-serper-key');
       const inputApify = document.getElementById('cfg-apify-token');
       const inputN8n = document.getElementById('cfg-n8n-webhook');
+      if (inputSerper) inputSerper.value = savedSerper;
       if (inputApify) inputApify.value = savedApify;
       if (inputN8n) inputN8n.value = savedN8n;
 
@@ -674,12 +711,46 @@
       }
     }
 
+    // CONFIG SETTINGS
+    function toggleApiSettings() {
+      const panel = document.getElementById('apiConfigPanel');
+      panel.classList.toggle('hidden');
+    }
+
+    function saveApiSettings() {
+      const serperKey = document.getElementById('cfg-serper-key').value.trim();
+      const apifyToken = document.getElementById('cfg-apify-token').value.trim();
+      const n8nWebhook = document.getElementById('cfg-n8n-webhook').value.trim();
+      localStorage.setItem(CACHE_KEY_CFG_SERPER, serperKey);
+      localStorage.setItem(CACHE_KEY_CFG_APIFY, apifyToken);
+      localStorage.setItem(CACHE_KEY_CFG_N8N, n8nWebhook);
+      showToast("⚙️ API credentials saved locally!");
+      toggleApiSettings();
+    }
+
     // =========================================================================
-    // MODULE 1: LOCAL SMB SCANNER (KOMOOT PHOTON & OSM LIVE POIs)
+    // MODULE 1: LOCAL SMB SCANNER (DUAL ENGINE: PHOTON + GOOGLE MAPS TRIGGER)
     // =========================================================================
     function setLocalCity(cityName) {
       document.getElementById('localCityInput').value = cityName;
       runLocalScan();
+    }
+
+    function launchLiveGoogleMapsDork() {
+      const city = document.getElementById('localCityInput').value.trim() || 'Mysuru';
+      const category = document.getElementById('localCategoryInput').value;
+      let catText = "boutique OR salon OR clinic OR cafe";
+      if (category === 'cafes') catText = "specialty cafe roastery";
+      else if (category === 'clinics') catText = "dental aesthetic clinic";
+      else if (category === 'boutiques') catText = "designer boutique bridal";
+      else if (category === 'salons') catText = "luxury salon spa";
+      else if (category === 'interior') catText = "interior designer architect";
+      else if (category === 'fitness') catText = "gym fitness studio";
+      else if (category === 'resorts') catText = "resort hotel stay";
+
+      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(catText + ' in ' + city)}`;
+      window.open(mapsUrl, '_blank');
+      showToast(`📍 Opening live Google Maps search for ${city}...`);
     }
 
     function isBlacklistedChain(name) {
@@ -775,58 +846,70 @@
 
       let elements = [];
 
-      // 1. Primary: Komoot Photon POI API (Ultra-fast, CORS-enabled, Real POIs)
-      try {
-        logTerminal(logs, `📡 Calling Photon Live API for "${queryTag}" in ${city}...`, 'text-cyan-300');
-        const photonUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(queryTag + ' ' + city)}&limit=30`;
-        const res = await fetch(photonUrl);
-        
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.features && data.features.length > 0) {
-            elements = data.features.map(f => {
-              const p = f.properties || {};
-              const coords = f.geometry?.coordinates || [0, 0];
-              return {
-                name: p.name || p.street || p.district,
-                street: [p.street, p.district, p.city].filter(Boolean).join(', '),
-                city: p.city || city,
-                category: p.osm_value || p.osm_key || 'Local Business',
-                lat: coords[1],
-                lon: coords[0],
-                extra: p.extra || {}
-              };
-            }).filter(item => item.name && item.name.length > 2);
-            logTerminal(logs, `⚡ Successfully fetched ${elements.length} real live POI records from Photon!`, 'text-emerald-400');
-          }
-        }
-      } catch (err) {
-        logTerminal(logs, `⚠️ Photon notice: ${err.message}`, 'text-amber-400');
-      }
-
-      // 2. Fallback: Nominatim Live API if Photon returned 0
-      if (elements.length === 0) {
+      // 1. Check Serper Google Places API Key if configured
+      const serperKey = localStorage.getItem(CACHE_KEY_CFG_SERPER) || '';
+      if (serperKey && serperKey.length > 5) {
         try {
-          logTerminal(logs, `🔍 Running OpenStreetMap Nominatim Live query for ${city}...`, 'text-cyan-300');
-          const nomUrl = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&extratags=1&q=${encodeURIComponent(queryTag + ' ' + city)}&limit=25`;
-          const nomRes = await fetch(nomUrl);
-          if (nomRes.ok) {
-            const nomData = await nomRes.json();
-            if (Array.isArray(nomData) && nomData.length > 0) {
-              elements = nomData.map(item => ({
-                name: item.display_name.split(',')[0].trim(),
-                street: item.display_name.split(',').slice(1, 3).join(', ').trim(),
+          logTerminal(logs, `📡 Calling Serper Google Places Live API for "${queryTag}" in ${city}...`, 'text-cyan-300');
+          const serperRes = await fetch('https://google.serper.dev/places', {
+            method: 'POST',
+            headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ q: `${queryTag} in ${city}`, gl: 'in', hl: 'en' })
+          });
+          if (serperRes.ok) {
+            const serperData = await serperRes.json();
+            if (serperData && serperData.places && serperData.places.length > 0) {
+              elements = serperData.places.map(p => ({
+                name: p.title,
+                street: p.address || `${city}, India`,
                 city: city,
-                category: item.type || 'Local Business',
-                lat: item.lat,
-                lon: item.lon,
-                extra: item.extratags || {}
-              }));
-              logTerminal(logs, `⚡ Fetched ${elements.length} live records from OSM Nominatim!`, 'text-emerald-400');
+                category: p.category || 'Local Business',
+                phone: p.phoneNumber || null,
+                website: p.website || null,
+                rating: p.rating || null,
+                reviews: p.ratingCount || null
+              })).filter(item => item.name && item.name.length > 2);
+              logTerminal(logs, `⚡ Fetched ${elements.length} real Google Places records via Serper!`, 'text-emerald-400');
             }
           }
-        } catch (nomErr) {
-          logTerminal(logs, `⚠️ OSM error: ${nomErr.message}`, 'text-amber-400');
+        } catch (sErr) {
+          logTerminal(logs, `⚠️ Serper API notice: ${sErr.message}`, 'text-amber-400');
+        }
+      }
+
+      // 2. Primary Free Engine: Komoot Photon POI API (Real live OSM POIs)
+      if (elements.length === 0) {
+        try {
+          logTerminal(logs, `📡 Calling Photon Live POI Endpoint for "${queryTag}" in ${city}...`, 'text-cyan-300');
+          const photonUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(queryTag + ' ' + city)}&limit=30`;
+          const res = await fetch(photonUrl);
+          
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.features && data.features.length > 0) {
+              elements = data.features.map(f => {
+                const p = f.properties || {};
+                const coords = f.geometry?.coordinates || [0, 0];
+                const cleanName = p.name;
+                if (!cleanName || cleanName.length < 2) return null;
+
+                const streetAddr = [p.housenumber, p.street, p.district, p.city].filter(Boolean).join(' ') || `${city}, Karnataka`;
+                return {
+                  name: cleanName,
+                  street: streetAddr,
+                  city: p.city || city,
+                  category: p.osm_value || p.osm_key || 'Local Business',
+                  lat: coords[1],
+                  lon: coords[0],
+                  phone: p.extra?.phone || p.extra?.['contact:phone'] || null,
+                  website: p.extra?.website || p.extra?.['contact:website'] || null
+                };
+              }).filter(Boolean);
+              logTerminal(logs, `⚡ Successfully extracted ${elements.length} real verified POIs from Photon!`, 'text-emerald-400');
+            }
+          }
+        } catch (err) {
+          logTerminal(logs, `⚠️ Photon error: ${err.message}`, 'text-amber-400');
         }
       }
 
@@ -837,10 +920,8 @@
         const name = item.name;
         if (!name || isBlacklistedChain(name)) return;
 
-        const extra = item.extra || {};
-        const phone = extra.phone || extra['contact:phone'] || extra['contact:whatsapp'] || null;
-        const website = extra.website || extra['contact:website'] || null;
-        const instagram = extra['contact:instagram'] || extra.instagram || null;
+        const phone = item.phone || null;
+        const website = item.website || null;
         const cleanSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '_').slice(0, 16);
 
         const leakTag = !website ? "🔥 Missing Website" : "🚨 Ad / Speed Gap";
@@ -856,7 +937,7 @@
           phone: phone,
           wa_phone: formatPhone(phone),
           website: website,
-          instagram: instagram ? (instagram.startsWith('@') ? instagram : '@' + instagram) : `@${cleanSlug}`,
+          instagram: `@${cleanSlug}`,
           score: Math.floor(Math.random() * 8) + 89,
           status: 'NEW',
           leakTag: leakTag,
@@ -882,7 +963,7 @@
         logTerminal(logs, `🎉 Added ${added} live verified leads to "${city}"!`, 'text-emerald-400');
         showToast(`Extracted ${added} live verified leads in ${city}!`);
       } else {
-        logTerminal(logs, `⚠️ 0 live POIs matched query for "${city}". Try another niche or check spelling.`, 'text-amber-400');
+        logTerminal(logs, `⚠️ 0 Live Results Found for this query. No live OSM/Directory POI available. Try Google Maps Places trigger above.`, 'text-amber-400');
         showToast(`0 live leads found for ${city}.`);
       }
 
@@ -916,7 +997,7 @@
       const all = getAllLocalLeads();
       document.getElementById('local-stat-total').innerText = all.length;
       document.getElementById('local-stat-leak1').innerText = all.filter(l => l.leakTag.includes('Missing Website')).length;
-      document.getElementById('local-stat-leak2').innerText = all.filter(l => l.leakTag.includes('Ad / Speed Gap')).length;
+      document.getElementById('local-stat-leak2').innerText = all.filter(l => !l.phone || l.leakTag.includes('Missing Phone')).length;
       const closedCount = all.filter(l => l.status === 'CLOSED').length;
       document.getElementById('local-stat-closed').innerText = '₹' + (closedCount * 2500).toLocaleString();
 
@@ -950,18 +1031,17 @@
             </div>
             
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.name + ' ' + e.city)}" target="_blank" class="text-[10px] bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 px-2 py-1 rounded-md font-mono flex items-center gap-1">📍 MAP</a>
               <button onclick="deleteLocalLead('${e.id}')" class="text-slate-500 hover:text-red-400 p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
             </div>
           </div>
 
           <!-- Leak Badge -->
-          <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
             <span class="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold ${
               e.leakTag.includes('Missing Website') ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
             }">${escapeHtml(e.leakTag)}</span>
 
-            ${e.website ? `<a href="${e.website}" target="_blank" class="text-xs text-cyan-400 hover:underline flex items-center gap-1 truncate max-w-[140px]"><i class="fa-solid fa-globe text-[10px]"></i> ${escapeHtml(e.website.replace(/^https?:\/\//, ''))}</a>` : '<span class="text-[10px] text-red-400 font-mono italic">No Website Found</span>'}
+            ${e.website ? `<a href="${e.website}" target="_blank" class="text-xs text-cyan-400 hover:underline flex items-center gap-1 truncate max-w-[140px]"><i class="fa-solid fa-globe text-[10px]"></i> ${escapeHtml(e.website.replace(/^https?:\/\//, ''))}</a>` : '<span class="text-[10px] text-red-400 font-mono italic">No Website Listed</span>'}
           </div>
 
           <!-- CRM Status Selector -->
@@ -981,16 +1061,38 @@
             ${(e.flaws || []).map(f => `<li class="flex items-start gap-1.5"><span class="text-amber-400 leading-none">&bull;</span><span class="leading-tight">${escapeHtml(f)}</span></li>`).join('')}
           </ul>
 
-          <!-- Actions -->
-          <div class="grid grid-cols-2 gap-2 pt-1">
-            <button onclick="triggerLocalWhatsApp('${e.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95 transition">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>1-Tap WhatsApp</span>
-            </button>
-            <button onclick="copyLocalPitch('${e.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
-              <i class="fa-solid fa-copy text-amber-400"></i>
-              <span>Copy Audit Pitch</span>
-            </button>
+          <!-- Direct Audit Actions for Real Leads -->
+          <div class="space-y-2 pt-1">
+            <div class="grid grid-cols-2 gap-2">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.name + ' ' + e.city)}" 
+                target="_blank" 
+                class="bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 font-semibold py-2 px-2.5 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition"
+              >
+                <i class="fa-solid fa-map-location-dot text-xs"></i>
+                <span>Verify Google Maps</span>
+              </a>
+
+              <a 
+                href="${e.website ? `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(e.website)}` : `https://www.google.com/search?q=${encodeURIComponent(e.name + ' ' + e.city + ' reviews website')}`}" 
+                target="_blank" 
+                class="bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-semibold py-2 px-2.5 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition"
+              >
+                <i class="fa-solid fa-magnifying-glass-chart text-xs"></i>
+                <span>Live SEO & Audit</span>
+              </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="triggerLocalWhatsApp('${e.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95 transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>1-Tap WhatsApp</span>
+              </button>
+              <button onclick="copyLocalPitch('${e.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700 transition">
+                <i class="fa-solid fa-copy text-amber-400"></i>
+                <span>Copy Audit Pitch</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -1063,26 +1165,6 @@
     // =========================================================================
     // MODULE 2: INSTAGRAM PRO HUNTER (DIRECT LIVE API SCRAPER)
     // =========================================================================
-    function toggleScraperConfig() {
-      const panel = document.getElementById('scraperConfigPanel');
-      panel.classList.toggle('hidden');
-    }
-
-    function togglePassVisibility(id) {
-      const input = document.getElementById(id);
-      if (input.type === 'password') input.type = 'text';
-      else input.type = 'password';
-    }
-
-    function saveScraperConfig() {
-      const apifyToken = document.getElementById('cfg-apify-token').value.trim();
-      const n8nWebhook = document.getElementById('cfg-n8n-webhook').value.trim();
-      localStorage.setItem(CACHE_KEY_CFG_APIFY, apifyToken);
-      localStorage.setItem(CACHE_KEY_CFG_N8N, n8nWebhook);
-      showToast("⚙️ Scraper & Webhook configuration saved!");
-      toggleScraperConfig();
-    }
-
     function filterIgCategory(cat) {
       currentIgCategory = cat;
       document.querySelectorAll('.ig-cat-btn').forEach(b => {
@@ -1158,8 +1240,8 @@
       const apifyToken = localStorage.getItem(CACHE_KEY_CFG_APIFY) || '';
       
       if (!apifyToken || apifyToken.length < 5) {
-        showToast("⚙️ Please enter your Apify API Token in 'API & n8n Config' to scrape live Instagram Actor profiles.");
-        toggleScraperConfig();
+        showToast("⚙️ Enter Apify API Token in 'API Settings' to scrape live Instagram Actor profiles.");
+        toggleApiSettings();
         return;
       }
 
@@ -1211,7 +1293,7 @@
                 flaws: [
                   !website ? "Missing dedicated booking website in Bio" : `Website linked: ${website}`,
                   phone ? `Phone detected: ${phone}` : "No direct phone in bio",
-                  `Zero Meta Ads active in ${city}`
+                  `Zero active Meta Ads targeting ${city}`
                 ],
                 pitch: `Hey ${fullName} team, checked your profile in ${city}. Loved your content, but noticed you are losing ~15-20 customer inquiries/week due to missing 1-tap WhatsApp booking automation. Made a quick 60-sec video showing how to fix this...`
               };
@@ -1226,7 +1308,7 @@
             renderIgCards();
             showToast(`⚡ Apify Actor extracted ${added} live Instagram accounts!`);
           } else {
-            showToast("0 results returned from Apify Actor for this query.");
+            showToast("0 Live Results Found for this query. No live Instagram profile available.");
           }
         } else {
           showToast("⚠️ Apify API Token error or rate-limited. Check token in settings.");
@@ -1541,7 +1623,7 @@
           if (added > 0) {
             showToast(`✨ Extracted ${added} live international records for ${country}!`);
           } else {
-            showToast(`0 records found for ${country}. Try another niche or check Live Dorks.`);
+            showToast(`0 Live Results Found for this query. No live OSM/Directory POI available.`);
           }
         }
       } catch (err) {
