@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>LEADHUNTER 360 ULTRA PRO MAX</title>
+  <title>SMB HINTER 360 - LEADHUNTER ULTRA PRO</title>
   
   <!-- Google Fonts & Tailwind CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,15 +94,15 @@
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <h1 class="text-xl md:text-2xl font-black text-emerald-400 tracking-tight flex items-center gap-2">
-              LEADHUNTER 360 <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold border border-emerald-500/40">ULTRA PRO MAX</span>
+              SMB HINTER 360 <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold border border-emerald-500/40">MULTI-CITY PRO</span>
             </h1>
           </div>
-          <p class="text-xs text-gray-400 mt-1">Live Overpass POI Hunter &bull; 360° Defect Matrix &bull; 1-Tap WhatsApp Closing</p>
+          <p class="text-xs text-gray-400 mt-1">Multi-City Tab Isolation &bull; Live Overpass POIs &bull; 1-Tap WhatsApp Closing</p>
         </div>
 
         <div class="flex items-center gap-2">
           <button onclick="clearPipeline()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
-            Clear Leads
+            Clear DB
           </button>
           <button onclick="exportLeadsJSON()" class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold border border-gray-700 transition">
             Export JSON
@@ -119,7 +119,7 @@
               id="cityInput" 
               value="Mysuru" 
               required
-              placeholder="Enter Target City (e.g. Mysuru, Bengaluru, Chikkamagaluru, Mangaluru...)" 
+              placeholder="Enter City (e.g. Mysuru, Bengaluru, Chikkamagaluru, Mangaluru...)" 
               class="w-full bg-black/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
             />
           </div>
@@ -140,18 +140,28 @@
             class="bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-gray-950 px-7 py-3.5 rounded-xl font-extrabold text-sm tracking-wide transition-all shadow-lg shadow-emerald-600/30 shrink-0 flex items-center justify-center gap-2"
           >
             <i data-lucide="radar" class="w-4 h-4"></i>
-            <span>RUN DEEP SCAN</span>
+            <span>SCAN CITY</span>
           </button>
         </div>
 
         <!-- Quick City Pills -->
         <div class="flex items-center gap-1.5 flex-wrap pt-1 text-xs">
           <span class="text-gray-500 font-mono text-[11px]">Quick Cities:</span>
-          <button type="button" onclick="setCity('Mysuru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mysuru</button>
-          <button type="button" onclick="setCity('Bengaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Bengaluru</button>
-          <button type="button" onclick="setCity('Chikkamagaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Chikkamagaluru</button>
-          <button type="button" onclick="setCity('Mangaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mangaluru</button>
-          <button type="button" onclick="setCity('Hubballi')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Hubballi</button>
+          <button type="button" onclick="setCityAndScan('Mysuru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mysuru</button>
+          <button type="button" onclick="setCityAndScan('Bengaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Bengaluru</button>
+          <button type="button" onclick="setCityAndScan('Chikkamagaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Chikkamagaluru</button>
+          <button type="button" onclick="setCityAndScan('Mangaluru')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Mangaluru</button>
+          <button type="button" onclick="setCityAndScan('Hubballi')" class="px-2.5 py-1 rounded-md bg-gray-800/80 hover:bg-gray-700 text-[11px] text-emerald-300 border border-gray-700">Hubballi</button>
+        </div>
+
+        <!-- DYNAMIC SCANNED CITY TABS -->
+        <div class="pt-3 border-t border-gray-800/80">
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="text-[11px] font-mono text-gray-400 uppercase font-semibold">Scanned City Hubs:</span>
+          </div>
+          <div id="cityTabs" class="flex gap-2 overflow-x-auto custom-scrollbar py-1">
+            <!-- Dynamically populated city buttons -->
+          </div>
         </div>
       </form>
 
@@ -203,7 +213,7 @@
         <input 
           type="text" 
           id="filterSearch" 
-          oninput="renderLeads()" 
+          oninput="renderCity(currentCity)" 
           placeholder="Search name, phone, defects..." 
           class="w-full bg-gray-900 border border-gray-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500"
         />
@@ -221,7 +231,7 @@
         <i data-lucide="radar" class="w-6 h-6"></i>
       </div>
       <h3 class="text-base font-bold text-white">0 Leads in Pipeline</h3>
-      <p class="text-xs text-gray-400 max-w-sm">Type any city above and click <b>RUN DEEP SCAN</b> to query real live businesses via Overpass.</p>
+      <p class="text-xs text-gray-400 max-w-sm">Type any city above and click <b>SCAN CITY</b> to query real live businesses via Overpass.</p>
     </div>
 
   </div>
@@ -233,8 +243,9 @@
   </div>
 
   <script>
-    const CACHE_KEY = 'leadhunter_360_ultra_v9';
-    let leads = [];
+    const CACHE_KEY = 'smb_hinter_360_scans_v10';
+    let scans = {}; // Store leads grouped by city: { "Mysuru": [...], "Bengaluru": [...] }
+    let currentCity = "ALL";
     let activeTab = 'ALL';
 
     const OVERPASS_SERVERS = [
@@ -248,45 +259,49 @@
       const saved = localStorage.getItem(CACHE_KEY);
       if (saved) {
         try {
-          leads = JSON.parse(saved);
+          scans = JSON.parse(saved);
         } catch (e) {
-          leads = [];
+          scans = {};
         }
       }
-      renderLeads();
+      updateTabs();
+      renderCity(currentCity);
       lucide.createIcons();
     }
 
     function save() {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(leads));
+      localStorage.setItem(CACHE_KEY, JSON.stringify(scans));
       updateStats();
+      updateTabs();
     }
 
     function clearPipeline() {
-      if (confirm("Clear all scanned leads?")) {
-        leads = [];
+      if (confirm("Clear all scanned city leads from database?")) {
+        scans = {};
+        currentCity = "ALL";
         save();
-        renderLeads();
-        showToast("Pipeline cleared.");
+        renderCity("ALL");
+        showToast("All city databases cleared.");
       }
     }
 
     function exportLeadsJSON() {
-      if (leads.length === 0) {
+      const allLeads = getAllLeads();
+      if (allLeads.length === 0) {
         showToast("No leads to export!");
         return;
       }
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(leads, null, 2));
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scans, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `Leads_Export_${new Date().toISOString().slice(0,10)}.json`);
+      downloadAnchor.setAttribute("download", `SMB_Leads_MultiCity_${new Date().toISOString().slice(0,10)}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      showToast("Exported as JSON!");
+      showToast("Exported all city scans as JSON!");
     }
 
-    function setCity(cityName) {
+    function setCityAndScan(cityName) {
       document.getElementById('cityInput').value = cityName;
       runScan();
     }
@@ -302,7 +317,46 @@
         active.classList.remove('bg-gray-900', 'text-gray-300', 'border', 'border-gray-800');
         active.classList.add('bg-emerald-500', 'text-gray-950', 'shadow');
       }
-      renderLeads();
+      renderCity(currentCity);
+    }
+
+    function getAllLeads() {
+      let combined = [];
+      Object.keys(scans).forEach(city => {
+        if (Array.isArray(scans[city])) {
+          combined = combined.concat(scans[city]);
+        }
+      });
+      return combined;
+    }
+
+    function updateTabs() {
+      const tabs = document.getElementById('cityTabs');
+      const cityList = Object.keys(scans);
+
+      if (cityList.length === 0) {
+        tabs.innerHTML = `<span class="text-xs text-gray-500 italic">No cities scanned yet. Enter a city above to begin.</span>`;
+        return;
+      }
+
+      let html = `<button onclick="renderCity('ALL')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 ${
+        currentCity === 'ALL' ? 'bg-emerald-500 text-gray-950 shadow' : 'bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700'
+      }"><span>🌐 All Cities</span> <span class="text-[10px] opacity-75">(${getAllLeads().length})</span></button>`;
+
+      cityList.forEach(city => {
+        const count = (scans[city] || []).length;
+        const isActive = currentCity === city;
+        html += `
+          <button onclick="renderCity('${city}')" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 shrink-0 ${
+            isActive ? 'bg-emerald-500 text-gray-950 shadow' : 'bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700'
+          }">
+            <span>📍 ${escapeHtml(city)}</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/30 text-gray-950' : 'bg-gray-900 text-emerald-400'} font-mono">${count}</span>
+          </button>
+        `;
+      });
+
+      tabs.innerHTML = html;
     }
 
     function logTerminal(msg, color = 'text-gray-300') {
@@ -328,6 +382,8 @@
       if (e) e.preventDefault();
 
       const city = document.getElementById('cityInput').value.trim();
+      if (!city) return;
+
       const categoryType = document.getElementById('categoryInput').value;
       const terminal = document.getElementById('scanTerminal');
       const terminalLogs = document.getElementById('terminalLogs');
@@ -340,9 +396,8 @@
       btn.classList.add('opacity-50', 'cursor-not-allowed');
 
       logTerminal(`🚀 Initiating Live Scan for city: "${city}"...`, 'text-emerald-400');
-      terminalStatus.innerText = "Querying Overpass API mirrors...";
+      terminalStatus.innerText = "Querying Overpass API cluster...";
 
-      // Query fragments based on category
       let categoryQuery = `node["amenity"~"cafe|restaurant|bakery|dentist|clinic"](area.a);node["shop"~"boutique|gift|clothing|hairdresser|beauty"](area.a);`;
       if (categoryType === 'cafes') categoryQuery = `node["amenity"~"cafe|restaurant|bakery|fast_food"](area.a);`;
       else if (categoryType === 'clinics') categoryQuery = `node["amenity"~"dentist|clinic|doctors"](area.a);`;
@@ -351,7 +406,7 @@
       else if (categoryType === 'salons') categoryQuery = `node["shop"~"hairdresser|beauty"](area.a);`;
       else if (categoryType === 'resorts') categoryQuery = `node["tourism"~"hotel|guest_house|resort"](area.a);`;
 
-      const qlQuery = `[out:json][timeout:25];area["name"="${city}"]->.a;(${categoryQuery});out body 40;`;
+      const qlQuery = `[out:json][timeout:25];area["name"="${city}"]->.a;(${categoryQuery});out body 50;`;
 
       let fetchedElements = [];
 
@@ -389,11 +444,11 @@
             }
           }
         } catch (err) {
-          logTerminal(`⚠️ Server ${serverHost} failed or timed out. Failing over...`, 'text-amber-400');
+          logTerminal(`⚠️ Server ${serverHost} timed out. Auto-failing over...`, 'text-amber-400');
         }
       }
 
-      // Nominatim Fallback if area tag is empty
+      // Nominatim Fallback
       if (fetchedElements.length === 0) {
         logTerminal(`🔍 Running Nominatim search fallback for "${city}"...`, 'text-cyan-300');
         try {
@@ -419,6 +474,8 @@
         return;
       }
 
+      if (!scans[city]) scans[city] = [];
+
       let newCount = 0;
       fetchedElements.forEach(e => {
         const tags = e.tags || {};
@@ -442,9 +499,10 @@
         const pitch = `Hello ${name} team, checked your profile in ${city}. Loved your presence, but noticed you are missing a direct 1-tap WhatsApp booking button, dropping ~15-20 local inquiries/week. We can fix this in 48 hours for just ₹2,500 (Bio Overhaul + 1-Tap WA Funnel + 3 Viral Reel Scripts). Can I share a quick 60-sec preview with you?`;
 
         const newLead = {
-          id: 'lead-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+          id: 'lead-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
           name: name.trim(),
           city: city,
+          category: tags.amenity || tags.shop || tags.tourism || tags.leisure || 'Business',
           lat: e.lat,
           lon: e.lon,
           phone: phone,
@@ -452,113 +510,38 @@
           website: website,
           instagram: handle,
           score: score,
-          status: 'NEW', // NEW, PITCHED, CLOSED
+          status: 'NEW',
           pitch: pitch
         };
 
-        if (!leads.some(l => l.name.toLowerCase() === name.toLowerCase())) {
-          leads.unshift(newLead);
+        if (!scans[city].some(l => l.name.toLowerCase() === name.toLowerCase())) {
+          scans[city].unshift(newLead);
           newCount++;
         }
       });
 
       save();
-      renderLeads();
+      renderCity(city);
 
       terminalStatus.innerText = "Scan Complete!";
-      logTerminal(`🎉 Added ${newCount} verified live business leads!`, 'text-emerald-400');
+      logTerminal(`🎉 Added ${newCount} verified live business leads into "${city}" tab!`, 'text-emerald-400');
       showToast(`Scanned ${newCount} real leads in ${city}!`);
 
       btn.disabled = false;
       btn.classList.remove('opacity-50', 'cursor-not-allowed');
     }
 
-    function triggerWhatsApp(id) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
+    function renderCity(city) {
+      currentCity = city;
+      updateTabs();
 
-      const encoded = encodeURIComponent(lead.pitch);
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      let url = "";
-
-      if (lead.wa_phone) {
-        url = isMobile 
-          ? `whatsapp://send?phone=${lead.wa_phone}&text=${encoded}` 
-          : `https://web.whatsapp.com/send?phone=${lead.wa_phone}&text=${encoded}`;
-      } else {
-        url = isMobile
-          ? `whatsapp://send?text=${encoded}`
-          : `https://web.whatsapp.com/send?text=${encoded}`;
-      }
-
-      if (lead.status === 'NEW') {
-        lead.status = 'PITCHED';
-        save();
-        renderLeads();
-      }
-
-      const win = window.open(url, '_blank');
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        window.open(lead.wa_phone ? `https://wa.me/${lead.wa_phone}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
-      }
-
-      showToast("WhatsApp launched with pre-filled ₹2,500 pitch!");
-    }
-
-    function copyPitch(id) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
-
-      navigator.clipboard.writeText(lead.pitch);
-      if (lead.status === 'NEW') {
-        lead.status = 'PITCHED';
-        save();
-        renderLeads();
-      }
-      showToast("Pitch Script copied to clipboard!");
-    }
-
-    function updateLeadStatus(id, newStatus) {
-      const lead = leads.find(l => l.id === id);
-      if (!lead) return;
-      lead.status = newStatus;
-      save();
-      renderLeads();
-      showToast(`Status updated to: ${newStatus}`);
-    }
-
-    function deleteLead(id) {
-      if (confirm("Delete this lead?")) {
-        leads = leads.filter(l => l.id !== id);
-        save();
-        renderLeads();
-        showToast("Lead removed.");
-      }
-    }
-
-    function updateStats() {
-      const total = leads.length;
-      const priority = leads.filter(l => l.score >= 85).length;
-      const pitched = leads.filter(l => l.status === 'PITCHED').length;
-      const closed = leads.filter(l => l.status === 'CLOSED').length;
-
-      document.getElementById('totalLeads').innerText = total;
-      document.getElementById('priorityLeads').innerText = priority;
-      document.getElementById('pitchedLeads').innerText = pitched;
-      document.getElementById('closedRevenue').innerText = '₹' + (closed * 2500).toLocaleString();
-
-      document.getElementById('count-all').innerText = total;
-      document.getElementById('count-hot').innerText = priority;
-      document.getElementById('count-pitched').innerText = pitched;
-      document.getElementById('count-closed').innerText = closed;
-    }
-
-    function renderLeads() {
       const query = (document.getElementById('filterSearch')?.value || '').toLowerCase();
       const results = document.getElementById('results');
       const emptyState = document.getElementById('emptyState');
 
-      const filtered = leads.filter(lead => {
+      let cityLeads = (city === 'ALL') ? getAllLeads() : (scans[city] || []);
+
+      const filtered = cityLeads.filter(lead => {
         const matchesSearch = 
           lead.name.toLowerCase().includes(query) ||
           lead.city.toLowerCase().includes(query) ||
@@ -591,7 +574,9 @@
           <div class="flex justify-between items-start gap-2">
             <div>
               <h3 class="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors line-clamp-1">${escapeHtml(e.name)}</h3>
-              <p class="text-xs text-gray-400 mt-0.5">${escapeHtml(e.city)} &bull; <span class="text-emerald-400 font-mono font-bold">${e.score}/100</span></p>
+              <div class="text-[10px] text-gray-400 uppercase font-mono mt-0.5">
+                <span class="text-emerald-400 font-bold">📍 ${escapeHtml(e.city)}</span> &bull; ${escapeHtml(e.category)} &bull; <span class="text-emerald-300 font-bold">${e.score}/100</span>
+              </div>
             </div>
             
             <div class="flex items-center gap-1.5 shrink-0">
@@ -642,6 +627,92 @@
       `).join('');
 
       lucide.createIcons();
+    }
+
+    function triggerWhatsApp(id) {
+      const allLeads = getAllLeads();
+      const lead = allLeads.find(l => l.id === id);
+      if (!lead) return;
+
+      const encoded = encodeURIComponent(lead.pitch);
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      let url = "";
+
+      if (lead.wa_phone) {
+        url = isMobile 
+          ? `whatsapp://send?phone=${lead.wa_phone}&text=${encoded}` 
+          : `https://web.whatsapp.com/send?phone=${lead.wa_phone}&text=${encoded}`;
+      } else {
+        url = isMobile
+          ? `whatsapp://send?text=${encoded}`
+          : `https://web.whatsapp.com/send?text=${encoded}`;
+      }
+
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        save();
+        renderCity(currentCity);
+      }
+
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.open(lead.wa_phone ? `https://wa.me/${lead.wa_phone}?text=${encoded}` : `https://wa.me/?text=${encoded}`, '_blank');
+      }
+
+      showToast("WhatsApp launched with pre-filled ₹2,500 pitch!");
+    }
+
+    function copyPitch(id) {
+      const allLeads = getAllLeads();
+      const lead = allLeads.find(l => l.id === id);
+      if (!lead) return;
+
+      navigator.clipboard.writeText(lead.pitch);
+      if (lead.status === 'NEW') {
+        lead.status = 'PITCHED';
+        save();
+        renderCity(currentCity);
+      }
+      showToast("Pitch Script copied to clipboard!");
+    }
+
+    function updateLeadStatus(id, newStatus) {
+      const allLeads = getAllLeads();
+      const lead = allLeads.find(l => l.id === id);
+      if (!lead) return;
+      lead.status = newStatus;
+      save();
+      renderCity(currentCity);
+      showToast(`Status updated to: ${newStatus}`);
+    }
+
+    function deleteLead(id) {
+      if (confirm("Delete this lead?")) {
+        Object.keys(scans).forEach(city => {
+          scans[city] = scans[city].filter(l => l.id !== id);
+        });
+        save();
+        renderCity(currentCity);
+        showToast("Lead removed.");
+      }
+    }
+
+    function updateStats() {
+      const allLeads = getAllLeads();
+      const total = allLeads.length;
+      const priority = allLeads.filter(l => l.score >= 85).length;
+      const pitched = allLeads.filter(l => l.status === 'PITCHED').length;
+      const closed = allLeads.filter(l => l.status === 'CLOSED').length;
+
+      document.getElementById('totalLeads').innerText = total;
+      document.getElementById('priorityLeads').innerText = priority;
+      document.getElementById('pitchedLeads').innerText = pitched;
+      document.getElementById('closedRevenue').innerText = '₹' + (closed * 2500).toLocaleString();
+
+      document.getElementById('count-all').innerText = total;
+      document.getElementById('count-hot').innerText = priority;
+      document.getElementById('count-pitched').innerText = pitched;
+      document.getElementById('count-closed').innerText = closed;
     }
 
     function showToast(msg) {
