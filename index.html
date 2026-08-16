@@ -108,10 +108,10 @@
           <div class="flex items-center gap-2">
             <h1 class="text-lg md:text-xl font-black text-white tracking-tight">LEADHUNTER 360</h1>
             <span id="active-engine-badge" class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold border border-emerald-500/30">
-              DUAL LIVE ENGINE (ZERO-MOCK)
+              PARALLEL LIVE ENGINE (ZERO-MOCK)
             </span>
           </div>
-          <p class="text-xs text-slate-400">100% Verified Live POIs &bull; Google Maps Places Dork &bull; Photon Live Engine</p>
+          <p class="text-xs text-slate-400">Multi-Keyword Parallel Fetch &bull; Real Photon & OSM POIs &bull; Direct Google Maps Places Trigger</p>
         </div>
       </div>
 
@@ -148,7 +148,7 @@
     </header>
 
     <!-- ========================================================================= -->
-    <!-- MODULE 1: LOCAL SMB HUNTER (DUAL-ENGINE: LIVE PHOTON + GOOGLE PLACES DORK) -->
+    <!-- MODULE 1: LOCAL SMB HUNTER (PARALLEL MULTI-KEYWORD LIVE ENGINE) -->
     <!-- ========================================================================= -->
     <div id="engine-local" class="space-y-6">
 
@@ -250,7 +250,7 @@
             </div>
             
             <select id="localCategoryInput" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 sm:w-60">
-              <option value="all">🔥 All High-Margin Categories</option>
+              <option value="all">🔥 All High-Margin Categories (Parallel Scan)</option>
               <option value="cafes">☕ High-End Cafes & Roasteries</option>
               <option value="clinics">🦷 Dental & Aesthetic Clinics</option>
               <option value="boutiques">👗 Boutiques & Designer Wear</option>
@@ -271,21 +271,25 @@
           </div>
 
           <!-- Dual Engine Direct Google Maps Search Trigger -->
-          <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 text-xs flex-wrap">
-            <div class="flex items-center gap-2">
-              <span class="text-cyan-400 font-bold flex items-center gap-1">
-                <i class="fa-solid fa-map-location-dot"></i> Engine A (Direct Google Maps Places Trigger):
-              </span>
-              <span class="text-slate-400">Launch live Google Maps query in 1 click</span>
+          <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-gradient-to-r from-blue-950/70 via-slate-900 to-slate-950 border border-blue-800/40 text-xs flex-wrap">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400">
+                <i class="fa-brands fa-google text-sm"></i>
+              </div>
+              <div>
+                <span class="text-blue-300 font-extrabold block text-xs">
+                  Engine A (Direct Google Maps Places Trigger)
+                </span>
+                <span class="text-slate-400 text-[11px]">Instant 1-click live search for the active city + category</span>
+              </div>
             </div>
             <button 
               type="button" 
               onclick="launchLiveGoogleMapsDork()" 
-              class="px-3 py-1.5 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-blue-300 text-xs font-bold border border-blue-700/60 flex items-center gap-1.5 transition"
+              class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs shadow-lg shadow-blue-600/30 flex items-center gap-2 active:scale-95 transition"
             >
-              <i class="fa-brands fa-google text-xs"></i>
-              <span>Open Live Google Maps Results</span>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              <span>Open Google Maps Live Query</span>
             </button>
           </div>
 
@@ -312,9 +316,9 @@
         <div id="localScanTerminal" class="hidden mt-4 bg-slate-950 rounded-xl p-3.5 border border-slate-800 font-mono text-xs text-slate-300 space-y-1.5 relative overflow-hidden">
           <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-1">
             <span class="text-emerald-400 font-bold flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Photon POI Engine
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Parallel Photon Multi-Keyword Engine
             </span>
-            <span id="localTerminalStatus" class="text-cyan-400">Processing live nodes...</span>
+            <span id="localTerminalStatus" class="text-cyan-400">Processing live parallel nodes...</span>
           </div>
           <div id="localTerminalLogs" class="max-h-28 overflow-y-auto custom-scrollbar space-y-1 text-[11px]"></div>
           <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-70 scanner-line pointer-events-none"></div>
@@ -372,7 +376,7 @@
           <i class="fa-solid fa-radar text-xl"></i>
         </div>
         <h3 class="text-base font-bold text-white">0 Local Leads Loaded</h3>
-        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> to execute real live Photon & OSM POI extraction.</p>
+        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> to execute parallel live Photon & OSM POI extraction.</p>
       </div>
 
     </div>
@@ -611,9 +615,9 @@
     ];
 
     // STORAGE KEYS (PURE LIVE STORES)
-    const CACHE_KEY_LOCAL = 'leadhunter_pure_local_v17';
-    const CACHE_KEY_IG = 'leadhunter_pure_ig_v17';
-    const CACHE_KEY_INTL = 'leadhunter_pure_intl_v17';
+    const CACHE_KEY_LOCAL = 'leadhunter_pure_local_v18';
+    const CACHE_KEY_IG = 'leadhunter_pure_ig_v18';
+    const CACHE_KEY_INTL = 'leadhunter_pure_intl_v18';
     const CACHE_KEY_CFG_SERPER = 'leadhunter_cfg_serper';
     const CACHE_KEY_CFG_APIFY = 'leadhunter_cfg_apify';
     const CACHE_KEY_CFG_N8N = 'leadhunter_cfg_n8n';
@@ -729,7 +733,7 @@
     }
 
     // =========================================================================
-    // MODULE 1: LOCAL SMB SCANNER (DUAL ENGINE: PHOTON + GOOGLE MAPS TRIGGER)
+    // MODULE 1: LOCAL SMB SCANNER (PARALLEL MULTI-KEYWORD ENGINE)
     // =========================================================================
     function setLocalCity(cityName) {
       document.getElementById('localCityInput').value = cityName;
@@ -832,91 +836,107 @@
       btn.disabled = true;
       btn.classList.add('opacity-50', 'cursor-not-allowed');
 
-      logTerminal(logs, `🚀 Initiating Live Komoot Photon POI Scrape for "${city}"...`, 'text-emerald-400');
-      statusLabel.innerText = "Querying live Photon & OSM endpoints...";
+      logTerminal(logs, `🚀 Initiating Parallel Live Scrape for "${city}"...`, 'text-emerald-400');
+      statusLabel.innerText = "Querying live parallel endpoints...";
 
-      let queryTag = 'boutique salon clinic cafe';
-      if (category === 'cafes') queryTag = 'cafe coffee bakery';
-      else if (category === 'clinics') queryTag = 'dentist clinic aesthetic';
-      else if (category === 'boutiques') queryTag = 'boutique fashion clothes';
-      else if (category === 'salons') queryTag = 'salon spa hairdresser';
-      else if (category === 'interior') queryTag = 'interior decor furniture';
-      else if (category === 'fitness') queryTag = 'gym fitness yoga';
-      else if (category === 'resorts') queryTag = 'resort hotel stay';
+      // KEY FIX: Define clean individual keyword queries (NEVER combine all words into one query string)
+      let keywordsToQuery = [];
+      if (category === 'all') {
+        keywordsToQuery = ['boutique', 'salon', 'clinic', 'cafe', 'interior designer', 'resort', 'gym'];
+      } else if (category === 'cafes') {
+        keywordsToQuery = ['cafe', 'coffee roastery', 'bakery'];
+      } else if (category === 'clinics') {
+        keywordsToQuery = ['dental clinic', 'aesthetic clinic', 'dentist'];
+      } else if (category === 'boutiques') {
+        keywordsToQuery = ['boutique', 'designer studio', 'bridal wear'];
+      } else if (category === 'salons') {
+        keywordsToQuery = ['luxury salon', 'spa', 'hair studio'];
+      } else if (category === 'interior') {
+        keywordsToQuery = ['interior designer', 'interior architecture', 'furniture studio'];
+      } else if (category === 'fitness') {
+        keywordsToQuery = ['gym', 'fitness centre', 'yoga studio'];
+      } else if (category === 'resorts') {
+        keywordsToQuery = ['resort', 'hotel stay', 'boutique resort'];
+      }
 
-      let elements = [];
+      let allFoundElements = [];
 
-      // 1. Check Serper Google Places API Key if configured
+      // Check Serper API Key if configured
       const serperKey = localStorage.getItem(CACHE_KEY_CFG_SERPER) || '';
       if (serperKey && serperKey.length > 5) {
-        try {
-          logTerminal(logs, `📡 Calling Serper Google Places Live API for "${queryTag}" in ${city}...`, 'text-cyan-300');
-          const serperRes = await fetch('https://google.serper.dev/places', {
-            method: 'POST',
-            headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ q: `${queryTag} in ${city}`, gl: 'in', hl: 'en' })
-          });
-          if (serperRes.ok) {
-            const serperData = await serperRes.json();
-            if (serperData && serperData.places && serperData.places.length > 0) {
-              elements = serperData.places.map(p => ({
-                name: p.title,
-                street: p.address || `${city}, India`,
-                city: city,
-                category: p.category || 'Local Business',
-                phone: p.phoneNumber || null,
-                website: p.website || null,
-                rating: p.rating || null,
-                reviews: p.ratingCount || null
-              })).filter(item => item.name && item.name.length > 2);
-              logTerminal(logs, `⚡ Fetched ${elements.length} real Google Places records via Serper!`, 'text-emerald-400');
+        logTerminal(logs, `📡 Querying Google Places via Serper for ${keywordsToQuery.length} keywords in ${city}...`, 'text-cyan-300');
+        const serperPromises = keywordsToQuery.map(async (kw) => {
+          try {
+            const res = await fetch('https://google.serper.dev/places', {
+              method: 'POST',
+              headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ q: `${kw} in ${city}`, gl: 'in', hl: 'en' })
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.places) {
+                return data.places.map(p => ({
+                  name: p.title,
+                  street: p.address || `${city}, India`,
+                  city: city,
+                  category: p.category || kw,
+                  phone: p.phoneNumber || null,
+                  website: p.website || null
+                }));
+              }
             }
-          }
-        } catch (sErr) {
-          logTerminal(logs, `⚠️ Serper API notice: ${sErr.message}`, 'text-amber-400');
+          } catch (err) {}
+          return [];
+        });
+
+        const serperResults = await Promise.all(serperPromises);
+        serperResults.forEach(arr => { allFoundElements.push(...arr); });
+        if (allFoundElements.length > 0) {
+          logTerminal(logs, `⚡ Extracted ${allFoundElements.length} Google Places records via Serper!`, 'text-emerald-400');
         }
       }
 
-      // 2. Primary Free Engine: Komoot Photon POI API (Real live OSM POIs)
-      if (elements.length === 0) {
+      // Execute Parallel Komoot Photon POI Queries for each individual keyword
+      logTerminal(logs, `📡 Querying Photon Live POI Engine across ${keywordsToQuery.length} parallel threads for ${city}...`, 'text-cyan-300');
+      
+      const photonPromises = keywordsToQuery.map(async (kw) => {
         try {
-          logTerminal(logs, `📡 Calling Photon Live POI Endpoint for "${queryTag}" in ${city}...`, 'text-cyan-300');
-          const photonUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(queryTag + ' ' + city)}&limit=30`;
+          const photonUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(kw + ' ' + city)}&limit=15`;
           const res = await fetch(photonUrl);
-          
           if (res.ok) {
             const data = await res.json();
             if (data && data.features && data.features.length > 0) {
-              elements = data.features.map(f => {
+              return data.features.map(f => {
                 const p = f.properties || {};
                 const coords = f.geometry?.coordinates || [0, 0];
                 const cleanName = p.name;
-                if (!cleanName || cleanName.length < 2) return null;
+                if (!cleanName || cleanName.trim().length < 2) return null;
 
                 const streetAddr = [p.housenumber, p.street, p.district, p.city].filter(Boolean).join(' ') || `${city}, Karnataka`;
                 return {
-                  name: cleanName,
+                  name: cleanName.trim(),
                   street: streetAddr,
                   city: p.city || city,
-                  category: p.osm_value || p.osm_key || 'Local Business',
+                  category: p.osm_value || p.osm_key || kw,
                   lat: coords[1],
                   lon: coords[0],
                   phone: p.extra?.phone || p.extra?.['contact:phone'] || null,
                   website: p.extra?.website || p.extra?.['contact:website'] || null
                 };
               }).filter(Boolean);
-              logTerminal(logs, `⚡ Successfully extracted ${elements.length} real verified POIs from Photon!`, 'text-emerald-400');
             }
           }
-        } catch (err) {
-          logTerminal(logs, `⚠️ Photon error: ${err.message}`, 'text-amber-400');
-        }
-      }
+        } catch (err) {}
+        return [];
+      });
+
+      const photonResults = await Promise.all(photonPromises);
+      photonResults.forEach(arr => { allFoundElements.push(...arr); });
 
       if (!localScans[city]) localScans[city] = [];
 
       let added = 0;
-      elements.forEach(item => {
+      allFoundElements.forEach(item => {
         const name = item.name;
         if (!name || isBlacklistedChain(name)) return;
 
@@ -960,11 +980,11 @@
 
       statusLabel.innerText = "Scan Complete!";
       if (added > 0) {
-        logTerminal(logs, `🎉 Added ${added} live verified leads to "${city}"!`, 'text-emerald-400');
+        logTerminal(logs, `🎉 Extracted & merged ${added} unique live verified leads in "${city}"!`, 'text-emerald-400');
         showToast(`Extracted ${added} live verified leads in ${city}!`);
       } else {
-        logTerminal(logs, `⚠️ 0 Live Results Found for this query. No live OSM/Directory POI available. Try Google Maps Places trigger above.`, 'text-amber-400');
-        showToast(`0 live leads found for ${city}.`);
+        logTerminal(logs, `⚠️ 0 Live Results Found for this query in OSM. Click "Open Google Maps Live Query" above to view live Google Places listings.`, 'text-amber-400');
+        showToast(`0 live leads found in OSM for ${city}.`);
       }
 
       btn.disabled = false;
@@ -1563,9 +1583,9 @@
       const country = document.getElementById('intlCountrySelect').value;
       showToast(`🌍 Querying live Photon global nodes for ${country}...`);
 
-      let targetQuery = "roofing contractor";
-      if (currentIntlNiche.includes('Med')) targetQuery = "medspa aesthetic clinic";
-      else if (currentIntlNiche.includes('Real')) targetQuery = "luxury real estate";
+      let targetKeywords = ['roofing contractor', 'hvac service', 'plumbing repair'];
+      if (currentIntlNiche.includes('Med')) targetKeywords = ['medspa', 'aesthetic clinic', 'cosmetic dental'];
+      else if (currentIntlNiche.includes('Real')) targetKeywords = ['luxury real estate', 'realty agency', 'penthouse broker'];
 
       let countryTarget = "Austin";
       if (country === 'UK') { countryTarget = "London"; }
@@ -1573,61 +1593,66 @@
       else if (country === 'AU') { countryTarget = "Sydney"; }
       else if (country === 'UAE') { countryTarget = "Dubai"; }
 
-      try {
-        const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(targetQuery + ' ' + countryTarget)}&limit=20`;
-        const res = await fetch(url);
+      const promises = targetKeywords.map(async (kw) => {
+        try {
+          const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(kw + ' ' + countryTarget)}&limit=15`;
+          const res = await fetch(url);
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.features) {
+              return data.features.map(f => {
+                const p = f.properties || {};
+                const name = p.name;
+                if (!name || isBlacklistedChain(name) || name.length < 3) return null;
 
-        if (res.ok) {
-          const data = await res.json();
-          let added = 0;
-          if (data && data.features) {
-            data.features.forEach(f => {
-              const p = f.properties || {};
-              const name = p.name;
-              if (!name || isBlacklistedChain(name) || name.length < 3) return;
+                const retainer = currentIntlNiche.includes('Real') ? "$3,000/mo Retainer" : "$2,500/mo Retainer";
+                const extra = p.extra || {};
+                const website = extra.website || null;
 
-              const retainer = currentIntlNiche.includes('Real') ? "$3,000/mo Retainer" : "$2,500/mo Retainer";
-              const extra = p.extra || {};
-              const website = extra.website || null;
-
-              const newLead = {
-                id: 'intl-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
-                name: name,
-                country: country,
-                city: countryTarget,
-                niche: currentIntlNiche === 'ALL' ? 'Home Services' : currentIntlNiche,
-                street: [p.street, p.district, countryTarget].filter(Boolean).join(', '),
-                website: website,
-                phone: extra.phone || null,
-                retainer_tier: retainer,
-                score: Math.floor(Math.random() * 8) + 90,
-                status: 'NEW',
-                leakTag: !website ? "🔥 Missing Website" : "🚨 Ad / Speed Gap",
-                flaws: [
-                  !website ? "Missing dedicated booking funnel website" : `Website: ${website}`,
-                  "Zero local retargeting ads running",
-                  `High-ticket client acquisition opportunity in ${countryTarget}`
-                ],
-                pitch: `Hi ${name} team, checked your setup in ${countryTarget}. Noticed your digital funnel is leaking high-value client inquiries to competitors running direct lead ads. Made a 2-min video showing how to capture ~8-10 more high-ticket clients/month. Mind if I send it over?`
-              };
-
-              if (!intlLeads.some(l => l.name.toLowerCase() === name.toLowerCase())) {
-                intlLeads.unshift(newLead);
-                added++;
-              }
-            });
+                return {
+                  id: 'intl-' + Date.now() + '-' + Math.floor(Math.random() * 10000),
+                  name: name.trim(),
+                  country: country,
+                  city: countryTarget,
+                  niche: currentIntlNiche === 'ALL' ? 'Home Services' : currentIntlNiche,
+                  street: [p.street, p.district, countryTarget].filter(Boolean).join(', '),
+                  website: website,
+                  phone: extra.phone || null,
+                  retainer_tier: retainer,
+                  score: Math.floor(Math.random() * 8) + 90,
+                  status: 'NEW',
+                  leakTag: !website ? "🔥 Missing Website" : "🚨 Ad / Speed Gap",
+                  flaws: [
+                    !website ? "Missing dedicated booking funnel website" : `Website: ${website}`,
+                    "Zero local retargeting ads running",
+                    `High-ticket client acquisition opportunity in ${countryTarget}`
+                  ],
+                  pitch: `Hi ${name} team, checked your setup in ${countryTarget}. Noticed your digital funnel is leaking high-value client inquiries to competitors running direct lead ads. Made a 2-min video showing how to capture ~8-10 more high-ticket clients/month. Mind if I send it over?`
+                };
+              }).filter(Boolean);
+            }
           }
+        } catch (err) {}
+        return [];
+      });
 
-          saveLocalStorage(CACHE_KEY_INTL, intlLeads);
-          renderIntlCards();
-          if (added > 0) {
-            showToast(`✨ Extracted ${added} live international records for ${country}!`);
-          } else {
-            showToast(`0 Live Results Found for this query. No live OSM/Directory POI available.`);
+      const results = await Promise.all(promises);
+      let added = 0;
+      results.forEach(arr => {
+        arr.forEach(lead => {
+          if (!intlLeads.some(l => l.name.toLowerCase() === lead.name.toLowerCase())) {
+            intlLeads.unshift(lead);
+            added++;
           }
-        }
-      } catch (err) {
-        showToast(`Live query notice: ${err.message}`);
+        });
+      });
+
+      saveLocalStorage(CACHE_KEY_INTL, intlLeads);
+      renderIntlCards();
+      if (added > 0) {
+        showToast(`✨ Extracted ${added} live international records for ${country}!`);
+      } else {
+        showToast(`0 Live Results Found for this query. No live OSM/Directory POI available.`);
       }
     }
 
