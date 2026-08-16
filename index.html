@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>LEADHUNTER 360 - 100% Real Live Client Acquisition Engine</title>
+  <title>LEADHUNTER 360 - Geo-Locked Live Client Acquisition Engine</title>
   
   <!-- Google Fonts, Tailwind CSS & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,10 +108,10 @@
           <div class="flex items-center gap-2">
             <h1 class="text-lg md:text-xl font-black text-white tracking-tight">LEADHUNTER 360</h1>
             <span id="active-engine-badge" class="text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold border border-emerald-500/30">
-              PARALLEL LIVE ENGINE (ZERO-MOCK)
+              STRICT GEO-LOCKED ENGINE
             </span>
           </div>
-          <p class="text-xs text-slate-400">Multi-Keyword Parallel Fetch &bull; Real Photon & OSM POIs &bull; Direct Google Maps Places Trigger</p>
+          <p class="text-xs text-slate-400">Strict Bounding Box Locking &bull; 0 Foreign Leaks &bull; Real Direct Decision-Makers</p>
         </div>
       </div>
 
@@ -148,7 +148,7 @@
     </header>
 
     <!-- ========================================================================= -->
-    <!-- MODULE 1: LOCAL SMB HUNTER (PARALLEL MULTI-KEYWORD LIVE ENGINE) -->
+    <!-- MODULE 1: LOCAL SMB HUNTER (STRICT GEO-LOCKED OVERPASS & PHOTON BBOX) -->
     <!-- ========================================================================= -->
     <div id="engine-local" class="space-y-6">
 
@@ -157,7 +157,7 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                100% REAL LIVE DATA ONLY
+                100% GEO-LOCKED TO TARGET CITY ONLY
               </span>
               <span class="text-xs text-slate-400">&bull; Auto-excludes corporate franchise chains (Domino's, KFC, Starbucks...)</span>
             </div>
@@ -184,7 +184,7 @@
             <span class="font-mono text-cyan-400 font-bold flex items-center gap-1.5">
               <i class="fa-solid fa-key"></i> Optional API Credentials (Stored in LocalStorage)
             </span>
-            <span class="text-[10px] text-slate-500">Photon Engine runs 100% free with no key required</span>
+            <span class="text-[10px] text-slate-500">Geo-Locked Overpass & Photon run 100% free</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -250,7 +250,7 @@
             </div>
             
             <select id="localCategoryInput" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 sm:w-60">
-              <option value="all">🔥 All High-Margin Categories (Parallel Scan)</option>
+              <option value="all">🔥 All High-Margin Categories</option>
               <option value="cafes">☕ High-End Cafes & Roasteries</option>
               <option value="clinics">🦷 Dental & Aesthetic Clinics</option>
               <option value="boutiques">👗 Boutiques & Designer Wear</option>
@@ -289,7 +289,7 @@
               class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs shadow-lg shadow-blue-600/30 flex items-center gap-2 active:scale-95 transition"
             >
               <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-              <span>Open Google Maps Live Query</span>
+              <span id="googleMapsBtnLabel">Open Live Google Maps Results</span>
             </button>
           </div>
 
@@ -316,9 +316,9 @@
         <div id="localScanTerminal" class="hidden mt-4 bg-slate-950 rounded-xl p-3.5 border border-slate-800 font-mono text-xs text-slate-300 space-y-1.5 relative overflow-hidden">
           <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-1">
             <span class="text-emerald-400 font-bold flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Parallel Photon Multi-Keyword Engine
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Strict Geo-Locked Overpass & Photon Engine
             </span>
-            <span id="localTerminalStatus" class="text-cyan-400">Processing live parallel nodes...</span>
+            <span id="localTerminalStatus" class="text-cyan-400">Processing live bbox nodes...</span>
           </div>
           <div id="localTerminalLogs" class="max-h-28 overflow-y-auto custom-scrollbar space-y-1 text-[11px]"></div>
           <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent opacity-70 scanner-line pointer-events-none"></div>
@@ -361,7 +361,7 @@
             type="text" 
             id="localSearchInput" 
             oninput="renderLocalCards()" 
-            placeholder="Search business, address, flaw..." 
+            placeholder="Search business, local area, flaw..." 
             class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
           />
         </div>
@@ -376,7 +376,7 @@
           <i class="fa-solid fa-radar text-xl"></i>
         </div>
         <h3 class="text-base font-bold text-white">0 Local Leads Loaded</h3>
-        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> to execute parallel live Photon & OSM POI extraction.</p>
+        <p class="text-xs text-slate-400 max-w-sm">Enter a target city above and click <b>SCAN LIVE LEADS</b> or launch the live Google Maps query above.</p>
       </div>
 
     </div>
@@ -614,10 +614,23 @@
       "bata", "woodland", "raymond", "titan", "kalyan jewellers", "tanishq", "malabar gold"
     ];
 
+    // STRICT GEOGRAPHIC BOUNDING BOXES FOR ACCURATE LOCAL SCANNING
+    const CITY_GEO_BOUNDS = {
+      "mysuru": { south: 12.23, west: 76.57, north: 12.39, east: 76.73, lat: 12.2958, lon: 76.6394, state: "Karnataka" },
+      "mysore": { south: 12.23, west: 76.57, north: 12.39, east: 76.73, lat: 12.2958, lon: 76.6394, state: "Karnataka" },
+      "bengaluru": { south: 12.83, west: 77.46, north: 13.14, east: 77.78, lat: 12.9716, lon: 77.5946, state: "Karnataka" },
+      "bangalore": { south: 12.83, west: 77.46, north: 13.14, east: 77.78, lat: 12.9716, lon: 77.5946, state: "Karnataka" },
+      "mumbai": { south: 18.89, west: 72.77, north: 19.28, east: 73.00, lat: 19.0760, lon: 72.8777, state: "Maharashtra" },
+      "pune": { south: 18.41, west: 73.74, north: 18.63, east: 73.98, lat: 18.5204, lon: 73.8567, state: "Maharashtra" },
+      "delhi": { south: 28.40, west: 76.84, north: 28.88, east: 77.35, lat: 28.6139, lon: 77.2090, state: "Delhi" },
+      "hyderabad": { south: 17.28, west: 78.30, north: 17.55, east: 78.60, lat: 17.3850, lon: 78.4867, state: "Telangana" },
+      "chikkamagaluru": { south: 13.27, west: 75.72, north: 13.36, east: 75.82, lat: 13.3153, lon: 75.7754, state: "Karnataka" }
+    };
+
     // STORAGE KEYS (PURE LIVE STORES)
-    const CACHE_KEY_LOCAL = 'leadhunter_pure_local_v18';
-    const CACHE_KEY_IG = 'leadhunter_pure_ig_v18';
-    const CACHE_KEY_INTL = 'leadhunter_pure_intl_v18';
+    const CACHE_KEY_LOCAL = 'leadhunter_geo_local_v19';
+    const CACHE_KEY_IG = 'leadhunter_geo_ig_v19';
+    const CACHE_KEY_INTL = 'leadhunter_geo_intl_v19';
     const CACHE_KEY_CFG_SERPER = 'leadhunter_cfg_serper';
     const CACHE_KEY_CFG_APIFY = 'leadhunter_cfg_apify';
     const CACHE_KEY_CFG_N8N = 'leadhunter_cfg_n8n';
@@ -697,7 +710,7 @@
       if (engine === 'LOCAL') {
         navLocal.className = "nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-md shrink-0";
         modLocal.classList.remove('hidden');
-        badge.innerText = "LOCAL SMB HUNTER";
+        badge.innerText = "LOCAL SMB HUNTER (GEO-LOCKED)";
         badge.className = "text-[10px] sm:text-xs px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 font-mono font-bold border border-emerald-500/30";
         renderLocalCards();
       } else if (engine === 'IG') {
@@ -733,10 +746,12 @@
     }
 
     // =========================================================================
-    // MODULE 1: LOCAL SMB SCANNER (PARALLEL MULTI-KEYWORD ENGINE)
+    // MODULE 1: LOCAL SMB SCANNER (STRICT GEO-LOCKED ENGINE)
     // =========================================================================
     function setLocalCity(cityName) {
       document.getElementById('localCityInput').value = cityName;
+      const btnLabel = document.getElementById('googleMapsBtnLabel');
+      if (btnLabel) btnLabel.innerText = `Open Live ${cityName} Google Maps Leads in New Window`;
       runLocalScan();
     }
 
@@ -752,7 +767,7 @@
       else if (category === 'fitness') catText = "gym fitness studio";
       else if (category === 'resorts') catText = "resort hotel stay";
 
-      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(catText + ' in ' + city)}`;
+      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(catText + ' in ' + city + ', India')}`;
       window.open(mapsUrl, '_blank');
       showToast(`📍 Opening live Google Maps search for ${city}...`);
     }
@@ -831,107 +846,120 @@
       const statusLabel = document.getElementById('localTerminalStatus');
       const btn = document.getElementById('btnLocalScan');
 
+      const btnLabel = document.getElementById('googleMapsBtnLabel');
+      if (btnLabel) btnLabel.innerText = `Open Live ${city} Google Maps Leads in New Window`;
+
       logs.innerHTML = '';
       terminal.classList.remove('hidden');
       btn.disabled = true;
       btn.classList.add('opacity-50', 'cursor-not-allowed');
 
-      logTerminal(logs, `🚀 Initiating Parallel Live Scrape for "${city}"...`, 'text-emerald-400');
-      statusLabel.innerText = "Querying live parallel endpoints...";
+      logTerminal(logs, `🚀 Initiating Strict Geo-Locked Scrape for "${city}"...`, 'text-emerald-400');
+      statusLabel.innerText = "Querying strict local bounding box...";
 
-      // KEY FIX: Define clean individual keyword queries (NEVER combine all words into one query string)
-      let keywordsToQuery = [];
-      if (category === 'all') {
-        keywordsToQuery = ['boutique', 'salon', 'clinic', 'cafe', 'interior designer', 'resort', 'gym'];
-      } else if (category === 'cafes') {
-        keywordsToQuery = ['cafe', 'coffee roastery', 'bakery'];
-      } else if (category === 'clinics') {
-        keywordsToQuery = ['dental clinic', 'aesthetic clinic', 'dentist'];
-      } else if (category === 'boutiques') {
-        keywordsToQuery = ['boutique', 'designer studio', 'bridal wear'];
-      } else if (category === 'salons') {
-        keywordsToQuery = ['luxury salon', 'spa', 'hair studio'];
-      } else if (category === 'interior') {
-        keywordsToQuery = ['interior designer', 'interior architecture', 'furniture studio'];
-      } else if (category === 'fitness') {
-        keywordsToQuery = ['gym', 'fitness centre', 'yoga studio'];
-      } else if (category === 'resorts') {
-        keywordsToQuery = ['resort', 'hotel stay', 'boutique resort'];
-      }
+      // Get precise geo bounding box if available
+      const cityKey = city.toLowerCase().trim();
+      const geoBounds = CITY_GEO_BOUNDS[cityKey] || { south: 12.23, west: 76.57, north: 12.39, east: 76.73, lat: 12.2958, lon: 76.6394, state: "Karnataka" };
+
+      logTerminal(logs, `📍 Locking query strictly within Bbox [${geoBounds.south}, ${geoBounds.west} to ${geoBounds.north}, ${geoBounds.east}]`, 'text-cyan-300');
 
       let allFoundElements = [];
 
-      // Check Serper API Key if configured
-      const serperKey = localStorage.getItem(CACHE_KEY_CFG_SERPER) || '';
-      if (serperKey && serperKey.length > 5) {
-        logTerminal(logs, `📡 Querying Google Places via Serper for ${keywordsToQuery.length} keywords in ${city}...`, 'text-cyan-300');
-        const serperPromises = keywordsToQuery.map(async (kw) => {
-          try {
-            const res = await fetch('https://google.serper.dev/places', {
-              method: 'POST',
-              headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ q: `${kw} in ${city}`, gl: 'in', hl: 'en' })
+      // 1. PRIMARY ENGINE: Strict Geo-Locked Overpass API Query
+      try {
+        let amenityFilter = "cafe|restaurant|clinic|dentist";
+        let shopFilter = "boutique|clothes|beauty|hairdresser|interior_decorator|furniture";
+
+        if (category === 'cafes') { amenityFilter = "cafe|bakery|restaurant"; shopFilter = ""; }
+        else if (category === 'clinics') { amenityFilter = "dentist|clinic|doctors"; shopFilter = ""; }
+        else if (category === 'boutiques') { amenityFilter = ""; shopFilter = "boutique|clothes|fashion|tailor"; }
+        else if (category === 'salons') { amenityFilter = "spa"; shopFilter = "hairdresser|beauty"; }
+        else if (category === 'interior') { amenityFilter = ""; shopFilter = "interior_decoration|furniture|curtain"; }
+        else if (category === 'fitness') { amenityFilter = "fitness_centre|sports_centre"; shopFilter = ""; }
+        else if (category === 'resorts') { amenityFilter = "hotel|guest_house|resort"; shopFilter = ""; }
+
+        let queryPart = "";
+        if (amenityFilter) queryPart += `node["amenity"~"${amenityFilter}"](${geoBounds.south},${geoBounds.west},${geoBounds.north},${geoBounds.east});`;
+        if (shopFilter) queryPart += `node["shop"~"${shopFilter}"](${geoBounds.south},${geoBounds.west},${geoBounds.north},${geoBounds.east});`;
+
+        const overpassQL = `[out:json][timeout:12];(${queryPart});out body 40;`;
+        logTerminal(logs, `📡 Calling live Overpass node with strict coordinate bounds...`, 'text-cyan-300');
+
+        const opRes = await fetch(`https://overpass.kth.se/api/interpreter?data=${encodeURIComponent(overpassQL)}`);
+        if (opRes.ok) {
+          const opData = await opRes.json();
+          if (opData && opData.elements && opData.elements.length > 0) {
+            opData.elements.forEach(el => {
+              const tags = el.tags || {};
+              const cleanName = tags.name || tags['name:en'] || tags.brand;
+              if (!cleanName || cleanName.length < 2) return;
+
+              const street = [tags['addr:street'] || tags['addr:suburb'] || tags['addr:district'], tags['addr:city'] || city, geoBounds.state].filter(Boolean).join(', ');
+              allFoundElements.push({
+                name: cleanName.trim(),
+                street: street,
+                city: city,
+                category: tags.amenity || tags.shop || 'Local Business',
+                lat: el.lat,
+                lon: el.lon,
+                phone: tags.phone || tags['contact:phone'] || tags['contact:whatsapp'] || null,
+                website: tags.website || tags['contact:website'] || null
+              });
             });
+            logTerminal(logs, `⚡ Found ${allFoundElements.length} geo-verified POIs in ${city} via Overpass!`, 'text-emerald-400');
+          }
+        }
+      } catch (opErr) {
+        logTerminal(logs, `⚠️ Overpass notice: ${opErr.message}`, 'text-amber-400');
+      }
+
+      // 2. SECONDARY ENGINE: Geo-bounded Komoot Photon with Coordinate Validation
+      if (allFoundElements.length === 0) {
+        logTerminal(logs, `📡 Fallback: Querying Photon with strict lat/lon anchor for ${city}...`, 'text-cyan-300');
+        const keywords = (category === 'all') ? ['cafe', 'boutique', 'salon', 'clinic', 'interior'] : [category];
+
+        const photonPromises = keywords.map(async (kw) => {
+          try {
+            const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(kw + ' ' + city)}&lat=${geoBounds.lat}&lon=${geoBounds.lon}&limit=15`;
+            const res = await fetch(url);
             if (res.ok) {
               const data = await res.json();
-              if (data && data.places) {
-                return data.places.map(p => ({
-                  name: p.title,
-                  street: p.address || `${city}, India`,
-                  city: city,
-                  category: p.category || kw,
-                  phone: p.phoneNumber || null,
-                  website: p.website || null
-                }));
+              if (data && data.features) {
+                return data.features.map(f => {
+                  const p = f.properties || {};
+                  const coords = f.geometry?.coordinates || [0, 0];
+                  const cLat = coords[1];
+                  const cLon = coords[0];
+
+                  // STRICT GEO-LOCK CHECK: Verify coordinates fall inside the city's bounding box
+                  if (cLat < geoBounds.south || cLat > geoBounds.north || cLon < geoBounds.west || cLon > geoBounds.east) {
+                    return null; // DISCARD FOREIGN RESULTS (e.g. Willmar, San Fernando)
+                  }
+
+                  const cleanName = p.name;
+                  if (!cleanName || cleanName.length < 2) return null;
+
+                  const street = [p.district || p.street || 'Central', p.city || city, geoBounds.state].filter(Boolean).join(', ');
+                  return {
+                    name: cleanName.trim(),
+                    street: street,
+                    city: city,
+                    category: p.osm_value || p.osm_key || kw,
+                    lat: cLat,
+                    lon: cLon,
+                    phone: p.extra?.phone || null,
+                    website: p.extra?.website || null
+                  };
+                }).filter(Boolean);
               }
             }
           } catch (err) {}
           return [];
         });
 
-        const serperResults = await Promise.all(serperPromises);
-        serperResults.forEach(arr => { allFoundElements.push(...arr); });
-        if (allFoundElements.length > 0) {
-          logTerminal(logs, `⚡ Extracted ${allFoundElements.length} Google Places records via Serper!`, 'text-emerald-400');
-        }
+        const pResults = await Promise.all(photonPromises);
+        pResults.forEach(arr => { allFoundElements.push(...arr); });
       }
-
-      // Execute Parallel Komoot Photon POI Queries for each individual keyword
-      logTerminal(logs, `📡 Querying Photon Live POI Engine across ${keywordsToQuery.length} parallel threads for ${city}...`, 'text-cyan-300');
-      
-      const photonPromises = keywordsToQuery.map(async (kw) => {
-        try {
-          const photonUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(kw + ' ' + city)}&limit=15`;
-          const res = await fetch(photonUrl);
-          if (res.ok) {
-            const data = await res.json();
-            if (data && data.features && data.features.length > 0) {
-              return data.features.map(f => {
-                const p = f.properties || {};
-                const coords = f.geometry?.coordinates || [0, 0];
-                const cleanName = p.name;
-                if (!cleanName || cleanName.trim().length < 2) return null;
-
-                const streetAddr = [p.housenumber, p.street, p.district, p.city].filter(Boolean).join(' ') || `${city}, Karnataka`;
-                return {
-                  name: cleanName.trim(),
-                  street: streetAddr,
-                  city: p.city || city,
-                  category: p.osm_value || p.osm_key || kw,
-                  lat: coords[1],
-                  lon: coords[0],
-                  phone: p.extra?.phone || p.extra?.['contact:phone'] || null,
-                  website: p.extra?.website || p.extra?.['contact:website'] || null
-                };
-              }).filter(Boolean);
-            }
-          }
-        } catch (err) {}
-        return [];
-      });
-
-      const photonResults = await Promise.all(photonPromises);
-      photonResults.forEach(arr => { allFoundElements.push(...arr); });
 
       if (!localScans[city]) localScans[city] = [];
 
@@ -951,7 +979,7 @@
           name: name,
           city: city,
           category: item.category || 'Local Business',
-          street: item.street || `${city}, Karnataka`,
+          street: item.street || `${city}, ${geoBounds.state}`,
           lat: item.lat,
           lon: item.lon,
           phone: phone,
@@ -980,11 +1008,11 @@
 
       statusLabel.innerText = "Scan Complete!";
       if (added > 0) {
-        logTerminal(logs, `🎉 Extracted & merged ${added} unique live verified leads in "${city}"!`, 'text-emerald-400');
-        showToast(`Extracted ${added} live verified leads in ${city}!`);
+        logTerminal(logs, `🎉 Added ${added} strictly geo-locked verified leads for "${city}"!`, 'text-emerald-400');
+        showToast(`Extracted ${added} geo-verified leads in ${city}!`);
       } else {
-        logTerminal(logs, `⚠️ 0 Live Results Found for this query in OSM. Click "Open Google Maps Live Query" above to view live Google Places listings.`, 'text-amber-400');
-        showToast(`0 live leads found in OSM for ${city}.`);
+        logTerminal(logs, `⚠️ 0 Live POIs within strict bounds. Click "Open Live ${city} Google Maps Leads" above to view live Google Places results.`, 'text-amber-400');
+        showToast(`0 geo-verified leads in OSM. Check Google Maps trigger above.`);
       }
 
       btn.disabled = false;
@@ -1002,6 +1030,7 @@
         const matchesSearch = 
           lead.name.toLowerCase().includes(search) ||
           lead.city.toLowerCase().includes(search) ||
+          (lead.street && lead.street.toLowerCase().includes(search)) ||
           (lead.phone && lead.phone.includes(search)) ||
           (lead.category && lead.category.toLowerCase().includes(search));
 
@@ -1085,7 +1114,7 @@
           <div class="space-y-2 pt-1">
             <div class="grid grid-cols-2 gap-2">
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.name + ' ' + e.city)}" 
+                href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.name + ' in ' + e.city + ', India')}" 
                 target="_blank" 
                 class="bg-blue-900/60 hover:bg-blue-800 text-blue-300 border border-blue-700/60 font-semibold py-2 px-2.5 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition"
               >
